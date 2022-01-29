@@ -1,6 +1,6 @@
 ﻿namespace Soft.Data
 {
-    public class Task
+    public class GroupTask
     {
         public string Id { get; set; }
         public string? Name { get; set; }

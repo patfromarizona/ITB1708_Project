@@ -1,0 +1,54 @@
+﻿@page
+@model Soft.Pages.GroupTasks.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>GroupTask</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GroupTask.Id" class="control-label"></label>
+                <input asp-for="GroupTask.Id" class="form-control" />
+                <span asp-validation-for="GroupTask.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupTask.Name" class="control-label"></label>
+                <input asp-for="GroupTask.Name" class="form-control" />
+                <span asp-validation-for="GroupTask.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupTask.Description" class="control-label"></label>
+                <input asp-for="GroupTask.Description" class="form-control" />
+                <span asp-validation-for="GroupTask.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupTask.TeamSize" class="control-label"></label>
+                <input asp-for="GroupTask.TeamSize" class="form-control" />
+                <span asp-validation-for="GroupTask.TeamSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupTask.Deadline" class="control-label"></label>
+                <input asp-for="GroupTask.Deadline" class="form-control" />
+                <span asp-validation-for="GroupTask.Deadline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

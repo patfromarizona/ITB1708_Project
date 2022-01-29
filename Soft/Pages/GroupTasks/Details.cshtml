@@ -1,0 +1,43 @@
+﻿@page
+@model Soft.Pages.GroupTasks.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>GroupTask</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GroupTask.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GroupTask.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GroupTask.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GroupTask.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GroupTask.TeamSize)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GroupTask.TeamSize)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GroupTask.Deadline)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GroupTask.Deadline)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.GroupTask.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

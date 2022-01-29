@@ -8,16 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Tasks\**" />
+    <Content Remove="Pages\Tasks\**" />
+    <EmbeddedResource Remove="Pages\Tasks\**" />
+    <None Remove="Pages\Tasks\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Tasks\" />
   </ItemGroup>
 
 </Project>
