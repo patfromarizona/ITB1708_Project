@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Soft.Data;
 
-namespace Soft.Pages.GroupTasks
+namespace Soft.Pages.TeamWorks
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace Soft.Pages.GroupTasks
         }
 
         [BindProperty]
-        public GroupTask GroupTask { get; set; }
+        public TeamWork TeamWork { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace Soft.Pages.GroupTasks
                 return Page();
             }
 
-            _context.GroupTask.Add(GroupTask);
+            _context.GroupTask.Add(TeamWork);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

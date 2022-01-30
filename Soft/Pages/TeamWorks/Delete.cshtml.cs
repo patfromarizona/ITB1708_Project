@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Soft.Data;
 
-namespace Soft.Pages.GroupTasks
+namespace Soft.Pages.TeamWorks
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace Soft.Pages.GroupTasks
         }
 
         [BindProperty]
-        public GroupTask GroupTask { get; set; }
+        public TeamWork TeamWork { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -29,9 +29,9 @@ namespace Soft.Pages.GroupTasks
                 return NotFound();
             }
 
-            GroupTask = await _context.GroupTask.FirstOrDefaultAsync(m => m.Id == id);
+            TeamWork = await _context.GroupTask.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (GroupTask == null)
+            if (TeamWork == null)
             {
                 return NotFound();
             }
@@ -45,11 +45,11 @@ namespace Soft.Pages.GroupTasks
                 return NotFound();
             }
 
-            GroupTask = await _context.GroupTask.FindAsync(id);
+            TeamWork = await _context.GroupTask.FindAsync(id);
 
-            if (GroupTask != null)
+            if (TeamWork != null)
             {
-                _context.GroupTask.Remove(GroupTask);
+                _context.GroupTask.Remove(TeamWork);
                 await _context.SaveChangesAsync();
             }
 

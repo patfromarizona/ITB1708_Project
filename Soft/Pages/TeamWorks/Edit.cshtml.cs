@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Soft.Data;
 
-namespace Soft.Pages.GroupTasks
+namespace Soft.Pages.TeamWorks
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace Soft.Pages.GroupTasks
         }
 
         [BindProperty]
-        public GroupTask GroupTask { get; set; }
+        public TeamWork TeamWork { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -30,9 +30,9 @@ namespace Soft.Pages.GroupTasks
                 return NotFound();
             }
 
-            GroupTask = await _context.GroupTask.FirstOrDefaultAsync(m => m.Id == id);
+            TeamWork = await _context.GroupTask.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (GroupTask == null)
+            if (TeamWork == null)
             {
                 return NotFound();
             }
@@ -48,7 +48,7 @@ namespace Soft.Pages.GroupTasks
                 return Page();
             }
 
-            _context.Attach(GroupTask).State = EntityState.Modified;
+            _context.Attach(TeamWork).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace Soft.Pages.GroupTasks
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GroupTaskExists(GroupTask.Id))
+                if (!TeamWorkExists(TeamWork.Id))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace Soft.Pages.GroupTasks
             return RedirectToPage("./Index");
         }
 
-        private bool GroupTaskExists(string id)
+        private bool TeamWorkExists(string id)
         {
             return _context.GroupTask.Any(e => e.Id == id);
         }

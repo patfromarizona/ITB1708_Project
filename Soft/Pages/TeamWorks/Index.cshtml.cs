@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Soft.Data;
 
-namespace Soft.Pages.GroupTasks
+namespace Soft.Pages.TeamWorks
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace Soft.Pages.GroupTasks
             _context = context;
         }
 
-        public IList<GroupTask> GroupTask { get;set; }
+        public IList<TeamWork> TeamWork { get;set; }
 
         public async Task OnGetAsync()
         {
-            GroupTask = await _context.GroupTask.ToListAsync();
+            TeamWork = await _context.GroupTask.ToListAsync();
         }
     }
 }

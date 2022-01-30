@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Soft.Data;
 
-namespace Soft.Pages.GroupTasks
+namespace Soft.Pages.TeamWorks
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace Soft.Pages.GroupTasks
             _context = context;
         }
 
-        public GroupTask GroupTask { get; set; }
+        public TeamWork TeamWork { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -28,9 +28,9 @@ namespace Soft.Pages.GroupTasks
                 return NotFound();
             }
 
-            GroupTask = await _context.GroupTask.FirstOrDefaultAsync(m => m.Id == id);
+            TeamWork = await _context.GroupTask.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (GroupTask == null)
+            if (TeamWork == null)
             {
                 return NotFound();
             }

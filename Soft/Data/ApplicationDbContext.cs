@@ -11,6 +11,6 @@ namespace Soft.Data
         {
         }
         public DbSet<Soft.Data.Student> Student { get; set; }
-        public DbSet<Soft.Data.GroupTask> GroupTask { get; set; }
+        public DbSet<Soft.Data.TeamWork> GroupTask { get; set; }
     }
 }
