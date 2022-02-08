@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Soft.Data;
+using TeamUP.Data.Party;
 
 namespace Soft.Data
 {
@@ -10,7 +11,7 @@ namespace Soft.Data
             : base(options)
         {
         }
-        public DbSet<Soft.Data.Student> Student { get; set; }
+        public DbSet<StudentData> Students { get; set; }
         public DbSet<Soft.Data.TeamWork> GroupTask { get; set; }
     }
 }

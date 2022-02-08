@@ -9,11 +9,11 @@ using Soft.Data;
 
 #nullable disable
 
-namespace Soft.Data.Migrations
+namespace Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220130143535_Done")]
-    partial class Done
+    [Migration("20220207193754_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,28 +226,6 @@ namespace Soft.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Soft.Data.Student", b =>
-                {
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("YearInUniversity")
-                        .HasColumnType("int");
-
-                    b.HasKey("StudentId");
-
-                    b.ToTable("Student");
-                });
-
             modelBuilder.Entity("Soft.Data.TeamWork", b =>
                 {
                     b.Property<string>("Id")
@@ -271,6 +249,31 @@ namespace Soft.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GroupTask");
+                });
+
+            modelBuilder.Entity("TeamUP.Data.Party.StudentData", b =>
+                {
+                    b.Property<string>("StudentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("Gender")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("YearInUniversity")
+                        .HasColumnType("int");
+
+                    b.HasKey("StudentId");
+
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
