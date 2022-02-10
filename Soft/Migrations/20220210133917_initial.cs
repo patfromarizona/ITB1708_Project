@@ -49,22 +49,6 @@ namespace Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GroupTask",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TeamSize = table.Column<int>(type: "int", nullable: true),
-                    Deadline = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Done = table.Column<bool>(type: "bit", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GroupTask", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Students",
                 columns: table => new
                 {
@@ -78,6 +62,22 @@ namespace Soft.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Students", x => x.StudentId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TeamWorks",
+                columns: table => new
+                {
+                    TeamWorkId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TeamSize = table.Column<int>(type: "int", nullable: true),
+                    Deadline = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Done = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TeamWorks", x => x.TeamWorkId);
                 });
 
             migrationBuilder.CreateTable(
@@ -244,10 +244,10 @@ namespace Soft.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "GroupTask");
+                name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Students");
+                name: "TeamWorks");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

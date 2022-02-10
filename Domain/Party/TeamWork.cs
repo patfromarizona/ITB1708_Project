@@ -26,7 +26,6 @@ namespace TeamUP.Domain.Party
         public int TeamSize => data?.TeamSize ?? defaultTeamSize;
         public bool Done => data?.Done ?? defaultDone;
         public DateTime Deadline => data?.Deadline ?? defaultDate;
-
         public override string ToString() => $"{Name} {Description} ({TeamSize} student(s), {Done}) {Deadline}";
 
     }

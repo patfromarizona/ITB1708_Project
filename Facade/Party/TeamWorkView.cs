@@ -16,5 +16,6 @@ namespace TeamUP.Facade.Party
         [DisplayName("Team Size")] public int? TeamSize { get; set; }
         [DisplayName("Deadline")] public DateTime? Deadline { get; set; }
         [DisplayName("Done")] public bool? Done { get; set; }
+        [DisplayName("Overview")] public string? Overview { get; set; }
     }
 }

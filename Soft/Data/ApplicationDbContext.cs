@@ -12,6 +12,6 @@ namespace Soft.Data
         {
         }
         public DbSet<StudentData> Students { get; set; }
-        public DbSet<Soft.Data.TeamWork> GroupTask { get; set; }
+        public DbSet<TeamWorkData> TeamWorks { get; set; }
     }
 }

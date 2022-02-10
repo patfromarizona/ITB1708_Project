@@ -1,5 +1,5 @@
 ﻿@page
-@model Soft.Pages.TeamWorks.EditModel
+@model Soft.Pages.TeamWorks.TeamWorksPage
 
 @{
     ViewData["Title"] = "Edit";
@@ -11,9 +11,9 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" asp-page-handler = "Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="TeamWork.Id" />
+            <input type="hidden" asp-for="TeamWork.TeamWorkId" />
             <div class="form-group">
                 <label asp-for="TeamWork.Name" class="control-label"></label>
                 <input asp-for="TeamWork.Name" class="form-control" />
@@ -47,7 +47,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index" asp-page-handler = "Index">Back to List</a>
 </div>
 
 @section Scripts {
