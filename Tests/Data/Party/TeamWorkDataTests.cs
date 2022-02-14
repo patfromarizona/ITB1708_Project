@@ -27,7 +27,7 @@ namespace TeamUP.Tests.Data.Party
         {
 
         }*/
-        private static T random<T>() => GetRandom.Value<T>();
+        private static T random<T>() => Aids.GetRandom.Value<T>();
         /*private string getCallingMember(string memberName)
         {
 
