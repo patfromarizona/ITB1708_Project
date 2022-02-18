@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using TeamUP.Facade.Party;
-using TeamUP.Tests.Data.Party;
 
 namespace TeamUP.Tests.Facade.Party
 {
