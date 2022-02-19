@@ -1,0 +1,14 @@
+﻿
+@model Soft.Pages.Students.StudentsPage
+@using TeamUP.Pages.Extensions;
+
+<h4>Student</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.FullName)
+        </dd>
+    </dl>
