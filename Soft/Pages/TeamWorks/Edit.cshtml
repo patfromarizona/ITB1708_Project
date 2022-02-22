@@ -9,18 +9,14 @@
 
 <h4>TeamWork</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post" asp-page-handler = "Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="TeamWork.TeamWorkId" />
-           <partial name = "_EditTeamWork" />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<form method="post" asp-page-handler = "Edit">
+  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+  <input type="hidden" asp-for="TeamWork.TeamWorkId" />
+  <partial name = "_EditTeamWork" />
+  <div class="form-group">
+    <input type="submit" value="Save" class="btn btn-primary" />
+  </div>
+</form>
 
 <div>
     <a asp-page="./Index" asp-page-handler = "Index">Back to List</a>

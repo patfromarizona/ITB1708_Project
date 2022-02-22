@@ -7,7 +7,7 @@
 }
 
 <body>
-    @Html.MyEditorFor(m => m.TeamWork.TeamWorkId)
+    @MyEditorForHtml.MyEditorFor(Html, (TeamWorksPage m) => m.TeamWork.TeamWorkId)
     <partial name = "_EditTeamWork" />
 </body>
     

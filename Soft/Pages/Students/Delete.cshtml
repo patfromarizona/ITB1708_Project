@@ -2,17 +2,9 @@
 @model Soft.Pages.Students.StudentsPage
 
 @{
-    ViewData["Title"] = "Delete";
+    Layout = "_Delete";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <partial name="_DetailsStudent" />
-    <form method="post">
-        <input type="hidden" asp-for="Student.StudentId" />
-        <input type="submit" value="Delete" handler="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index" asp-page-handler="Index">Back to List</a>
-    </form>
-</div>
+<body>
+    <partial name = "_ShowStudent"/>
+</body>
