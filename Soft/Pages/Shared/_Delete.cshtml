@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Delete";
+    ViewData["SubTitle"] = Model?.GetType()?.Name?.Replace("Page", string.Empty) ?? "Unspecified";  
+    Layout = "_Layout";
+    var itemId = Model?.TeamWork?.TeamWorkId ?? string.Empty;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>@ViewData["SubTitle"]</h4>
+    @RenderBody()
+    <form method="post" >
+        <input type="hidden" asp-for-id="@itemId" />
+        <input type="submit" value="Delete" handler = "Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index"asp-page-handler = "Index">Back to List</a>
+    </form>
+</div>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

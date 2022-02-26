@@ -3,15 +3,8 @@
 @model Soft.Pages.TeamWorks.TeamWorksPage
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "_Details";
 }
-
-<h1>Details</h1>
-
-<div>
-    <partial name="_DetailsTeamWork" />
-</div>
-<div>
-    <a asp-page="./Edit" asp-page-handler = "Edit" asp-route-id="@Model.TeamWork.TeamWorkId">Edit</a> |
-    <a asp-page="./Index" asp-page-handler = "Index">Back to List</a>
-</div>
+<body>
+    <partial name = "_ShowTeamWork" />
+</body>
