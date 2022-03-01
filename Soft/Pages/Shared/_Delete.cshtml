@@ -6,11 +6,11 @@
     var str = Model?.GetType()?.Name?.Replace("Page", string.Empty) ?? "Unspecified";
     if(str == "Students")
     {
-        itemId = Model?.Student?.StudentId ?? string.Empty;
+        itemId = Model?.Student?.Id ?? string.Empty;
     }
     else
     {
-        itemId = Model?.TeamWork?.TeamWorkId ?? string.Empty;
+        itemId = Model?.TeamWork?.Id ?? string.Empty;
     }     
 }
 
