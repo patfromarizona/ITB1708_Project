@@ -7,7 +7,7 @@ namespace TeamUP.Facade.Party
 {
     public class TeamWorkView
     {
-        [Required] [DisplayName("ID")] public string TeamWorkId { get; set; }
+        [Required] [DisplayName("ID")] public string Id { get; set; }
         [DisplayName("Name")] public string? Name { get; set; }
         [DisplayName("Description")] public string? Description { get; set; }
         [DisplayName("Team Size")] public int? TeamSize { get; set; }

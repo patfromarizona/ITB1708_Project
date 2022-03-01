@@ -5,7 +5,7 @@ using TeamUP.Domain.Party;
 namespace TeamUP.Facade.Party{
     public class TeamWorkViewFactory{
         public TeamWork Create(TeamWorkView v) => new TeamWork(new TeamWorkData{           
-            TeamWorkId = v.TeamWorkId,
+            Id = v.Id,
             Name = v.Name,
             Description = v.Description,
             TeamSize = v.TeamSize,
@@ -13,7 +13,7 @@ namespace TeamUP.Facade.Party{
             Done = v.Done            
         });
         public TeamWorkView Create(TeamWork o) => new(){
-            TeamWorkId = o.TeamWorkId,
+            Id = o.Id,
             Name = o.Name,
             Description = o.Description,
             TeamSize = o.TeamSize,

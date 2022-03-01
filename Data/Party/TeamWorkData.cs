@@ -7,7 +7,7 @@ namespace TeamUP.Data.Party
     public class TeamWorkData : EntityData
     {
         [Key]
-        public string TeamWorkId { get; set; }
+        public string Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public int? TeamSize { get; set; }

@@ -17,7 +17,7 @@ namespace TeamUP.Domain.Party
 
         public TeamWork() : this(new TeamWorkData()) { }
         public TeamWork(TeamWorkData d) : base(d) { }      
-        public string TeamWorkId => Data?.TeamWorkId ?? defaultString;
+        public string Id => Data?.Id ?? defaultString;
         public string Name => Data?.Name ?? defaultString;
         public string Description => Data?.Description ?? defaultString;
         public int TeamSize => Data?.TeamSize ?? defaultTeamSize;

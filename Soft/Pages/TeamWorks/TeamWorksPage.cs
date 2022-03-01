@@ -5,53 +5,31 @@ using Soft.Data;
 using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
 using TeamUP.Facade.Party;
+using TeamUP.Infra.Party;
 
 namespace Soft.Pages.TeamWorks
 {
     public class TeamWorksPage : PageModel{
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
         [BindProperty] public TeamWorkView TeamWork { get; set; }
         public IList<TeamWorkView> TeamWorks { get; set; }
-        private readonly ApplicationDbContext context;
-        public TeamWorksPage(ApplicationDbContext c) => context = c;
-        public IActionResult OnGetCreate()
-        {
-            return Page();
-        }
+        private readonly ITeamWorksRepo repo;
+        public TeamWorksPage(ApplicationDbContext c) => repo = new TeamWorksRepo(c, c.TeamWorks);
+        public IActionResult OnGetCreate() => Page();
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-            var d = new TeamWorkViewFactory().Create(TeamWork).Data;
-
-            context.TeamWorks.Add(d);
-            await context.SaveChangesAsync();
-
+            if (!ModelState.IsValid) return Page();
+            await repo.AddAsync(new TeamWorkViewFactory().Create(TeamWork));
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDeleteAsync(string id){
             TeamWork = await getTeamWork(id);
             return TeamWork == null ? NotFound() : Page();
         }
-        private async Task<TeamWorkView> getTeamWork(string id){
-            if (id == null) return null;
-            var d = await context.TeamWorks.FirstOrDefaultAsync(m => m.TeamWorkId == id);            
-            if (d == null) return null;
-            return new TeamWorkViewFactory().Create(new TeamWork(d));
-        }
+        private async Task<TeamWorkView> getTeamWork(string id) 
+            => new TeamWorkViewFactory().Create(await repo.GetAsync(id));
         public async Task<IActionResult> OnPostDeleteAsync(string id){
-            if (id == null){
-                return NotFound();
-            }
-            var d = await context.TeamWorks.FindAsync(id);
-            if (d != null){
-                context.TeamWorks.Remove(d);
-                await context.SaveChangesAsync();
-            }
+            if (id == null) return NotFound();
+            await repo.DeleteAsync(id);
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDetailsAsync(string id){
@@ -65,46 +43,22 @@ namespace Soft.Pages.TeamWorks
         }
         public async Task<IActionResult> OnPostEditAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-            var d = new TeamWorkViewFactory().Create(TeamWork).Data;
-            context.Attach(d).State = EntityState.Modified;
-
-            try
-            {
-                await context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!teamWorkExists(TeamWork.TeamWorkId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            if (!ModelState.IsValid) return Page();
+            var obj = new TeamWorkViewFactory().Create(TeamWork);
+            var updated = await repo.UpdateAsync(obj);
+            if (!updated) return NotFound();
             return RedirectToPage("./Index", "Index");
         }
-
-        
-
-        public async Task OnGetIndexAsync()
+        public async Task<IActionResult> OnGetIndexAsync()
         {
-            var list = await context.TeamWorks.ToListAsync();
+            var list = await repo.GetAsync();
             TeamWorks = new List<TeamWorkView>();
-            foreach (var d in list)
+            foreach (var obj in list)
             {
-                var v = new TeamWorkViewFactory().Create(new TeamWork(d));
+                var v = new TeamWorkViewFactory().Create(obj);
                 TeamWorks.Add(v);
             }
-        }
-
-        private bool teamWorkExists(string id)
-            => context.TeamWorks.Any(e => e.TeamWorkId == id);
+            return Page();
+        } 
     }
 }

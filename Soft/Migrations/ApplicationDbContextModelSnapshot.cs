@@ -246,12 +246,12 @@ namespace Soft.Migrations
 
                     b.HasKey("StudentId");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("TeamUP.Data.Party.TeamWorkData", b =>
                 {
-                    b.Property<string>("TeamWorkId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("Deadline")
@@ -269,9 +269,9 @@ namespace Soft.Migrations
                     b.Property<int?>("TeamSize")
                         .HasColumnType("int");
 
-                    b.HasKey("TeamWorkId");
+                    b.HasKey("Id");
 
-                    b.ToTable("TeamWorks");
+                    b.ToTable("TeamWorks", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
