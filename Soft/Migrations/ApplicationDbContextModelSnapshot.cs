@@ -226,7 +226,7 @@ namespace Soft.Migrations
 
             modelBuilder.Entity("TeamUP.Data.Party.StudentData", b =>
                 {
-                    b.Property<string>("StudentId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("Age")
@@ -244,7 +244,7 @@ namespace Soft.Migrations
                     b.Property<int?>("YearInUniversity")
                         .HasColumnType("int");
 
-                    b.HasKey("StudentId");
+                    b.HasKey("Id");
 
                     b.ToTable("Students", (string)null);
                 });

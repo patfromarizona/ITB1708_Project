@@ -7,7 +7,7 @@ namespace TeamUP.Facade.Party
 {
     public class StudentView
     {
-        [DisplayName("Studend Id")] [Required] public string StudentId { get; set; }
+        [DisplayName("Studend Id")] [Required] public string Id { get; set; }
         [DisplayName("First Name")] [Required] public string FirstName { get; set; }
         [DisplayName("Last Name")] [Required] public string LastName { get; set; }
         [DisplayName("Gender")] public bool? Gender { get; set; }
