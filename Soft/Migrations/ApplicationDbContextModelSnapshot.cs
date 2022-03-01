@@ -17,7 +17,7 @@ namespace Soft.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("ProductVersion", "6.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -226,7 +226,7 @@ namespace Soft.Migrations
 
             modelBuilder.Entity("TeamUP.Data.Party.StudentData", b =>
                 {
-                    b.Property<string>("StudentId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("Age")
@@ -244,9 +244,9 @@ namespace Soft.Migrations
                     b.Property<int?>("YearInUniversity")
                         .HasColumnType("int");
 
-                    b.HasKey("StudentId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("TeamUP.Data.Party.TeamWorkData", b =>
@@ -271,7 +271,7 @@ namespace Soft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TeamWorks", (string)null);
+                    b.ToTable("TeamWorks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

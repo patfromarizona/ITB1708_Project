@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Soft.Migrations
 {
-    public partial class initial : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,7 +52,7 @@ namespace Soft.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    StudentId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<bool>(type: "bit", nullable: true),
@@ -61,14 +61,14 @@ namespace Soft.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.StudentId);
+                    table.PrimaryKey("PK_Students", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "TeamWorks",
                 columns: table => new
                 {
-                    TeamWorkId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TeamSize = table.Column<int>(type: "int", nullable: true),
@@ -77,7 +77,7 @@ namespace Soft.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TeamWorks", x => x.TeamWorkId);
+                    table.PrimaryKey("PK_TeamWorks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

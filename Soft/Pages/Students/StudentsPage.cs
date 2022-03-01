@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Soft.Data;
 using TeamUP.Domain.Party;
 using TeamUP.Facade.Party;
+using TeamUP.Infra.Party;
 
 namespace Soft.Pages.Students {
     public class StudentsPage : PageModel {
@@ -11,45 +12,24 @@ namespace Soft.Pages.Students {
         //ToDo: protect from overposting attacks, enable the specific properties you want to bind to.
         //ToDo: see https://aka.ms/RazorPagesCRUD.
       
-        private readonly ApplicationDbContext context;
         [BindProperty] public StudentView Student { get; set; }
         public IList<StudentView> Students { get; set; }
-        public StudentsPage(ApplicationDbContext c) => context = c;
-
-        public IActionResult OnGetCreate()
-        {
-            return Page();
-        }
+        private readonly IStudentsRepo repo;
+        public StudentsPage(ApplicationDbContext c) => repo = new StudentsRepo(c, c.Students);
+        public IActionResult OnGetCreate() => Page();   
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-            var d = new StudentViewFactory().Create(Student).Data;
-
-            context.Students.Add(d);
-            await context.SaveChangesAsync();
-
+            if (!ModelState.IsValid) return Page();
+            await repo.AddAsync(new StudentViewFactory().Create(Student));
             return RedirectToPage("./Index", "Index");
         }
-
         public async Task<IActionResult> OnGetDetailsAsync(string id)
         {
             Student = await getStudent(id);
             return Student == null ? NotFound() : Page();
         }
-
-        private async Task<StudentView> getStudent(string id)
-        {
-
-            if (id == null) return null;
-            var d = await context.Students.FirstOrDefaultAsync(m => m.StudentId == id);
-            if (d == null) return null;
-            return Student = new StudentViewFactory().Create(new Student(d));
-
-        }
-
+        private async Task<StudentView> getStudent(string id) 
+            => new StudentViewFactory().Create(await repo.GetAsync(id));
         public async Task<IActionResult> OnGetDeleteAsync(string id)
         {
             Student = await getStudent(id);
@@ -57,22 +37,10 @@ namespace Soft.Pages.Students {
         }
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var d = await context.Students.FindAsync(id);
-
-            if (d != null)
-            {
-                context.Students.Remove(d);
-                await context.SaveChangesAsync();
-            }
-
+            if (id == null) return NotFound();
+            await repo.DeleteAsync(id);
             return RedirectToPage("./Index", "Index");
         }
-
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
             Student = await getStudent(id);
@@ -80,44 +48,22 @@ namespace Soft.Pages.Students {
         }
         public async Task<IActionResult> OnPostEditAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            var d = new StudentViewFactory().Create(Student).Data;
-            context.Attach(d).State = EntityState.Modified;
-
-            try
-            {
-                await context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!studentExists(Student.StudentId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            if (!ModelState.IsValid) return Page();
+            var obj = new StudentViewFactory().Create(Student);
+            var updated = await repo.UpdateAsync(obj);
+            if (!updated) return NotFound();
             return RedirectToPage("./Index", "Index");
         }
-
-        public async Task OnGetIndexAsync()
+        public async Task<IActionResult> OnGetIndexAsync()
         {
-            var list = await context.Students.ToListAsync();
+            var list = await repo.GetAsync();
             Students = new List<StudentView>();
-            foreach (var d in list)
+            foreach (var obj in list)
             {
-                var v = new StudentViewFactory().Create(new Student(d));
+                var v = new StudentViewFactory().Create(obj);
                 Students.Add(v);
             }
-        }
-        private bool studentExists(string id) => context.Students.Any(e => e.StudentId == id);
-
+            return Page();  
+        }       
     }
 }

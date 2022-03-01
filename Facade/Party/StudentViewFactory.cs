@@ -5,7 +5,7 @@ using TeamUP.Domain.Party;
 namespace TeamUP.Facade.Party {
     public class StudentViewFactory {
         public Student Create(StudentView v) => new(new StudentData {
-                StudentId = v.StudentId,
+                Id = v.Id,
                 FirstName = v.FirstName,
                 LastName = v.LastName,
                 Gender = v.Gender,
@@ -14,7 +14,7 @@ namespace TeamUP.Facade.Party {
         });
         
         public StudentView Create(Student o) => new() {
-            StudentId = o.StudentId,
+            Id = o.Id,
             FirstName = o.FirstName,
             LastName = o.LastName,
             Gender = o.Gender,
