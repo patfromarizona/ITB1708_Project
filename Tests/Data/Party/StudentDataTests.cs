@@ -7,7 +7,7 @@ namespace TeamUP.Tests.Data.Party
 {
     [TestClass]
     public class StudentDataTests : BaseTests<StudentData>{ 
-        [TestMethod] public void StudentIdTest() => isProperty<string>();
+        [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void FirstNameTest() => isProperty<string?>(); 
         [TestMethod] public void LastNameTest() => isProperty<string?>();
         [TestMethod] public void GenderTest() => isProperty<bool?>();

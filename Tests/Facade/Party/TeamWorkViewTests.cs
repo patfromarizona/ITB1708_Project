@@ -8,7 +8,7 @@ namespace TeamUP.Tests.Facade.Party
     public class TeamWorkViewTests: BaseTests<TeamWorkView>
     {
          
-        [TestMethod] public void TeamWorkIdTest() => isProperty<string>();
+        [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void NameTest() => isProperty<string?>();
         [TestMethod] public void DescriptionTest() => isProperty<string?>();
         [TestMethod] public void TeamSizeTest() => isProperty<int?>();

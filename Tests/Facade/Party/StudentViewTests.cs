@@ -8,7 +8,7 @@ namespace TeamUP.Tests.Facade.Party
     [TestClass]
     public class StudentViewTests : BaseTests<StudentView>
     {
-        [TestMethod] public void StudentIdTest() => isProperty<string>();
+        [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void FirstNameTest() => isProperty<string?>();
         [TestMethod] public void LastNameTest() => isProperty<string?>();
         [TestMethod] public void GenderTest() => isProperty<bool?>();
