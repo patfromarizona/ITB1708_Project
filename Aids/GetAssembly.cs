@@ -2,7 +2,7 @@
 
 namespace TeamUP.Aids
 {
-    static class GetAssembly
+    public static class GetAssembly
     {
         public static Assembly? ByName(string? name) => Safe.Run(() => Assembly.Load(name ?? string.Empty));
         public static Assembly? OfType(object obj) => Safe.Run(() => obj.GetType().Assembly);

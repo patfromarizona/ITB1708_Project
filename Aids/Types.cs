@@ -25,6 +25,7 @@ namespace TeamUP.Aids
             => t?.GetMembers(allDeclaredOnly)?.ToList()?.Select(x => x.Name)?.ToList() ?? new List<string>();
         public static bool HasAttribute<TAttribute>(this Type? t) where TAttribute : Attribute 
             => Safe.Run(() => t?.GetCustomAttributes<TAttribute>()?.FirstOrDefault() is not null, false);
+        public static bool IsInherited(this Type? t, Type subclass)=> Safe.Run(() => t?.IsSubclassOf(subclass) ?? false, false);
         public static MethodInfo? Method(this Type? t, string methodName) => Safe.Run(() => t?.GetMethod(methodName));
 
     }
