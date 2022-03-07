@@ -6,6 +6,18 @@
             => Safe.Run(() => fromString?.Replace(theString, string.Empty), string.Empty);
         public static bool IsRealTypeName(this string? s) 
             => Safe.Run(() => s?.All(x => x.IsNameChar()) ?? false);
+
+        public static string RemoveTail(this string? s, char separator = 'a')
+        {
+            if (string.IsNullOrEmpty(s)) return string.Empty;
+            for(var i = s.Length; i > 0; i--)
+            {
+                var c = s[i - 1];
+                s = s.Substring(0, i - 1);
+                if (c == separator) return s;
+            }
+            return s;
+        }
     }
 
 }
