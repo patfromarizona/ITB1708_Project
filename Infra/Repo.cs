@@ -20,26 +20,31 @@ namespace TeamUP.Domain
         public bool Add(TDomain obj)=> AddAsync(obj).GetAwaiter().GetResult();
         public async Task<bool> AddAsync(TDomain obj)
         {
-            var d =obj.Data;
-            try { 
-            await set.AddAsync(d);
-            await db.SaveChangesAsync();
-                return true;
+            var d = obj.Data;
+            try 
+            { 
+              await set.AddAsync(d);
+              await db.SaveChangesAsync();
+              return true;
             }
             catch
             {
-                return false;
+              return false;
             }
         }
         public bool Delete(string id) => DeleteAsync(id).GetAwaiter().GetResult();
-        public async Task<bool> DeleteAsync(string id){
-            try{
+        public async Task<bool> DeleteAsync(string id)
+        {
+            try
+            {
                 var d = await set.FindAsync(id);
                 if (d == null) return false;
                 set.Remove(d);
                 await db.SaveChangesAsync();
                 return true;
-            }catch{
+            }
+            catch
+            {
                 return false;   
             }
             
@@ -49,12 +54,18 @@ namespace TeamUP.Domain
             throw new NotImplementedException();
         }
         public TDomain Get(string id) => GetAsync(id).GetAwaiter().GetResult();
-        public async Task<TDomain> GetAsync(string id){
-            try{
+        public async Task<TDomain> GetAsync(string id)
+        {
+            try
+            {
                 if (id == null) return new TDomain();
                 var d = await set.FirstOrDefaultAsync(m => m.Id == id);
                 return d == null ? new TDomain() : toDomain(d);
-            } catch{ return new TDomain(); }
+            }  
+            catch
+            { 
+                return new TDomain(); 
+            }
             
         }
         public async Task<List<TDomain>> GetAsync()
@@ -66,8 +77,11 @@ namespace TeamUP.Domain
                 foreach (var d in list) items.Add(toDomain(d));
                 return items;
             }
-            catch { return new List<TDomain>(); }
+            catch 
+            { 
+                return new List<TDomain>(); 
             }
+        }
             
 
         
@@ -84,7 +98,11 @@ namespace TeamUP.Domain
                 db.Attach(d).State = EntityState.Modified;
                 await db.SaveChangesAsync(); 
                 return true;
-            }catch { return false; }
+            }
+            catch 
+            { 
+                return false; 
+            }
            
         }
         protected abstract TDomain toDomain(TData d);

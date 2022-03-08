@@ -1,5 +1,4 @@
-﻿
-using TeamUP.Data;
+﻿using TeamUP.Data;
 
 namespace TeamUP.Domain
 {
