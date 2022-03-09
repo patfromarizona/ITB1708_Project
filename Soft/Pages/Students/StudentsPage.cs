@@ -5,6 +5,7 @@ using Soft.Data;
 using TeamUP.Domain.Party;
 using TeamUP.Facade.Party;
 using TeamUP.Infra.Party;
+using TeamUP.Infra;
 
 namespace Soft.Pages.Students {
     public class StudentsPage : PageModel {
@@ -12,28 +13,29 @@ namespace Soft.Pages.Students {
         //ToDo: protect from overposting attacks, enable the specific properties you want to bind to.
         //ToDo: see https://aka.ms/RazorPagesCRUD.
       
-        [BindProperty] public StudentView Student { get; set; }
-        public IList<StudentView> Students { get; set; }
+        [BindProperty] public StudentView Item { get; set; }
+        public IList<StudentView> Items { get; set; }
         private readonly IStudentsRepo repo;
-        public StudentsPage(ApplicationDbContext c) => repo = new StudentsRepo(c, c.Students);
+        public StudentsPage(TeamUPDb c) => repo = new StudentsRepo(c, c.Students);
+        public string ItemId => Item?.Id ?? string.Empty;
         public IActionResult OnGetCreate() => Page();   
         public async Task<IActionResult> OnPostCreateAsync()
         {
             if (!ModelState.IsValid) return Page();
-            await repo.AddAsync(new StudentViewFactory().Create(Student));
+            await repo.AddAsync(new StudentViewFactory().Create(Item));
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDetailsAsync(string id)
         {
-            Student = await getStudent(id);
-            return Student == null ? NotFound() : Page();
+            Item = await getStudent(id);
+            return Item == null ? NotFound() : Page();
         }
         private async Task<StudentView> getStudent(string id) 
             => new StudentViewFactory().Create(await repo.GetAsync(id));
         public async Task<IActionResult> OnGetDeleteAsync(string id)
         {
-            Student = await getStudent(id);
-            return Student == null ? NotFound() : Page();
+            Item = await getStudent(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
@@ -43,13 +45,13 @@ namespace Soft.Pages.Students {
         }
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
-            Student = await getStudent(id);
-            return Student == null ? NotFound() : Page();
+            Item = await getStudent(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostEditAsync()
         {
             if (!ModelState.IsValid) return Page();
-            var obj = new StudentViewFactory().Create(Student);
+            var obj = new StudentViewFactory().Create(Item);
             var updated = await repo.UpdateAsync(obj);
             if (!updated) return NotFound();
             return RedirectToPage("./Index", "Index");
@@ -57,11 +59,11 @@ namespace Soft.Pages.Students {
         public async Task<IActionResult> OnGetIndexAsync()
         {
             var list = await repo.GetAsync();
-            Students = new List<StudentView>();
+            Items = new List<StudentView>();
             foreach (var obj in list)
             {
                 var v = new StudentViewFactory().Create(obj);
-                Students.Add(v);
+                Items.Add(v);
             }
             return Page();  
         }       

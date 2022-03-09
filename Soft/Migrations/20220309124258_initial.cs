@@ -5,10 +5,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Soft.Migrations
 {
-    public partial class initialcreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "TeamUP");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -50,6 +53,7 @@ namespace Soft.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Students",
+                schema: "TeamUP",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -66,6 +70,7 @@ namespace Soft.Migrations
 
             migrationBuilder.CreateTable(
                 name: "TeamWorks",
+                schema: "TeamUP",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -244,10 +249,12 @@ namespace Soft.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Students");
+                name: "Students",
+                schema: "TeamUP");
 
             migrationBuilder.DropTable(
-                name: "TeamWorks");
+                name: "TeamWorks",
+                schema: "TeamUP");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

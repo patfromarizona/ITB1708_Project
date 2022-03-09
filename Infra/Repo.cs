@@ -82,10 +82,6 @@ namespace TeamUP.Domain
                 return new List<TDomain>(); 
             }
         }
-            
-
-        
-
         public bool Update(TDomain obj)
         {
             throw new NotImplementedException();

@@ -12,14 +12,14 @@ using Soft.Data;
 namespace Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220301185849_initialcreate")]
-    partial class initialcreate
+    [Migration("20220309124258_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.2")
+                .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -248,7 +248,7 @@ namespace Soft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", "TeamUP");
                 });
 
             modelBuilder.Entity("TeamUP.Data.Party.TeamWorkData", b =>
@@ -273,7 +273,7 @@ namespace Soft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TeamWorks");
+                    b.ToTable("TeamWorks", "TeamUP");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

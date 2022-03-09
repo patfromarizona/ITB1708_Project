@@ -4,14 +4,15 @@
     Layout = "_Layout";
     var itemId = "";
     var str = Model?.GetType()?.Name?.Replace("Page", string.Empty) ?? "Unspecified";
-    if(str == "Students")
+    itemId = Model?.ItemId ?? string.Empty;
+    /*if(str == "Students")
     {
-        itemId = Model?.Student?.Id ?? string.Empty;
+        itemId = Model?.ItemId ?? string.Empty;
     }
     else
     {
         itemId = Model?.TeamWork?.Id ?? string.Empty;
-    } 
+    }*/ 
 }
  }
 

@@ -1,17 +1,22 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Soft.Data;
-using TeamUP.Data.Party;
+using TeamUP.Infra;
 
 namespace Soft.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder b)
         {
+            base.OnModelCreating(b);
+            initializeTables(b);
         }
-        public DbSet<StudentData> Students { get; set; }
-        public DbSet<TeamWorkData> TeamWorks { get; set; }
+
+        private static void initializeTables(ModelBuilder b)
+        {
+            TeamUPDb.InitializeTables(b);
+        }
     }
 }
