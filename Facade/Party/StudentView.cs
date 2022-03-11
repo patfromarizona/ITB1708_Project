@@ -5,9 +5,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TeamUP.Facade.Party
 {
-    public class StudentView
+    public class StudentView : BaseView
     {
-        [DisplayName("Studend Id")] [Required] public string Id { get; set; }
         [DisplayName("First Name")] [Required] public string FirstName { get; set; }
         [DisplayName("Last Name")] [Required] public string LastName { get; set; }
         [DisplayName("Gender")] public bool? Gender { get; set; }

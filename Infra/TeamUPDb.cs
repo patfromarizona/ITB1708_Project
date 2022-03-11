@@ -17,8 +17,9 @@ namespace TeamUP.Infra
 
         public static void InitializeTables(ModelBuilder b) 
         {
-            b?.Entity<StudentData>().ToTable(nameof(Students), nameof(TeamUPDb).Substring(0, 6));
-            b?.Entity<TeamWorkData>().ToTable(nameof(TeamWorks), nameof(TeamUPDb).Substring(0, 6));
+            var s = nameof(TeamUPDb).Substring(0, 6);
+            b?.Entity<StudentData>().ToTable(nameof(Students), s);
+            b?.Entity<TeamWorkData>().ToTable(nameof(TeamWorks), s);
         }
     }
 }

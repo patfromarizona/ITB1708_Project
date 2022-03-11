@@ -7,7 +7,7 @@ namespace TeamUP.Infra.Party
 {
     public class StudentsRepo : Repo<Student, StudentData>, IStudentsRepo
     {
-        public StudentsRepo(DbContext c, DbSet<StudentData> s) : base(c, s) { }
+        public StudentsRepo(TeamUPDb db) : base(db, db.Students) { }
 
         protected override Student toDomain(StudentData d) => new Student(d);
         
