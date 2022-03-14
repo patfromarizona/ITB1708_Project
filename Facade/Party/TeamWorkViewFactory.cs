@@ -4,7 +4,7 @@ using TeamUP.Domain.Party;
 
 namespace TeamUP.Facade.Party{
     public class TeamWorkViewFactory{
-        public TeamWork Create(TeamWorkView v) => new TeamWork(new TeamWorkData{           
+        public TeamWork Create(TeamWorkView v) => new (new TeamWorkData{           
             Id = v.Id,
             Name = v.Name,
             Description = v.Description,

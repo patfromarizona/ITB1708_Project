@@ -18,7 +18,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
 builder.Services.AddTransient <IStudentsRepo , StudentsRepo>();
-//builder.Services.AddTransient <ITeamWorksRepo, TeamWorksRepo>();
+builder.Services.AddTransient <ITeamWorksRepo, TeamWorksRepo>();
 
 var app = builder.Build();
 

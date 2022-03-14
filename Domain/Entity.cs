@@ -8,6 +8,9 @@ namespace TeamUP.Domain
         protected const bool defaultGender = true;
         protected const int defaultAge = 18;
         protected const int defalutYear = 1;
+        protected const bool defaultDone = false;
+        protected const int defaultTeamSize = 1;
+        protected DateTime defaultDate = DateTime.MinValue;
     }
     public abstract class Entity<TData>: Entity where TData: EntityData, new()
     {
