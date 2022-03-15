@@ -5,12 +5,13 @@ namespace TeamUP.Domain
     public abstract class Entity
     {
         protected const string defaultStr = "Underfined";
-        protected const bool defaultGender = true;
-        protected const int defaultAge = 18;
-        protected const int defalutYear = 1;
-        protected const bool defaultDone = false;
-        protected const int defaultTeamSize = 1;
-        protected DateTime defaultDate = DateTime.MinValue;
+        protected const bool defaultBool = false;
+        protected const int defaultInt = 1;
+        private static readonly DateTime defaultDate = DateTime.MinValue;
+        protected static string getValue(string? v) => v ?? defaultStr;
+        protected static bool getValue(bool? v) => v ?? defaultBool;
+        protected static int getValue(int? v) => v ?? defaultInt;
+        protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
     }
     public abstract class Entity<TData>: Entity where TData: EntityData, new()
     {
@@ -18,6 +19,6 @@ namespace TeamUP.Domain
         public TData Data => data;
         public Entity() : this(new TData()) { }
         public Entity(TData d) => data = d;
-        public string Id => Data?.Id ?? defaultStr;
+        public string Id => getValue(Data?.Id);
     }
 }

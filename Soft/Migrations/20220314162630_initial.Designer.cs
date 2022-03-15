@@ -12,8 +12,8 @@ using Soft.Data;
 namespace Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220314122837_initialize")]
-    partial class initialize
+    [Migration("20220314162630_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -36,7 +36,7 @@ namespace TeamUP.Tests
         }
 
         private static Assembly? getAssembly(object o) => GetAssembly.OfType(o);
-        private static Assembly? getAssembly(string name) => GetAssembly.ByName(name);
+        private static Assembly? getAssembly(string? name) => GetAssembly.ByName(name);
         private static string? removeTestsTagFrom(string? s) => s?.Remove("Tests.");
         private static string? getNamespace(object o) => GetNamespace.OfType(o);
         private static List<Type>? getTypes(Assembly? a) => GetAssembly.Types(a);
@@ -46,13 +46,13 @@ namespace TeamUP.Tests
         private void removeTested() => typesToBeTested?.Remove(x => isItTested(x));
 
         private bool isItTested(Type x) => testingTypes?.ContainsItem(y => isTestFor(y, x) && isCorrectTest(y)) ?? false;
-        private bool isCorrectTest(Type x) => isCorrectlyInherited(x) && isTestClass(x);
+        private static bool isCorrectTest(Type x) => isCorrectlyInherited(x) && isTestClass(x);
 
         private static bool isTestClass(Type x) => x?.HasAttribute<TestClassAttribute>() ?? false;
 
         private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(IsTypeTested));
 
-        private bool isTestFor(Type testingType, Type typeToBeTested) => testingType.NameEnds(typeToBeTested.Name + "Tests");
+        private static bool isTestFor(Type testingType, Type typeToBeTested) => testingType.NameEnds(typeToBeTested.Name + "Tests");
 
         private void removeNotNeededTesting() => typesToBeTested?.Remove(x => !isTypeToBeTested(x));
         private bool isTypeToBeTested(Type x) => x?.BelongsTo(namespaceOfType) ?? false;

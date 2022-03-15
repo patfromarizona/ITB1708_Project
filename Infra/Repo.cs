@@ -10,9 +10,9 @@ namespace TeamUP.Domain
     // For more details, see https://aka.ms/RazorPagesCRUD.
     public abstract class Repo<TDomain, TData> : IRepo<TDomain> where TDomain : Entity<TData>, new() where TData : EntityData, new()
     {
-        private readonly DbContext db;
-        private readonly DbSet<TData> set;
-        protected Repo(DbContext c, DbSet<TData> s)
+        private readonly DbContext? db;
+        private readonly DbSet<TData>? set;
+        protected Repo(DbContext? c, DbSet<TData>? s)
         {
             db = c;
             set = s;
@@ -22,9 +22,9 @@ namespace TeamUP.Domain
         {
             var d = obj.Data;
             try 
-            { 
-              await set.AddAsync(d);
-              await db.SaveChangesAsync();
+            {
+                _ = (set is null) ? null : await set.AddAsync(d);
+                _ = (db is null) ? 0 : await db.SaveChangesAsync();
               return true;
             }
             catch
@@ -37,10 +37,10 @@ namespace TeamUP.Domain
         {
             try
             {
-                var d = await set.FindAsync(id);
+                var d = (set is null) ? null : await set.FindAsync(id);
                 if (d == null) return false;
-                set.Remove(d);
-                await db.SaveChangesAsync();
+                _ = set?.Remove(d);
+                _ = (db is null) ? 0 : await db.SaveChangesAsync();
                 return true;
             }
             catch
@@ -59,7 +59,7 @@ namespace TeamUP.Domain
             try
             {
                 if (id == null) return new TDomain();
-                var d = await set.FirstOrDefaultAsync(m => m.Id == id);
+                var d = (set is null) ? null : await set.FirstOrDefaultAsync(m => m.Id == id);
                 return d == null ? new TDomain() : toDomain(d);
             }  
             catch
@@ -72,7 +72,7 @@ namespace TeamUP.Domain
         {
             try
             {
-                var list = await set.ToListAsync();
+                var list = (set is null) ? new List<TData>() : await set.ToListAsync();
                 var items = new List<TDomain>();
                 foreach (var d in list) items.Add(toDomain(d));
                 return items;
@@ -91,8 +91,8 @@ namespace TeamUP.Domain
             try
             {
                 var d = obj.Data;
-                db.Attach(d).State = EntityState.Modified;
-                await db.SaveChangesAsync(); 
+                if (db is not null) db.Attach(d).State = EntityState.Modified;
+                _ = (db is null) ? 0 : await db.SaveChangesAsync(); 
                 return true;
             }
             catch 

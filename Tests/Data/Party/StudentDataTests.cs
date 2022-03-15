@@ -6,7 +6,7 @@ using TeamUP.Data.Party;
 namespace TeamUP.Tests.Data.Party
 {
     [TestClass]
-    public class StudentDataTests : BaseTests<StudentData>{ 
+    public class StudentDataTests : SealedClassTests<StudentData>{ 
         [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void FirstNameTest() => isProperty<string?>(); 
         [TestMethod] public void LastNameTest() => isProperty<string?>();

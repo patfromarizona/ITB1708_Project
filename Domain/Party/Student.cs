@@ -7,11 +7,11 @@ namespace TeamUP.Domain.Party
     {
         public Student() : this(new StudentData()) { }
         public Student(StudentData d) : base(d) { }
-        public string FirstName => Data?.FirstName ?? defaultStr;
-        public string LastName => Data?.LastName ?? defaultStr;
-        public int Age => Data?.Age ?? defaultAge;
-        public bool Gender => Data?.Gender ?? defaultGender;
-        public int YearInUniversity => Data?.YearInUniversity ?? defalutYear;
+        public string FirstName => getValue(Data?.FirstName);
+        public string LastName => getValue(Data?.LastName);
+        public int Age => getValue(Data?.Age);
+        public bool Gender => getValue(Data?.Gender);
+        public int YearInUniversity => getValue(Data?.YearInUniversity);
         public override string ToString() => $"{FirstName} {LastName} ({Gender}, {Age} y.o.)";     
     }
 }

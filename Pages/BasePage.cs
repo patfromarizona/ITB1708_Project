@@ -11,11 +11,11 @@ namespace TeamUP.Pages
         where TRepo : IBaseRepo<TEntity> 
     {
         private readonly TRepo repo;
-        protected abstract TView toView(TEntity entity);
-        protected abstract TEntity toObject(TView item);
+        protected abstract TView toView(TEntity? entity);
+        protected abstract TEntity toObject(TView? item);
 
-        [BindProperty] public TView Item { get; set; }
-        public IList<TView> Items { get; set; }
+        [BindProperty] public TView? Item { get; set; }
+        public IList<TView>? Items { get; set; }
 
         public BasePage(TRepo r) => repo = r;
         public string ItemId => Item?.Id ?? string.Empty;

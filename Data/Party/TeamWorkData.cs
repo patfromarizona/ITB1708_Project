@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TeamUP.Data.Party
 {
-    public class TeamWorkData : EntityData
+    public sealed class TeamWorkData : EntityData
     {
         public string? Name { get; set; }
         public string? Description { get; set; }

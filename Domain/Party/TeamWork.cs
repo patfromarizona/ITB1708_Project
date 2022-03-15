@@ -7,11 +7,11 @@ namespace TeamUP.Domain.Party
     {
         public TeamWork() : this(new TeamWorkData()) { }
         public TeamWork(TeamWorkData d) : base(d) { }      
-        public string Name => Data?.Name ?? defaultStr;
-        public string Description => Data?.Description ?? defaultStr;
-        public int TeamSize => Data?.TeamSize ?? defaultTeamSize;
-        public bool Done => Data?.Done ?? defaultDone;
-        public DateTime Deadline => Data?.Deadline ?? defaultDate;
+        public string Name => getValue(Data?.Name);
+        public string Description => getValue(Data?.Description);
+        public int TeamSize => getValue(Data?.TeamSize);
+        public bool Done => getValue(Data?.Done);
+        public DateTime Deadline => getValue(Data?.Deadline);
         public override string ToString() => $"{Name} {Description} ({TeamSize} student(s), {Done}) {Deadline}";
 
     }

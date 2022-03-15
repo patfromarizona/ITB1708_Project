@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TeamUP.Data.Party
 {
-    public class StudentData : EntityData
+    public sealed class StudentData : EntityData
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

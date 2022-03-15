@@ -6,8 +6,8 @@ namespace TeamUP.Infra
     public sealed class TeamUPDb : DbContext
     {
         public TeamUPDb(DbContextOptions<TeamUPDb> options) : base(options) { }
-        public DbSet<StudentData> Students { get; set; }
-        public DbSet<TeamWorkData> TeamWorks { get; set; }
+        public DbSet<StudentData>? Students { get; set; }
+        public DbSet<TeamWorkData>? TeamWorks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder b)
         {
@@ -17,9 +17,9 @@ namespace TeamUP.Infra
 
         public static void InitializeTables(ModelBuilder b) 
         {
-            var s = nameof(TeamUPDb).Substring(0, 6);
-            b?.Entity<StudentData>().ToTable(nameof(Students), s);
-            b?.Entity<TeamWorkData>().ToTable(nameof(TeamWorks), s);
+            var s = nameof(TeamUPDb)[0..^2];
+            _ = (b?.Entity<StudentData>().ToTable(nameof(Students), s));
+            _ = (b?.Entity<TeamWorkData>().ToTable(nameof(TeamWorks), s));
         }
     }
 }

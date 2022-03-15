@@ -60,7 +60,15 @@ namespace TeamUP.Tests
 
         private static List<string>? getMembers(Type? t) => t?.DeclaredMembers();
 
-        private static Type? getType(Assembly? a, string? name) => a?.Type(name);
+        private static Type? getType(Assembly? a, string? name)
+        {
+            if (string.IsNullOrWhiteSpace(name)) return null; 
+            foreach(var t in a?.DefinedTypes ?? Array.Empty<TypeInfo>())
+            {
+                if(t.Name.StartsWith(name)) return t.AsType(); 
+            }
+            return null;
+        }
 
         private static Assembly? getAssembly(string? name)
         {

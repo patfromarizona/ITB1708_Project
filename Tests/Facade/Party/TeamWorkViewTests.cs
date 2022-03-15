@@ -5,7 +5,7 @@ using TeamUP.Facade.Party;
 namespace TeamUP.Tests.Facade.Party
 {
     [TestClass]
-    public class TeamWorkViewTests: BaseTests<TeamWorkView>
+    public class TeamWorkViewTests: SealedClassTests<TeamWorkView>
     {
          
         [TestMethod] public void IdTest() => isProperty<string>();
