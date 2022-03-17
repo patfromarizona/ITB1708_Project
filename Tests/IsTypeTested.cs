@@ -46,7 +46,7 @@ namespace TeamUP.Tests
         private static bool isTestFor(string testingMember, string memberToBeTested) 
             => testingMember.Equals(memberToBeTested + "Test");
         private void removeNotNeedTesting() => membersOfType?.Remove(x => !isTypeToBeTested(x));
-        private static bool isTypeToBeTested(string x) => x?.IsRealTypeName() ?? false;
+        private static bool isTypeToBeTested(string x) => x?.IsTypeName() ?? false;
 
         private void removeNotTests(Type t) => membersOfTest?.Remove(x => !isCorrectTestMethod(x, t));
 
