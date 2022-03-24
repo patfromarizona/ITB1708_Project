@@ -52,7 +52,14 @@ namespace TeamUP.Tests
 
         private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(IsTypeTested));
 
-        private static bool isTestFor(Type testingType, Type typeToBeTested) => testingType.NameEnds(typeToBeTested.Name + "Tests");
+        private static bool isTestFor(Type testingType, Type typeToBeTested)
+        {
+            var testName = typeToBeTested.Name;
+            var lenght = testName.IndexOf('`');
+            if(lenght >= 0) testName = testName[..lenght];
+            testName += "Tests";
+            return testingType.NameEnds(testName);
+        }
 
         private void removeNotNeededTesting() => typesToBeTested?.Remove(x => !isTypeToBeTested(x));
         private bool isTypeToBeTested(Type x) => x?.BelongsTo(namespaceOfType) ?? false;
