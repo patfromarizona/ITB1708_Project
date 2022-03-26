@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TeamUP.Aids;
 using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
 using TeamUP.Facade.Party;
@@ -11,15 +12,7 @@ namespace TeamUP.Tests.Facade.Party
         [TestMethod] public void CreateTest() { }
         [TestMethod] public void CreateViewTest() 
         {
-            var d = new StudentData()
-            {
-                Id = "Id",
-                FirstName = "Name",
-                LastName = "Last Name",
-                Gender = false,
-                Age = 18,
-                YearInUniversity = 2,
-            };
+            var d = GetRandom.Value<StudentData>();
             var e = new Student(d);
             var v = new StudentViewFactory().Create(e);
             isNotNull(v);
@@ -33,16 +26,7 @@ namespace TeamUP.Tests.Facade.Party
         }
         [TestMethod] public void CreateEntityTest() 
         {
-            var v = new StudentView()
-            {
-                Id = "Id",
-                FirstName = "Name",
-                LastName = "Last Name",
-                Gender = false,
-                Age = 18,
-                YearInUniversity = 2,
-                FullName = "name",
-            };
+            var v = GetRandom.Value<StudentView>();
             var e = new StudentViewFactory().Create(v);
             isNotNull(e);
             areEqual(e.Id, v.Id);
