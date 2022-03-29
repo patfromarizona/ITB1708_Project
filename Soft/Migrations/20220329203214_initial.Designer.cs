@@ -12,7 +12,7 @@ using Soft.Data;
 namespace Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220314162630_initial")]
+    [Migration("20220329203214_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -226,6 +226,28 @@ namespace Soft.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TeamUP.Data.Party.ScholarshipData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("AverageScolarshipAmount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Currency")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CurrencyCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UniversityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Scholarships", "TeamUP");
+                });
+
             modelBuilder.Entity("TeamUP.Data.Party.StudentData", b =>
                 {
                     b.Property<string>("Id")
@@ -274,6 +296,28 @@ namespace Soft.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TeamWorks", "TeamUP");
+                });
+
+            modelBuilder.Entity("TeamUP.Data.Party.UniversityData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("AmountOfStudents")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CountryCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UniversityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Universities", "TeamUP");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

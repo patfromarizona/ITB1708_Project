@@ -52,6 +52,22 @@ namespace Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Scholarships",
+                schema: "TeamUP",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UniversityName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AverageScolarshipAmount = table.Column<int>(type: "int", nullable: true),
+                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CurrencyCode = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Scholarships", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Students",
                 schema: "TeamUP",
                 columns: table => new
@@ -83,6 +99,22 @@ namespace Soft.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TeamWorks", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Universities",
+                schema: "TeamUP",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UniversityName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CountryCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AmountOfStudents = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Universities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -249,11 +281,19 @@ namespace Soft.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Scholarships",
+                schema: "TeamUP");
+
+            migrationBuilder.DropTable(
                 name: "Students",
                 schema: "TeamUP");
 
             migrationBuilder.DropTable(
                 name: "TeamWorks",
+                schema: "TeamUP");
+
+            migrationBuilder.DropTable(
+                name: "Universities",
                 schema: "TeamUP");
 
             migrationBuilder.DropTable(

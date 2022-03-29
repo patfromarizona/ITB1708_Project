@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Soft.Data;
 using TeamUP.Domain.Party;
 using TeamUP.Infra;
+using TeamUP.Infra.Initializers;
 using TeamUP.Infra.Party;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +33,13 @@ else
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+  var db = scope.ServiceProvider.GetService<TeamUPDb>();
+  db?.Database?.EnsureCreated();
+  TeamUPDbInitializer.Init(db);
 }
 
 app.UseHttpsRedirection();
