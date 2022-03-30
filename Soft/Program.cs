@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Soft.Data;
 using TeamUP.Domain.Party;
 using TeamUP.Infra;
+using TeamUP.Infra.Initializers;
 using TeamUP.Infra.Party;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,7 +35,15 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetService<TeamUPDb>();
+    db?.Database?.EnsureCreated();
+    new TeamWorksInitializer(db).Init();
+    new StudentsInitializer(db).Init();
+}
+
+    app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
