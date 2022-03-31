@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TeamUP.Domain.Party.Student">
+    <Position X="1" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAACEBEAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Party\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Domain.Party.TeamWork">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAgAAAEAAAAAAQAAAAAABAAAAEAAAAAAAA=</HashCode>
+      <FileName>Party\TeamWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Domain.Party.University">
+    <Position X="5.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACAAAAAAAAAAAAAACAAAAAAAAAAAgACAAAA=</HashCode>
+      <FileName>Party\University.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Domain.Entity&lt;TData&gt;">
+    <Position X="3.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAA=</HashCode>
+      <FileName>Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TeamUP.Domain.Party.IStudentsRepo" Collapsed="true">
+    <Position X="1" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Party\Student.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUP.Domain.Party.ITeamWorksRepo" Collapsed="true">
+    <Position X="3.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Party\TeamWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUP.Domain.Party.IUniversitiesRepo" Collapsed="true">
+    <Position X="5.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Party\University.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUP.Domain.IRepo&lt;T&gt;" Collapsed="true">
+    <Position X="3.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUP.Domain.IBaseRepo&lt;T&gt;">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAABAAAAAAAEAAAEAAAgAAAAAIAAAAIA=</HashCode>
+      <FileName>IRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

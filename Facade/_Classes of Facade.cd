@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TeamUP.Facade.Party.StudentView">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAICABEAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Party\StudentView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Facade.Party.StudentViewFactory">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAABAA=</HashCode>
+      <FileName>Party\StudentView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Facade.Party.TeamWorkView">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAACAAAgAAAAAAAAAAQAAAAAABAAAAEAAAAAAAA=</HashCode>
+      <FileName>Party\TeamWorkView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Facade.Party.TeamWorkViewFactory">
+    <Position X="4.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAABAA=</HashCode>
+      <FileName>Party\TeamWorkView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Facade.Party.UniversityView">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACAAAAAAAAAAAAAACAAAAAAAAAAAgACAAAA=</HashCode>
+      <FileName>Party\UniversityView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Facade.Party.UniversityViewFactory">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Party\UniversityView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Facade.BaseView">
+    <Position X="4.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Facade.BaseViewFactory&lt;TView, TEntity, TData&gt;">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAABAA=</HashCode>
+      <FileName>BaseViewFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

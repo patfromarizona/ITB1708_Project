@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TeamUP.Data.Party.StudentData">
+    <Position X="1.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAACABEAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Party\StudentData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Data.Party.TeamWorkData">
+    <Position X="4.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAgAAAAAAAAAAQAAAAAABAAAAEAAAAAAAA=</HashCode>
+      <FileName>Party\TeamWorkData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Data.Party.UniversityData">
+    <Position X="6.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACAAAAAAAAAAAAAACAAAAAAAAAAAgACAAAA=</HashCode>
+      <FileName>Party\UniversityData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Data.EntityData">
+    <Position X="4.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
