@@ -1,0 +1,14 @@
+﻿@page
+@model TeamUP.Pages.UniversitiesPage
+@using TeamUP.Pages.Extensions
+
+@{
+    Layout = "_Create";
+}
+
+<body>
+    @Html.MyEditorFor(m => m.Item.Id)
+    <partial name = "_EditUniversity" />
+</body>
+    
+    

@@ -20,6 +20,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 builder.Services.AddTransient <IStudentsRepo , StudentsRepo>();
 builder.Services.AddTransient <ITeamWorksRepo, TeamWorksRepo>();
+builder.Services.AddTransient<IUniversitiesRepo, UniversitiesRepo>();
 
 var app = builder.Build();
 

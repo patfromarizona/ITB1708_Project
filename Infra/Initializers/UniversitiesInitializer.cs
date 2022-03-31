@@ -24,8 +24,9 @@ namespace TeamUP.Infra.Initializers
                 var l = new List<UniversityData>();
                 foreach(CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
                 {
+                    Random r = new Random();
                     var country = new RegionInfo(new CultureInfo(cul.Name, false).LCID);
-                    var d = createUniversity("University of "+country.EnglishName, country.EnglishName, 500, 1000, country.CurrencySymbol);
+                    var d = createUniversity("University of "+country.EnglishName, country.EnglishName, r.Next(500, 5000), r.Next(0,10000), country.CurrencySymbol);
                     if (l.FirstOrDefault(x => x.Id == d.Id) is not null) continue;
                     l.Add(d);
                 }

@@ -6,9 +6,9 @@ namespace TeamUP.Infra
     public sealed class TeamUPDb : DbContext
     {
         public TeamUPDb(DbContextOptions<TeamUPDb> options) : base(options) { }
-        public DbSet<StudentData>? Students { get; set; }
-        public DbSet<TeamWorkData>? TeamWorks { get; set; }
-        public DbSet<UniversityData>? Universities { get; set; }
+        public DbSet<StudentData>? Students { get; internal set; }
+        public DbSet<TeamWorkData>? TeamWorks { get; internal set; }
+        public DbSet<UniversityData>? Universities { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder b)
         {

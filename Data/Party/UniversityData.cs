@@ -8,7 +8,7 @@ namespace TeamUP.Data.Party
 {
     public sealed class UniversityData : EntityData
     {
-        public string UniversityName { get; set; }
+        public string UniversityName { get; set; } = string.Empty;
         public string? UniversityLocation { get; set; }
         public int? StudentsAmount { get; set; }
         public int? CostOfStudying { get; set; }
