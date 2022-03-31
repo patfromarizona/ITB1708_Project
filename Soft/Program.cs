@@ -39,8 +39,7 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetService<TeamUPDb>();
     db?.Database?.EnsureCreated();
-    new TeamWorksInitializer(db).Init();
-    new StudentsInitializer(db).Init();
+    TeamUpDbInitializer.Init(db);
 }
 
     app.UseHttpsRedirection();

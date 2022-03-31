@@ -5,16 +5,7 @@
     var itemId = "";
     var str = Model?.GetType()?.Name?.Replace("Page", string.Empty) ?? "Unspecified";
     itemId = Model?.ItemId ?? string.Empty;
-    /*if(str == "Students")
-    {
-        itemId = Model?.ItemId ?? string.Empty;
-    }
-    else
-    {
-        itemId = Model?.TeamWork?.Id ?? string.Empty;
-    }*/ 
 }
- }
 
  <h1>@ViewData["Title"]</h1>
 

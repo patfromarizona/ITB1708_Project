@@ -86,6 +86,23 @@ namespace Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Universities",
+                schema: "TeamUP",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UniversityName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UniversityLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StudentsAmount = table.Column<int>(type: "int", nullable: true),
+                    CostOfStudying = table.Column<int>(type: "int", nullable: true),
+                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Universities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -254,6 +271,10 @@ namespace Soft.Migrations
 
             migrationBuilder.DropTable(
                 name: "TeamWorks",
+                schema: "TeamUP");
+
+            migrationBuilder.DropTable(
+                name: "Universities",
                 schema: "TeamUP");
 
             migrationBuilder.DropTable(

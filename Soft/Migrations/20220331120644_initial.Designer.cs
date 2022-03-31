@@ -12,7 +12,7 @@ using Soft.Data;
 namespace Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220330171804_initial")]
+    [Migration("20220331120644_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -274,6 +274,32 @@ namespace Soft.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TeamWorks", "TeamUP");
+                });
+
+            modelBuilder.Entity("TeamUP.Data.Party.UniversityData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("CostOfStudying")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Currency")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StudentsAmount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UniversityLocation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UniversityName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Universities", "TeamUP");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
