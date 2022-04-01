@@ -1,11 +1,10 @@
 ﻿using TeamUP.Domain.Party;
 using TeamUP.Facade.Party;
-using TeamUP.Infra.Party;
-using TeamUP.Infra;
 
-namespace TeamUP.Pages
+
+namespace TeamUP.Pages.Party
 {
-    public class StudentsPage : BasePage<StudentView, Student, IStudentsRepo>
+    public class StudentsPage : PagedPage<StudentView, Student, IStudentsRepo>
     {
 
         //ToDo: protect from overposting attacks, enable the specific properties you want to bind to.

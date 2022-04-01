@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeamUP.Domain.Party;
+﻿using TeamUP.Domain.Party;
 using TeamUP.Facade.Party;
-using TeamUP.Infra.Party;
 
-namespace TeamUP.Pages
+
+namespace TeamUP.Pages.Party
 {
-    public class UniversitiesPage : BasePage<UniversityView, University, IUniversitiesRepo>
+    public class UniversitiesPage : PagedPage<UniversityView, University, IUniversitiesRepo>
     {
         public UniversitiesPage(IUniversitiesRepo r) : base(r) { }
         protected override University toObject(UniversityView? item) => new UniversityViewFactory().Create(item);

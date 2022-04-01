@@ -1,42 +1,24 @@
 ﻿@page
-@model TeamUP.Pages.UniversitiesPage
+@model TeamUP.Pages.Party.UniversitiesPage
 @{
-    ViewData["Title"] = "Index";
+    Layout = "_Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create" asp-page-handler = "Create">Create New</a>
-</p>
+<body>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].UniversityName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].UniversityLocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].StudentsAmount)
-            </th>
-            
+            <th> @Html.DisplayNameFor(model => model.Items[0].UniversityName) </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].UniversityLocation) </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].StudentsAmount) </th> 
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.Items) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UniversityName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UniversityLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentsAmount)
-            </td>
+            <td> @Html.DisplayFor(modelItem => item.UniversityName) </td>
+            <td> @Html.DisplayFor(modelItem => item.UniversityLocation) </td>
+            <td> @Html.DisplayFor(modelItem => item.StudentsAmount) </td>
             
             <td>
                 <a asp-page="./Edit" asp-page-handler = "Edit" asp-route-id="@item.Id">Edit</a> |
@@ -47,6 +29,6 @@
 }
     </tbody>
 </table>
-
+</body>
 
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TeamUP.Data.Party;
-using TeamUP.Domain;
+using TeamUP.Infra;
 using TeamUP.Domain.Party;
 
 namespace TeamUP.Tests.Infra

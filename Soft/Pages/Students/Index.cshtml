@@ -1,60 +1,32 @@
 ﻿@page
-@model TeamUP.Pages.StudentsPage
+@model TeamUP.Pages.Party.StudentsPage
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "_Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+<body>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].Age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].YearInUniversity)
-            </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].FullName) </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].FirstName) </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].LastName) </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].Age) </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].Gender) </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].YearInUniversity) </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.Items) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearInUniversity)
-            </td>
+            <td> @Html.DisplayFor(modelItem => item.FullName) </td>
+            <td> @Html.DisplayFor(modelItem => item.FirstName) </td>
+            <td> @Html.DisplayFor(modelItem => item.LastName) </td>
+            <td> @Html.DisplayFor(modelItem => item.Age) </td>
+            <td> @Html.DisplayFor(modelItem => item.Gender) </td>
+            <td> @Html.DisplayFor(modelItem => item.YearInUniversity) </td>
             <td>
                 <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-page-handler="Details" asp-route-id="@item.Id" >Details</a> |
@@ -64,3 +36,4 @@
 }
     </tbody>
 </table>
+</body>
