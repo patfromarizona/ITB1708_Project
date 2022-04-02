@@ -66,7 +66,9 @@ namespace TeamUP.Infra
         {
             try
             {
-                var list = (set is null) ? new List<TData>() : await set.ToListAsync();
+                //var list = (set is null) ? new List<TData>() : await set.ToListAsync();
+                var query = createSql();
+                var list = await runSql(query);
                 var items = new List<TDomain>();
                 foreach (var d in list) items.Add(toDomain(d));
                 return items;
@@ -76,6 +78,11 @@ namespace TeamUP.Infra
                 return new List<TDomain>();
             }
         }
+
+        internal async Task<List<TData>> runSql(IQueryable<TData> query) => await query.AsNoTracking().ToListAsync();       
+
+        internal protected virtual IQueryable<TData> createSql() => from s in set select s;
+
         public override bool Update(TDomain obj)
         {
             throw new NotImplementedException();

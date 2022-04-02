@@ -21,6 +21,8 @@ namespace TeamUP.Infra.Initializers
         {
             get
             {
+                // Currently random data
+                //TODO find real data
                 var l = new List<UniversityData>();
                 foreach(CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
                 {

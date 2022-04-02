@@ -4,7 +4,7 @@ using TeamUP.Domain;
 
 namespace TeamUP.Infra
 {
-    public abstract class BaseRepo<TDomain, TData> : IRepo<TDomain> 
+    public abstract class BaseRepo<TDomain, TData> : IBaseRepo<TDomain> 
         where TDomain : Entity<TData>, new() where TData : EntityData, new()
     {
         protected readonly DbContext? db;

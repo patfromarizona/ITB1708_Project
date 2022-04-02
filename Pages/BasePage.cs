@@ -10,7 +10,7 @@ namespace TeamUP.Pages
         where TEntity : Entity 
         where TRepo : IBaseRepo<TEntity> 
     {
-        private readonly TRepo repo;
+        protected readonly TRepo repo;
         protected abstract TView toView(TEntity? entity);
         protected abstract TEntity toObject(TView? item);
 
@@ -58,7 +58,9 @@ namespace TeamUP.Pages
             return RedirectToPage("./Index", "Index");
         }
 
-        public async Task<IActionResult> OnGetIndexAsync()
+         private async Task<TView> getItem(string id)
+                => toView(await repo.GetAsync(id));
+        public virtual async Task<IActionResult> OnGetIndexAsync(int pageIndex = 0, string currentFilter = null, string sortOrder = null)
         {
             var list = await repo.GetAsync();
             Items = new List<TView>();
@@ -69,9 +71,5 @@ namespace TeamUP.Pages
             }
             return Page();
         }
-
-         private async Task<TView> getItem(string id)
-                => toView(await repo.GetAsync(id));
-
     }
 }
