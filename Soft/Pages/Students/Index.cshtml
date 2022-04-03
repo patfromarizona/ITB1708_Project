@@ -10,11 +10,46 @@
     <thead>
         <tr>
             <th> @Html.DisplayNameFor(model => model.Items[0].FullName) </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].FirstName) </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].LastName) </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].Age) </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].Gender) </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].YearInUniversity) </th>
+            <th>
+                <a asp-page = "./Index"
+                   asp-page-handler = "Index"
+                   asp-route-sortOrder="@Model.SortOrder(nameof(Model.Item.FirstName))"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >@nameof(Model.Item.FirstName)</a>
+            </th>
+            <th>
+                <a asp-page = "./Index"
+                   asp-page-handler = "Index"
+                   asp-route-sortOrder="@Model.SortOrder(nameof(Model.Item.LastName))"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >@nameof(Model.Item.LastName)</a>
+            </th>  
+            <th>
+                <a asp-page = "./Index"
+                   asp-page-handler = "Index"
+                   asp-route-sortOrder="@Model.SortOrder(nameof(Model.Item.Age))"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >@nameof(Model.Item.Age)</a>
+            </th>  
+             <th>
+                <a asp-page = "./Index"
+                   asp-page-handler = "Index"
+                   asp-route-sortOrder="@Model.SortOrder(nameof(Model.Item.Gender))"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >@nameof(Model.Item.Gender)</a>
+            </th>
+             <th>
+                <a asp-page = "./Index"
+                   asp-page-handler = "Index"
+                   asp-route-sortOrder="@Model.SortOrder(nameof(Model.Item.YearInUniversity))"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >@nameof(Model.Item.YearInUniversity)</a>
+            </th>
             <th></th>
         </tr>
     </thead>

@@ -8,11 +8,39 @@
     <thead>
         <tr>
             <th> @Html.DisplayNameFor(model => model.Items[0].Overview) </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].Name) </th>
+            <th>
+                <a asp-page = "./Index"
+                   asp-page-handler = "Index"
+                   asp-route-sortOrder="@Model.SortOrder(nameof(Model.Item.Name))"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >@nameof(Model.Item.Name)</a>
+            </th>
             <th> @Html.DisplayNameFor(model => model.Items[0].Description) </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].TeamSize) </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].Deadline) </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].Done) </th>
+            <th>
+                <a asp-page = "./Index"
+                   asp-page-handler = "Index"
+                   asp-route-sortOrder="@Model.SortOrder(nameof(Model.Item.TeamSize))"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >@nameof(Model.Item.TeamSize)</a>
+            </th>  
+            <th>
+                <a asp-page = "./Index"
+                   asp-page-handler = "Index"
+                   asp-route-sortOrder="@Model.SortOrder(nameof(Model.Item.Deadline))"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >@nameof(Model.Item.Deadline)</a>
+            </th>  
+             <th>
+                <a asp-page = "./Index"
+                   asp-page-handler = "Index"
+                   asp-route-sortOrder="@Model.SortOrder(nameof(Model.Item.Done))"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >@nameof(Model.Item.Done)</a>
+            </th>
             <th></th>
         </tr>
     </thead>
