@@ -26,9 +26,27 @@
             <td> @Html.DisplayFor(modelItem => item.Deadline) </td>
             <td> @Html.DisplayFor(modelItem => item.Done) </td>
             <td>
-                <a asp-page="./Edit" asp-page-handler = "Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-page-handler = "Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-page-handler = "Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="./Edit" 
+                   asp-page-handler = "Edit" 
+                   asp-route-id="@item.Id"
+                   asp-route-sortOrder="@Model.CurrentSort"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >Edit</a> |
+                <a asp-page="./Details"
+                   asp-page-handler = "Details" 
+                   asp-route-id="@item.Id"
+                   asp-route-sortOrder="@Model.CurrentSort"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >Details</a> |
+                <a asp-page="./Delete" 
+                   asp-page-handler = "Delete"
+                   asp-route-id="@item.Id"
+                   asp-route-sortOrder="@Model.CurrentSort"
+                   asp-route-pageIndex = "@Model.PageIndex"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                >Delete</a>
             </td>
         </tr>
 }
