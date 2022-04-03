@@ -22,9 +22,6 @@ namespace TeamUP.Infra
 
         protected PagedRepo(DbContext? c, DbSet<TData>? s) : base(c, s) { }
         protected internal override IQueryable<TData> createSql() => addSkipAndTake(base.createSql());
-        internal IQueryable<TData> addSkipAndTake(IQueryable<TData> q)
-        {
-            return q.Skip(skippedItemsCount).Take(itemsCountInPage);
-        }
+        internal IQueryable<TData> addSkipAndTake(IQueryable<TData> q) => q.Skip(skippedItemsCount).Take(itemsCountInPage);
     }
 }

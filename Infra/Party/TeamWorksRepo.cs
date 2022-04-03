@@ -10,5 +10,16 @@ namespace TeamUP.Infra.Party
     {
         public TeamWorksRepo(TeamUPDb? db) : base(db, db?.TeamWorks) { }
         protected override TeamWork toDomain(TeamWorkData d) => new(d);
+        internal override IQueryable<TeamWorkData> addFilter(IQueryable<TeamWorkData> q)
+        {
+            var y = CurrentFilter;
+            if (string.IsNullOrWhiteSpace(y)) return q;
+            return q.Where(x =>
+            x.Id.Contains(y) ||
+            x.Deadline.ToString().Contains(y) ||
+            x.Description.Contains(y) ||
+            x.TeamSize.ToString().Contains(y) ||
+            x.Done.ToString().Contains(y));
+        }
     }
 }

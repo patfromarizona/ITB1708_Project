@@ -17,6 +17,7 @@ namespace TeamUP.Domain
     }
     public interface IFilteredRepo<T> : ICrudRepo<T> where T : Entity
     {
+        public string CurrentFilter {get; set;}
     }
     public interface ICrudRepo<T> : IBaseRepo<T> where T : Entity
     {
