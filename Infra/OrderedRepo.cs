@@ -11,22 +11,22 @@ namespace TeamUP.Infra
     {
         protected OrderedRepo(DbContext? c, DbSet<TData>? s) : base(c, s) { }
 
-        public string CurrentSort { get; set; }
+        public string? CurrentOrder { get; set; }
 
         public static string DescendingString = "_desc";
 
         protected internal override IQueryable<TData> createSql() => addSort(base.createSql());
         internal IQueryable<TData> addSort(IQueryable<TData> q)
         {
-            if (string.IsNullOrWhiteSpace(CurrentSort)) return q;
+            if (string.IsNullOrWhiteSpace(CurrentOrder)) return q;
             var e = lambdaExpression;
             if(e == null) return q;
             if (isDescending) return q.OrderByDescending(e);
             return q.OrderBy(e);
         }
-        internal bool isDescending => CurrentSort?.EndsWith(DescendingString) ?? false;
-        internal bool isSameProperty(string s) => string.IsNullOrEmpty(s) ? false : (CurrentSort?.StartsWith(s) ?? false);
-        internal string propertyName => CurrentSort?.Replace(DescendingString, "") ?? "";
+        internal bool isDescending => CurrentOrder?.EndsWith(DescendingString) ?? false;
+        internal bool isSameProperty(string s) => string.IsNullOrEmpty(s) ? false : (CurrentOrder?.StartsWith(s) ?? false);
+        internal string propertyName => CurrentOrder?.Replace(DescendingString, "") ?? "";
         internal PropertyInfo? propertyInfo => typeof(TData).GetProperty(propertyName);
         internal Expression<Func<TData, object>>? lambdaExpression
         {

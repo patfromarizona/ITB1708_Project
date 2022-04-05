@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TeamUP.Pages
 {
-    public abstract class PagedPage<TView, TEntity, TRepo> : OrderedPage<TView, TEntity, TRepo>
+    public abstract class PagedPage<TView, TEntity, TRepo> : OrderedPage<TView, TEntity, TRepo>, IPageModel
         where TView : BaseView
         where TEntity : Entity
         where TRepo : IPagedRepo<TEntity>
@@ -22,7 +22,7 @@ namespace TeamUP.Pages
         {
             PageIndex = idx;
             CurrentFilter = filter;
-            CurrentSort = order;
+            CurrentOrder = order;
         }
 
         protected override IActionResult redirectToIndex()
@@ -31,7 +31,7 @@ namespace TeamUP.Pages
             {
                 pageIndex = PageIndex,
                 currentFilter = CurrentFilter,
-                sortOrder = CurrentSort
+                sortOrder = CurrentOrder
             });
         }
     }

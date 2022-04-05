@@ -9,10 +9,10 @@ namespace TeamUP.Pages
         where TRepo : IOrderedRepo<TEntity>
     {
         protected OrderedPage(TRepo r) : base(r) { }
-        public string? CurrentSort
+        public string? CurrentOrder
         {
-            get => repo.CurrentSort;
-            set => repo.CurrentSort = value;
+            get => repo.CurrentOrder;
+            set => repo.CurrentOrder = value;
         }
         public string? SortOrder(string propertyName) => repo.SortOrder(propertyName);
     }

@@ -1,6 +1,9 @@
 ﻿@page
 @model TeamUP.Pages.Party.StudentsPage
-
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using TeamUP.Pages
+@using TeamUP.Pages.Extensions
 @{
     Layout = "_Index";
 }
@@ -9,47 +12,12 @@
 <table class="table">
     <thead>
         <tr>
-            <th> @Html.DisplayNameFor(model => model.Items[0].FullName) </th>
-            <th>
-                <a asp-page = "./Index"
-                   asp-page-handler = "Index"
-                   asp-route-order="@Model.SortOrder(nameof(Model.Item.FirstName))"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >@nameof(Model.Item.FirstName)</a>
-            </th>
-            <th>
-                <a asp-page = "./Index"
-                   asp-page-handler = "Index"
-                   asp-route-order="@Model.SortOrder(nameof(Model.Item.LastName))"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >@nameof(Model.Item.LastName)</a>
-            </th>  
-            <th>
-                <a asp-page = "./Index"
-                   asp-page-handler = "Index"
-                   asp-route-order="@Model.SortOrder(nameof(Model.Item.Age))"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >@nameof(Model.Item.Age)</a>
-            </th>  
-             <th>
-                <a asp-page = "./Index"
-                   asp-page-handler = "Index"
-                   asp-route-order="@Model.SortOrder(nameof(Model.Item.Gender))"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >@nameof(Model.Item.Gender)</a>
-            </th>
-             <th>
-                <a asp-page = "./Index"
-                   asp-page-handler = "Index"
-                   asp-route-order="@Model.SortOrder(nameof(Model.Item.YearInUniversity))"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >@nameof(Model.Item.YearInUniversity)</a>
-            </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].FullName) </th> 
+            <th> @Html.MyTabHdr(nameof(Model.Item.FirstName)) </th> 
+            <th> @Html.MyTabHdr(nameof(Model.Item.LastName)) </th>  
+            <th> @Html.MyTabHdr(nameof(Model.Item.Age)) </th> 
+            <th> @Html.MyTabHdr(nameof(Model.Item.Gender)) </th>
+            <th> @Html.MyTabHdr(nameof(Model.Item.YearInUniversity)) </th>
             <th></th>
         </tr>
     </thead>
@@ -66,21 +34,21 @@
                 <a asp-page="./Edit" 
                    asp-page-handler = "Edit" 
                    asp-route-id="@item.Id"
-                   asp-route-order="@Model.CurrentSort"
+                   asp-route-order="@Model.CurrentOrder"
                    asp-route-idx = "@Model.PageIndex"
                    asp-route-filter="@Model.CurrentFilter"
                 >Edit</a> |
                 <a asp-page="./Details"
                    asp-page-handler = "Details" 
                    asp-route-id="@item.Id"
-                   asp-route-order="@Model.CurrentSort"
+                   asp-route-order="@Model.CurrentOrder"
                    asp-route-idx = "@Model.PageIndex"
                    asp-route-filter="@Model.CurrentFilter"
                 >Details</a> |
                 <a asp-page="./Delete" 
                    asp-page-handler = "Delete"
                    asp-route-id="@item.Id"
-                   asp-route-order="@Model.CurrentSort"
+                   asp-route-order="@Model.CurrentOrder"
                    asp-route-idx = "@Model.PageIndex"
                    asp-route-filter="@Model.CurrentFilter"
                 >Delete</a>

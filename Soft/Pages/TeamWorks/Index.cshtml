@@ -1,5 +1,9 @@
 ﻿@page
 @model TeamUP.Pages.Party.TeamWorksPage
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using TeamUP.Pages
+@using TeamUP.Pages.Extensions
 @{
     Layout = "_Index";
 }
@@ -7,40 +11,12 @@
 <table class="table">
     <thead>
         <tr>
-            <th> @Html.DisplayNameFor(model => model.Items[0].Overview) </th>
-            <th>
-                <a asp-page = "./Index"
-                   asp-page-handler = "Index"
-                   asp-route-order="@Model.SortOrder(nameof(Model.Item.Name))"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >@nameof(Model.Item.Name)</a>
-            </th>
-            <th> @Html.DisplayNameFor(model => model.Items[0].Description) </th>
-            <th>
-                <a asp-page = "./Index"
-                   asp-page-handler = "Index"
-                   asp-route-order="@Model.SortOrder(nameof(Model.Item.TeamSize))"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >@nameof(Model.Item.TeamSize)</a>
-            </th>  
-            <th>
-                <a asp-page = "./Index"
-                   asp-page-handler = "Index"
-                   asp-route-order="@Model.SortOrder(nameof(Model.Item.Deadline))"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >@nameof(Model.Item.Deadline)</a>
-            </th>  
-             <th>
-                <a asp-page = "./Index"
-                   asp-page-handler = "Index"
-                   asp-route-order="@Model.SortOrder(nameof(Model.Item.Done))"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >@nameof(Model.Item.Done)</a>
-            </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].Overview) </th>   
+            <th> @Html.MyTabHdr(nameof(Model.Item.Name)) </th> 
+            <th> @Html.DisplayNameFor(model => model.Items[0].Description) </th> 
+            <th> @Html.MyTabHdr(nameof(Model.Item.TeamSize)) </th> 
+            <th> @Html.MyTabHdr(nameof(Model.Item.Deadline)) </th> 
+            <th> @Html.MyTabHdr(nameof(Model.Item.Done)) </th>
             <th></th>
         </tr>
     </thead>
@@ -57,21 +33,21 @@
                 <a asp-page="./Edit" 
                    asp-page-handler = "Edit" 
                    asp-route-id="@item.Id"
-                   asp-route-order="@Model.CurrentSort"
+                   asp-route-order="@Model.CurrentOrder"
                    asp-route-idx = "@Model.PageIndex"
                    asp-route-filter="@Model.CurrentFilter"
                 >Edit</a> |
                 <a asp-page="./Details"
                    asp-page-handler = "Details" 
                    asp-route-id="@item.Id"
-                   asp-route-order="@Model.CurrentSort"
+                   asp-route-order="@Model.CurrentOrder"
                    asp-route-idx = "@Model.PageIndex"
                    asp-route-filter="@Model.CurrentFilter"
                 >Details</a> |
                 <a asp-page="./Delete" 
                    asp-page-handler = "Delete"
                    asp-route-id="@item.Id"
-                   asp-route-order="@Model.CurrentSort"
+                   asp-route-order="@Model.CurrentOrder"
                    asp-route-idx = "@Model.PageIndex"
                    asp-route-filter="@Model.CurrentFilter"
                 >Delete</a>

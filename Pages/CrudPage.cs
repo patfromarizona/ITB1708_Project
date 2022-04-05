@@ -9,6 +9,11 @@ namespace TeamUP.Pages
         where TEntity : Entity
         where TRepo : ICrudRepo<TEntity>
     {
+        protected virtual async Task<IActionResult> getItemPage(string id)
+        {
+            Item = await getItem(id);
+            return Item == null ? NotFound() : Page();
+        }
         protected CrudPage(TRepo r) : base(r) { }
 
         protected override IActionResult getCreate() => Page();
@@ -18,35 +23,21 @@ namespace TeamUP.Pages
             await repo.AddAsync(toObject(Item));
             return redirectToIndex();
         }
-        protected override async Task<IActionResult> getDetailsAsync(string id)
-        {
-            Item = await getItem(id);
-            return Item == null ? NotFound() : Page();
-        }
-
-        protected override async Task<IActionResult> getDeleteAsync(string id)
-        {
-            Item = await getItem(id);
-            return Item == null ? NotFound() : Page();
-        }
+        protected override async Task<IActionResult> getDetailsAsync(string id) => await getItemPage(id);
+        protected override async Task<IActionResult> getDeleteAsync(string id) => await getItemPage(id);
+        protected override async Task<IActionResult> getEditAsync(string id) => await getItemPage(id);
         protected override async Task<IActionResult> postDeleteAsync(string id)
         {
             if (id == null) return NotFound();
             await repo.DeleteAsync(id);
             return redirectToIndex();
-        }
-        protected override async Task<IActionResult> getEditAsync(string id)
-        {
-            Item = await getItem(id);
-            return Item == null ? NotFound() : Page();
-        }
+        }        
         protected override async Task<IActionResult> postEditAsync()
         {
             if (!ModelState.IsValid) return Page();
             var obj = toObject(Item);
             var updated = await repo.UpdateAsync(obj);
-            if (!updated) return NotFound();
-            return redirectToIndex();
+            return !updated ? NotFound() : redirectToIndex();
         }
         protected override async Task<IActionResult> getIndexAsync()
         {
