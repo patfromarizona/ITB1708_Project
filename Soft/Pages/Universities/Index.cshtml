@@ -3,55 +3,12 @@
 @using Microsoft.AspNetCore.Components
 @using Microsoft.AspNetCore.Mvc.Rendering
 @using TeamUP.Pages
+@using TeamUP.Pages.Party
 @using TeamUP.Pages.Extensions
+@using TeamUP.Facade.Party
 @{
     Layout = "_Index";
 }
-<body>
-<table class="table">
-    <thead>
-        <tr>
-             
-             <th> @Html.MyTabHdr(nameof(Model.Item.UniversityName)) </th>           
-             <th> @Html.MyTabHdr(nameof(Model.Item.UniversityLocation)) </th> 
-             <th> @Html.MyTabHdr(nameof(Model.Item.StudentsAmount)) </th>      
-             <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Items) {
-        <tr>
-            <td> @Html.DisplayFor(modelItem => item.UniversityName) </td>
-            <td> @Html.DisplayFor(modelItem => item.UniversityLocation) </td>
-            <td> @Html.DisplayFor(modelItem => item.StudentsAmount) </td>
-            
-            <td>
-                <a asp-page="./Edit" 
-                   asp-page-handler = "Edit" 
-                   asp-route-id="@item.Id"
-                   asp-route-order="@Model.CurrentOrder"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >Edit</a> |
-                <a asp-page="./Details"
-                   asp-page-handler = "Details" 
-                   asp-route-id="@item.Id"
-                   asp-route-order="@Model.CurrentOrder"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >Details</a> |
-                <a asp-page="./Delete" 
-                   asp-page-handler = "Delete"
-                   asp-route-id="@item.Id"
-                   asp-route-order="@Model.CurrentOrder"
-                   asp-route-idx = "@Model.PageIndex"
-                   asp-route-filter="@Model.CurrentFilter"
-                >Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</body>
+<body> @Html.ShowTable(Model.Items);</body>
 
 

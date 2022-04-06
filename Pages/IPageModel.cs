@@ -1,5 +1,4 @@
-﻿
-namespace TeamUP.Pages
+﻿namespace TeamUP.Pages
 {
     public interface IPageModel
     {

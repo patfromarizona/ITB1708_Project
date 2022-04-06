@@ -12,5 +12,13 @@ namespace TeamUP.Pages.Party
         public StudentsPage(IStudentsRepo r) : base(r) { }
         protected override Student toObject(StudentView? item) => new StudentViewFactory().Create(item);
         protected override StudentView toView(Student? entity) => new StudentViewFactory().Create(entity);
+
+        public override string[] IndexColumns { get; } = {
+           nameof(Student.FirstName),
+           nameof(Student.LastName),
+           nameof(Student.Age),
+           nameof(Student.Gender),
+           nameof(Student.YearInUniversity),
+        };
     }
 }

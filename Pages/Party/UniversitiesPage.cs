@@ -1,4 +1,5 @@
-﻿using TeamUP.Domain.Party;
+﻿using TeamUP.Aids;
+using TeamUP.Domain.Party;
 using TeamUP.Facade.Party;
 
 
@@ -9,5 +10,12 @@ namespace TeamUP.Pages.Party
         public UniversitiesPage(IUniversitiesRepo r) : base(r) { }
         protected override University toObject(UniversityView? item) => new UniversityViewFactory().Create(item);
         protected override UniversityView toView(University? entity) => new UniversityViewFactory().Create(entity);
+
+        public override string[] IndexColumns { get; } = {
+           nameof(UniversityView.UniversityName),
+           nameof(UniversityView.UniversityLocation),
+           nameof(UniversityView.StudentsAmount)
+        };
+                     
     }
 }
