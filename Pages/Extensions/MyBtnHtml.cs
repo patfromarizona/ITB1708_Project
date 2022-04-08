@@ -15,14 +15,16 @@ namespace TeamUP.Pages.Extensions
 
         private static List<object> htmlStrings(string handler, string id, IPageModel? m)
         {
-            var l = new List<object>();
-            l.Add(new HtmlString($"<a href=\"/{pageName(m)}/{handler}?"));
-            l.Add(new HtmlString($"handler={handler}&amp;"));
-            l.Add(new HtmlString($"order={m?.CurrentOrder}&amp;"));
-            l.Add(new HtmlString($"id={id}&amp;"));
-            l.Add(new HtmlString($"idx={m?.PageIndex ?? 0}&amp;"));
-            l.Add(new HtmlString($"filter={m?.CurrentFilter}\">"));
-            l.Add(new HtmlString($"{handler}</a>"));
+            var l = new List<object>
+            {
+                new HtmlString($"<a style=\"text-decoration:none;\" href=\"/{pageName(m)}/{handler}?"),
+                new HtmlString($"handler={handler}&amp;"),
+                new HtmlString($"order={m?.CurrentOrder}&amp;"),
+                new HtmlString($"id={id}&amp;"),
+                new HtmlString($"idx={m?.PageIndex ?? 0}&amp;"),
+                new HtmlString($"filter={m?.CurrentFilter}\">"),
+                new HtmlString($"{handler}</a>"),
+            };
             return l;
         }
         private static string? pageName(IPageModel? m) => m?.GetType()?.Name?.Replace("Page", "");
@@ -40,29 +42,31 @@ namespace TeamUP.Pages.Extensions
         private static List<object> htmlStrings<TModel, TView>(IHtmlHelper<TModel> h, IList<TView>? items)
             where TModel : IIndexModel<TView> where TView : BaseView
         {
-            var l = new List<object>();
             var m = h.ViewData.Model;
-            l.Add(new HtmlString($"<table class=\"table\">"));
-            l.Add(new HtmlString($"<thead>"));
-            l.Add(new HtmlString($"<tr>"));
+            var l = new List<object>
+            {
+                new HtmlString($"<table class=\"table\">"),
+                new HtmlString($"<thead>"),
+                new HtmlString($"<tr>")
+            };
             foreach (var name in m.IndexColumns)
             {
-                l.Add(new HtmlString($"<th>"));
+                l.Add(new HtmlString($"<td>"));
                 l.Add(h.MyTabHdr(name));
-                l.Add(new HtmlString($"</th>"));
+                l.Add(new HtmlString($"</td>"));
             }
             l.Add(new HtmlString($"<th></th>"));
             l.Add(new HtmlString($"</tr>"));
             l.Add(new HtmlString($"</thead>"));
             l.Add(new HtmlString($"<tbody>"));
-            foreach (var item in m.Items ?? new List<TView>())
+            foreach (var item in items ?? new List<TView>())
             {
                 l.Add(new HtmlString($"<tr>"));
                 foreach (var name in m.IndexColumns)
                 {
-                    l.Add(new HtmlString($"<th>"));
+                    l.Add(new HtmlString($"<td>"));
                     l.Add(h.Raw(m.GetValue(name, item)));
-                    l.Add(new HtmlString($"</th>"));
+                    l.Add(new HtmlString($"</td>"));
                 }
                 l.Add(new HtmlString($"<td>"));
                 l.Add(h.ItemButtons(item.Id));

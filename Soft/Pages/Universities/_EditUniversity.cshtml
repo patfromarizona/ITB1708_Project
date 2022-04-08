@@ -1,8 +1,10 @@
 ﻿@model TeamUP.Pages.Party.UniversitiesPage
 @using TeamUP.Pages.Extensions
 
-@Html.MyEditorFor(m => m.Item.UniversityName)
-@Html.MyEditorFor(m => m.Item.UniversityLocation)
+@Html.MyEditorFor(m => m.Item.Name)
 @Html.MyEditorFor(m => m.Item.StudentsAmount)
 @Html.MyEditorFor(m => m.Item.CostOfStudying)
 @Html.MyEditorFor(m => m.Item.Currency)
+@Html.MyDropDownFor(m => m.Item.Location, Model.Countries)
+
+

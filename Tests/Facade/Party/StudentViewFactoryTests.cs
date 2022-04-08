@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Reflection;
 using TeamUP.Aids;
 using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
@@ -26,9 +28,11 @@ namespace TeamUP.Tests.Facade.Party
         }
         [TestMethod] public void CreateEntityTest() 
         {
-            var v = GetRandom.Value<StudentView>();
+            var v = GetRandom.Value<StudentView>() as StudentView;
             var e = new StudentViewFactory().Create(v);
             isNotNull(e);
+            isNotNull(v);
+            arePropertiesEqual(e, v);
             areEqual(e.Id, v.Id);
             areEqual(e.FirstName, v.FirstName);
             areEqual(e.LastName, v.LastName);

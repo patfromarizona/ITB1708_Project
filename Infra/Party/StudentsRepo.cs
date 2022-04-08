@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TeamUP.Data.Party;
-using TeamUP.Domain;
+﻿using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
 
 namespace TeamUP.Infra.Party
@@ -15,12 +13,14 @@ namespace TeamUP.Infra.Party
         {
             var y = CurrentFilter;
             if (string.IsNullOrWhiteSpace(y)) return q;
-            return q.Where(x => 
-            x.Id.Contains(y) ||
-            x.FirstName.Contains(y) ||
-            x.LastName.Contains(y) ||
-            x.Age.ToString().Contains(y) ||
-            x.YearInUniversity.ToString().Contains(y));
+            return q.Where(
+            x => contains(x.Id, y)
+            || contains(x.FirstName, y) 
+            || contains(x.LastName, y)
+            || contains(x.Age.ToString(), y)
+            || contains(x.YearInUniversity.ToString(), y));
         }
+
+
     }
 }

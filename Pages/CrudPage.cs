@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TeamUP.Pages
 {
     public abstract class CrudPage<TView, TEntity, TRepo> : BasePage<TView, TEntity, TRepo>
-        where TView : BaseView
+        where TView : BaseView, new()
         where TEntity : Entity
         where TRepo : ICrudRepo<TEntity>
     {

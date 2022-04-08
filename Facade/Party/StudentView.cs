@@ -10,7 +10,7 @@ namespace TeamUP.Facade.Party
     {
         [DisplayName("First Name")] public string? FirstName { get; set; }
         [DisplayName("Last Name")] public string? LastName { get; set; }
-        [DisplayName("Gender")] public bool? Gender { get; set; }
+        [DisplayName("Gender")] public IsoGender? Gender { get; set; }
         [DisplayName("Age")] [Range(18,99)] public int? Age { get; set; }
         [DisplayName("Year in University")] public int? YearInUniversity { get; set; }
         [DisplayName("Full Name")] public string? FullName { get; set; }

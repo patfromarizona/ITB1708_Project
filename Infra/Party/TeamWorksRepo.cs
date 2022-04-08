@@ -14,12 +14,12 @@ namespace TeamUP.Infra.Party
         {
             var y = CurrentFilter;
             if (string.IsNullOrWhiteSpace(y)) return q;
-            return q.Where(x =>
-            x.Id.Contains(y) ||
-            x.Deadline.ToString().Contains(y) ||
-            x.Description.Contains(y) ||
-            x.TeamSize.ToString().Contains(y) ||
-            x.Done.ToString().Contains(y));
+            return q.Where(
+            x => contains(x.Id, y)
+            || contains(x.Deadline.ToString(), y)
+            || contains(x.Description, y)
+            || contains(x.TeamSize.ToString(), y)
+            || contains(x.Done.ToString(), y));
         }
     }
 }

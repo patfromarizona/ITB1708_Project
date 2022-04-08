@@ -6,7 +6,7 @@ using TeamUP.Aids;
 namespace TeamUP.Pages
 {
     public abstract class PagedPage<TView, TEntity, TRepo> : OrderedPage<TView, TEntity, TRepo>, IPageModel, IIndexModel<TView>
-        where TView : BaseView
+        where TView : BaseView, new()
         where TEntity : Entity
         where TRepo : IPagedRepo<TEntity>
     {
@@ -37,10 +37,10 @@ namespace TeamUP.Pages
             });
         }
 
-        public object? GetValue(string name, TView v) =>
+        public virtual object? GetValue(string name, TView v) =>
             Safe.Run(() => {
                 var pi = v?.GetType()?.GetProperty(name);
-                return pi == null ? null : pi.GetValue(v);
+                return pi?.GetValue(v);
             }, null);
         public virtual string[] IndexColumns => Array.Empty<string>();
     }

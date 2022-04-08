@@ -12,20 +12,41 @@ namespace TeamUP.Pages.Extensions
             return new HtmlContentBuilder(s);
         }
 
+        public static IHtmlContent MyViewerFor<TModel, TResult>(this IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e, dynamic value)
+        {
+            var s = htmlStrings(h, e, value);
+            return new HtmlContentBuilder(s);
+        }
+
         private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> expression)
         {
-            var l = new List<object>();
+            var l = new List<object>
+            {
+               new HtmlString("<dl class=\"row\">"),
+               new HtmlString("<dt class=\"col-sm-2\">"),
+               h.DisplayNameFor(expression),
+               new HtmlString("</dt>"),
+               new HtmlString("<dd class=\"col-sm-10\">"),
+               h.DisplayFor(expression),
+               new HtmlString("</dd>"),
+               new HtmlString("</dl>")
+            };
+            return l;
+        }
 
-            l.Add(new HtmlString("<dl class=\"row\">"));
-            l.Add(new HtmlString("<dt class=\"col-sm-2\">"));
-            l.Add(h.DisplayNameFor(expression));
-            l.Add(new HtmlString("</dt>"));
-            l.Add(new HtmlString("<dd class=\"col-sm-10\">"));
-            l.Add(h.DisplayFor(expression));
-            l.Add(new HtmlString("</dd>"));
-            l.Add(new HtmlString("</dl>")); 
-
-
+        private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e, dynamic value)
+        {
+            var l = new List<object> 
+            {
+                new HtmlString("<dl class=\"row\">"),
+                new HtmlString("<dt class=\"col-sm-2\">"),
+                h.DisplayNameFor(e),
+                new HtmlString("</dt>"),
+                new HtmlString("<dd class=\"col-sm-10\">"),
+                h.Raw(value),
+                new HtmlString("</dd>"),
+                new HtmlString("</dl>")
+            };
             return l;
         }
     }

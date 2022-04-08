@@ -224,6 +224,22 @@ namespace Soft.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TeamUP.Data.Party.LocationData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Currency")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations", "TeamUP");
+                });
+
             modelBuilder.Entity("TeamUP.Data.Party.StudentData", b =>
                 {
                     b.Property<string>("Id")
@@ -235,8 +251,8 @@ namespace Soft.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("Gender")
-                        .HasColumnType("bit");
+                    b.Property<int?>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
@@ -285,15 +301,15 @@ namespace Soft.Migrations
                     b.Property<string>("Currency")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StudentsAmount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UniversityLocation")
+                    b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UniversityName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StudentsAmount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

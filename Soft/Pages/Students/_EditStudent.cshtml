@@ -4,7 +4,7 @@
 
 @Html.MyEditorFor(m => m.Item.FirstName)
 @Html.MyEditorFor(m => m.Item.LastName)
-@Html.MyEditorFor(m => m.Item.Gender)
+@Html.MyDropDownFor(m => m.Item.Gender, Model.Genders)
 @Html.MyEditorFor(m => m.Item.Age)
 @Html.MyEditorFor(m => m.Item.YearInUniversity)
 

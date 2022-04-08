@@ -18,11 +18,11 @@ namespace TeamUP.Infra.Party
         {
             var y = CurrentFilter;
             if (string.IsNullOrWhiteSpace(y)) return q;
-            return q.Where(x =>
-            x.Id.Contains(y) ||
-            x.UniversityName.Contains(y) ||
-            x.UniversityLocation.Contains(y) ||
-            x.StudentsAmount.ToString().Contains(y));
+            return q.Where(
+            x => contains(x.Id, y)
+            || contains(x.Name, y)
+            || contains(x.Location, y)
+            || contains(x.StudentsAmount.ToString(), y));
         }
     }
 }

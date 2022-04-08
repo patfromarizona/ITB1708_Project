@@ -8,9 +8,7 @@ namespace TeamUP.Aids
         private static void minFirst<T>(ref T min, ref T max) where T : IComparable<T>
         {
             if (min.CompareTo(max) < 0) return;
-            var v = max;
-            max = min;
-            min = v;
+            (min, max) = (max, min);
         }
         public static int Int32(int? min = null, int? max = null)
         {
@@ -31,7 +29,7 @@ namespace TeamUP.Aids
             var minVal = min ?? -1000.0;
             var maxVal = max ?? 1000.0;
             minFirst(ref minVal, ref maxVal);
-            return minVal + Random.Shared.NextDouble() * (maxVal - minVal);
+            return minVal + (Random.Shared.NextDouble() * (maxVal - minVal));
         } 
         public static char Char(char min = char.MinValue, char max = char.MaxValue) => (char)Int64(min, max);
         public static bool Bool() => Int32() % 2 == 0;
@@ -50,7 +48,7 @@ namespace TeamUP.Aids
             for (var i = 0; i < lenght; i++) s += Char('a', 'z');
             return s;
         }
-        public static dynamic Value<T>(T? min=default, T? max=default)
+        public static dynamic? Value<T>(T? min=default, T? max=default)
         {
             if (typeof(T) == typeof(bool)) return Bool();
             else if (typeof(T) == typeof(bool?)) return Bool();
@@ -68,7 +66,7 @@ namespace TeamUP.Aids
             return tryGetObject<T>();
         }
 
-        public static dynamic Value(Type t)
+        public static dynamic? Value(Type t)
         {
             if (t == typeof(bool)) return Bool();
             else if (t == typeof(bool?)) return Bool();
@@ -86,7 +84,7 @@ namespace TeamUP.Aids
             return null;
         }
 
-        private static T tryGetObject<T>()
+        private static T? tryGetObject<T>()
         {
             var o = tryCreate<T>();
             foreach(var pi in o?.GetType()?.GetProperties() ?? Array.Empty<PropertyInfo>())
@@ -99,10 +97,11 @@ namespace TeamUP.Aids
             return o;
         }
 
-        private static T tryCreate<T>()
+        private static T? tryCreate<T>() =>
+        Safe.Run(() => 
         {
             var c = typeof(T).GetConstructor(Array.Empty<Type>());
-            return (T) c?.Invoke(null);
-        }
+            return ( c?.Invoke(null) is T t) ? t: default;
+        });
     }
 }

@@ -1,4 +1,5 @@
-﻿using TeamUP.Data.Party;
+﻿using TeamUP.Aids;
+using TeamUP.Data.Party;
 
 namespace TeamUP.Domain.Party
 {
@@ -10,8 +11,8 @@ namespace TeamUP.Domain.Party
         public string FirstName => getValue(Data?.FirstName);
         public string LastName => getValue(Data?.LastName);
         public int Age => getValue(Data?.Age);
-        public bool Gender => getValue(Data?.Gender);
+        public IsoGender Gender => getValue(Data?.Gender);
         public int YearInUniversity => getValue(Data?.YearInUniversity);
-        public override string ToString() => $"{FirstName} {LastName} ({Gender}, {Age} y.o.)";     
+        public override string ToString() => $"{FirstName} {LastName} ({Gender.Description()}, {Age} y.o.)";     
     }
 }

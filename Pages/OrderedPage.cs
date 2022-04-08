@@ -4,7 +4,7 @@ using TeamUP.Domain;
 namespace TeamUP.Pages
 {
     public abstract class OrderedPage<TView, TEntity, TRepo> : FilteredPage<TView, TEntity, TRepo>
-        where TView : BaseView
+        where TView : BaseView, new()
         where TEntity : Entity
         where TRepo : IOrderedRepo<TEntity>
     {

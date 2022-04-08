@@ -7,7 +7,7 @@ using TeamUP.Aids;
 namespace TeamUP.Pages
 {
     public abstract class BasePage<TView,TEntity,TRepo> : PageModel 
-        where TView : BaseView 
+        where TView : BaseView, new() 
         where TEntity : Entity 
         where TRepo : IBaseRepo<TEntity> 
     {
@@ -17,8 +17,8 @@ namespace TeamUP.Pages
 
         protected abstract IActionResult redirectToIndex();
 
-        [BindProperty] public TView? Item { get; set; }
-        public IList<TView>? Items { get; set; }
+        [BindProperty] public TView Item { get; set; } = new TView();
+        public IList<TView> Items { get; set; } = new List<TView>();
 
         public BasePage(TRepo r) => repo = r;
         public string ItemId => Item?.Id ?? string.Empty;

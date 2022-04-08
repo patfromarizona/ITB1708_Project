@@ -6,7 +6,7 @@ namespace TeamUP.Infra.Initializers
     {
         public StudentsInitializer(TeamUPDb? db) : base(db, db?.Students) { }
 
-        private StudentData createStudent(string firstName, string lastName, bool gender, int age, int yearInUniversity)
+        private static StudentData createStudent(string firstName, string lastName, IsoGender gender, int age, int yearInUniversity)
         {
             var student = new StudentData
             {
@@ -23,9 +23,9 @@ namespace TeamUP.Infra.Initializers
         protected override IEnumerable<StudentData> getEntities => new[]
         {
 
-            createStudent("Greg", "Homie", false, 19, 1),
-            createStudent("Tom", "Brown", false, 21, 2),
-            createStudent("Mark", "Frankfurt", false, 22, 3),
+            createStudent("Greg", "Homie", IsoGender.Male, 19, 1),
+            createStudent("Tom", "Brown", IsoGender.Female, 21, 2),
+            createStudent("Mark", "Frankfurt", IsoGender.NotApplicable, 22, 3),
         };
     }
 

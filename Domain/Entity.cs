@@ -1,4 +1,5 @@
 ﻿using TeamUP.Data;
+using TeamUP.Data.Party;
 
 namespace TeamUP.Domain
 {
@@ -11,6 +12,7 @@ namespace TeamUP.Domain
         protected static string getValue(string? v) => v ?? defaultStr;
         protected static bool getValue(bool? v) => v ?? defaultBool;
         protected static int getValue(int? v) => v ?? defaultInt;
+        protected static IsoGender getValue(IsoGender? v) => v ?? IsoGender.NotApplicable;
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
     }
     public abstract class Entity<TData>: Entity where TData: EntityData, new()

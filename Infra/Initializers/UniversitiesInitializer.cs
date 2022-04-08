@@ -7,33 +7,34 @@ namespace TeamUP.Infra.Initializers
     {
         public UniversitiesInitializer(TeamUPDb? db) : base(db, db?.Universities) { }
 
-        private UniversityData createUniversity(string universityName, string universityLocation, int amountOfStudents, int costOfEducation, string currency) => new()
+        private static UniversityData createUniversity(string universityName, string universityLocation, int amountOfStudents, int costOfEducation, string currency) => new()
         {
             Id = universityName.Replace(" ", "") + "Id",
-            UniversityName = universityName,
-            UniversityLocation = universityLocation,
+            Name = universityName,
+            Location = universityLocation,
             StudentsAmount = amountOfStudents,
             CostOfStudying = costOfEducation,
             Currency = currency
 
         };
-        protected override IEnumerable<UniversityData> getEntities 
+
+        protected override IEnumerable<UniversityData> getEntities
         {
             get
             {
                 // Currently random data
                 //TODO find real data
                 var l = new List<UniversityData>();
-                foreach(CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
+                foreach (CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
                 {
-                    Random r = new Random();
+                    Random r = new();
                     var country = new RegionInfo(new CultureInfo(cul.Name, false).LCID);
-                    var d = createUniversity("University of "+country.EnglishName, country.EnglishName, r.Next(500, 5000), r.Next(0,10000), country.CurrencySymbol);
+                    var d = createUniversity("University of " + country.EnglishName, country.EnglishName, r.Next(500, 5000), r.Next(0, 10000), country.CurrencySymbol);
                     if (l.FirstOrDefault(x => x.Id == d.Id) is not null) continue;
                     l.Add(d);
                 }
                 return l;
-            }        
+            }
         }
     }
 }

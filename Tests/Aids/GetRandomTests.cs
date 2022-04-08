@@ -91,6 +91,8 @@ namespace TeamUP.Tests.Aids
         {
             var x = GetRandom.Value<StudentData>() as StudentData;
             var y = GetRandom.Value<StudentData>() as StudentData;
+            isNotNull(x);
+            isNotNull(y);
             areNotEqual(x.Id, y.Id, nameof(x.Id));
             areNotEqual(x.FirstName, y.FirstName, nameof(x.FirstName));
             areNotEqual(x.LastName, y.LastName, nameof(x.LastName));

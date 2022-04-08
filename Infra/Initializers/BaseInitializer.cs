@@ -29,6 +29,7 @@ namespace TeamUP.Infra.Initializers
             new StudentsInitializer(db).Init();
             new TeamWorksInitializer(db).Init();    
             new UniversitiesInitializer(db).Init();
+            new LocationsInitializer(db).Init();
         }
     }
 }

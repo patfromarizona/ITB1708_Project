@@ -16,16 +16,18 @@ namespace TeamUP.Pages.Extensions
 
         private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> html, Expression<Func<TModel, TResult>> expression)
         {
-            var l = new List<object>();
-             l.Add(new HtmlString("<div class=\"row\">"));
-               l.Add(new HtmlString("<dd class=\"col-sm-2\">"));
-                 l.Add(html.LabelFor(expression, null, new { @class = "control-label" }));
-               l.Add(new HtmlString("</dd>"));
-               l.Add(new HtmlString("<dd class=\"col-sm-10\">"));
-                 l.Add(html.EditorFor(expression, new { htlmAttributes = new { @class = "form-control" } }));
-                 l.Add(html.ValidationMessageFor(expression, null, new { @class = "text-danger" }));
-               l.Add(new HtmlString("</dd>"));
-            l.Add(new HtmlString("</div>"));
+            var l = new List<object>
+            {
+                new HtmlString("<dl class=\"row\">"),
+                new HtmlString("<dd class=\"col-sm-2\">"),
+                html.LabelFor(expression, null, new { @class = "control-label" }),
+                new HtmlString("</dd>"),
+                new HtmlString("<dd class=\"col-sm-10\">"),
+                html.EditorFor(expression, new { htlmAttributes = new { @class = "form-control" } }),
+                html.ValidationMessageFor(expression, null, new { @class = "text-danger" }),
+                new HtmlString("</dd>"),
+                new HtmlString("</dl>"),
+            };
             return l;
         }
     }
