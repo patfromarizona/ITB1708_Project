@@ -10,6 +10,8 @@ namespace TeamUP.Infra
         public DbSet<TeamWorkData>? TeamWorks { get; internal set; }
         public DbSet<UniversityData>? Universities { get; internal set; }
         public DbSet<LocationData>? Locations { get; internal set; }
+        public DbSet<UniversityStudentData>? UniversityStudent { get; internal set; }
+        public DbSet<TeamWorkStudentData>? TeamWorkStudent { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder b)
         {
@@ -24,6 +26,8 @@ namespace TeamUP.Infra
             _ = (b?.Entity<TeamWorkData>().ToTable(nameof(TeamWorks), s));
             _ = (b?.Entity<UniversityData>().ToTable(nameof(Universities), s));
             _ = (b?.Entity<LocationData>().ToTable(nameof(Locations), s));
+            _ = (b?.Entity<UniversityStudentData>().ToTable(nameof(UniversityStudent), s));
+            _ = (b?.Entity<TeamWorkStudentData>().ToTable(nameof(TeamWorkStudent), s));
         }
     }
 }

@@ -22,6 +22,8 @@ builder.Services.AddTransient <IStudentsRepo , StudentsRepo>();
 builder.Services.AddTransient <ITeamWorksRepo, TeamWorksRepo>();
 builder.Services.AddTransient<IUniversitiesRepo, UniversitiesRepo>();
 builder.Services.AddTransient<ILocationsRepo, LocationsRepo>();
+builder.Services.AddTransient<IUniversityStudentRepo, UniversityStudentRepo>();
+builder.Services.AddTransient<ITeamWorkStudentRepo, TeamWorkStudentRepo>();
 
 var app = builder.Build();
 

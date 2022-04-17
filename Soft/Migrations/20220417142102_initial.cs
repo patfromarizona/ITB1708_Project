@@ -100,6 +100,20 @@ namespace Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TeamWorkStudent",
+                schema: "TeamUP",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    StudentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeamWorkId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TeamWorkStudent", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Universities",
                 schema: "TeamUP",
                 columns: table => new
@@ -114,6 +128,20 @@ namespace Soft.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Universities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UniversityStudent",
+                schema: "TeamUP",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    StudentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UniversityId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UniversityStudent", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -292,7 +320,15 @@ namespace Soft.Migrations
                 schema: "TeamUP");
 
             migrationBuilder.DropTable(
+                name: "TeamWorkStudent",
+                schema: "TeamUP");
+
+            migrationBuilder.DropTable(
                 name: "Universities",
+                schema: "TeamUP");
+
+            migrationBuilder.DropTable(
+                name: "UniversityStudent",
                 schema: "TeamUP");
 
             migrationBuilder.DropTable(

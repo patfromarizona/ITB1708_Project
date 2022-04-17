@@ -12,7 +12,7 @@ using Soft.Data;
 namespace Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220407235858_initial")]
+    [Migration("20220417142102_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -292,6 +292,24 @@ namespace Soft.Migrations
                     b.ToTable("TeamWorks", "TeamUP");
                 });
 
+            modelBuilder.Entity("TeamUP.Data.Party.TeamWorkStudentData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("StudentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeamWorkId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TeamWorkStudent", "TeamUP");
+                });
+
             modelBuilder.Entity("TeamUP.Data.Party.UniversityData", b =>
                 {
                     b.Property<string>("Id")
@@ -316,6 +334,24 @@ namespace Soft.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Universities", "TeamUP");
+                });
+
+            modelBuilder.Entity("TeamUP.Data.Party.UniversityStudentData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("StudentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UniversityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UniversityStudent", "TeamUP");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

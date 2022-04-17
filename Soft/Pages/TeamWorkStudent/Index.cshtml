@@ -1,0 +1,14 @@
+﻿@page
+@model TeamUP.Pages.Party.TeamWorkStudentPage
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using TeamUP.Pages
+@using TeamUP.Pages.Party
+@using TeamUP.Pages.Extensions
+@using TeamUP.Facade.Party
+@{
+    Layout = "_Index";
+}
+<body> @Html.ShowTable(Model.Items)</body>
+
+
