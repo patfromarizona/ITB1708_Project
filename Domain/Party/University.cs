@@ -13,5 +13,7 @@ namespace TeamUP.Domain.Party
         public int StudentsAmount => getValue(Data?.StudentsAmount);
         public int CostOfStudying => getValue(Data?.CostOfStudying);
         public string Currency => getValue(Data?.Currency);
+
+        public override string ToString() => $"{Name}, {Location}, {StudentsAmount} students (average price: {CostOfStudying} {Currency} / year)";
     }
 }
