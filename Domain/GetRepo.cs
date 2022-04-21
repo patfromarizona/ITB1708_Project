@@ -1,0 +1,17 @@
+﻿
+using Microsoft.Extensions.DependencyInjection;
+
+namespace TeamUP.Domain
+{
+    public static class GetRepo
+    {
+        private static IServiceProvider? service;
+
+        public static TRepo? Instance<TRepo>()
+            where TRepo: class
+        {
+            return service?.CreateScope()?.ServiceProvider?.GetRequiredService<TRepo>();
+        }
+        public static void SetService(IServiceProvider s) => service = s;
+    }
+}

@@ -44,7 +44,8 @@ namespace TeamUP.Pages
             return value;
         }
 
-        private static bool isThisDisplayName(PropertyInfo pi, string? displayName) => getDisplayName(pi) == displayName;
+        private static bool isThisDisplayName(PropertyInfo pi, string? displayName)
+            => getDisplayName(pi) == displayName;
         public string? SortOrder(string displayName) => repo.SortOrder(displayName);
     }
 }

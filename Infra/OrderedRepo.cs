@@ -10,19 +10,16 @@ namespace TeamUP.Infra
         where TDomain : Entity<TData>, new() where TData : EntityData, new()
     {
         protected OrderedRepo(DbContext? c, DbSet<TData>? s) : base(c, s) { }
-
         public string? CurrentOrder { get; set; }
-
-        public string DescendingString = "_desc";
-
+        public static string DescendingString => "_desc";
         protected internal override IQueryable<TData> createSql() => addSort(base.createSql());
         internal IQueryable<TData> addSort(IQueryable<TData> q)
         {
             if (string.IsNullOrWhiteSpace(CurrentOrder)) return q;
             var e = lambdaExpression;
-            if(e == null) return q;
-            if (isDescending) return q.OrderByDescending(e);
-            return q.OrderBy(e);
+            return e == null ? q 
+                : isDescending ? q.OrderByDescending(e)
+                : (IQueryable<TData>)q.OrderBy(e);  
         }
         internal bool isDescending => CurrentOrder?.EndsWith(DescendingString) ?? false;
         internal bool isSameProperty(string s) => !string.IsNullOrEmpty(s) && (CurrentOrder?.StartsWith(s) ?? false);
@@ -42,10 +39,8 @@ namespace TeamUP.Infra
         public string SortOrder(string propertyName)
         {
             var n = propertyName;
-            if (!isSameProperty(n)) return n + DescendingString;
-            if (isDescending) return n;
-            return n + DescendingString;
+            return !isSameProperty(n) ? n + DescendingString
+                : isDescending ? n : n + DescendingString;
         }
-
     }
 }

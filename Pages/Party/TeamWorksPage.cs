@@ -9,7 +9,7 @@ namespace TeamUP.Pages.Party
         protected override TeamWork toObject(TeamWorkView? item) => new TeamWorkViewFactory().Create(item);
         protected override TeamWorkView toView(TeamWork? entity) => new TeamWorkViewFactory().Create(entity);
 
-        public override string[] IndexColumns { get; } = {
+        public override string[] IndexColumns { get; } = new[]{
            nameof(TeamWorkView.Overview),
            nameof(TeamWorkView.Name),
            nameof(TeamWorkView.Description),
@@ -17,5 +17,8 @@ namespace TeamUP.Pages.Party
            nameof(TeamWorkView.Deadline),
            nameof(TeamWorkView.Done)
         };
+
+        public List<Student?> Students => toObject(Item).Students;
+            
     }
 }

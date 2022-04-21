@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Soft.Data;
+using TeamUP.Domain;
 using TeamUP.Domain.Party;
 using TeamUP.Infra;
 using TeamUP.Infra.Initializers;
@@ -41,8 +44,9 @@ else
 
 using (var scope = app.Services.CreateScope())
 {
+    GetRepo.SetService(app.Services);
     var db = scope.ServiceProvider.GetService<TeamUPDb>();
-    db?.Database?.EnsureCreated();
+    _ = db?.Database?.EnsureCreated();
     TeamUpDbInitializer.Init(db);
 }
 

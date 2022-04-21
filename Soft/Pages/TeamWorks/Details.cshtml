@@ -1,9 +1,42 @@
 ﻿@page
 @model TeamUP.Pages.Party.TeamWorksPage
 @using TeamUP.Pages.Extensions
+@using TeamUP.Facade.Party
 @{
     Layout = "_Details";
+    var columns = new[]
+            {
+        nameof(StudentView.Id),
+        nameof(StudentView.FirstName),
+        nameof(StudentView.LastName)
+    };
+    object? getValue<T>(string proprtyName, T item)
+    {
+        var pi = typeof(T).GetProperty(proprtyName);
+        return pi?.GetValue(item);
+    }
 }
 <body>
     <partial name = "_ShowTeamWork" />
+
+    <table class = "table">
+    <thead>
+    <tr>
+         @foreach (var name in columns){<td> @Html.Raw(name) </td>}
+    </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model.Students)
+            {
+                <tr>
+                    @foreach (var name in columns)
+                    {
+                        <td>
+                            @Html.Raw(getValue(name, item))
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
