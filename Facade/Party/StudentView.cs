@@ -19,10 +19,18 @@ namespace TeamUP.Facade.Party
     public sealed class StudentViewFactory : BaseViewFactory<StudentView, Student, StudentData>
     {
         protected override Student toEntity(StudentData d) => new(d);
+
+        public override Student Create(StudentView? v)
+        {
+            v ??= new StudentView();
+            v.Gender ??= IsoGender.NotApplicable;
+            return base.Create(v);
+        }
         public override StudentView Create(Student? e)
         {
             var v = base.Create(e);
             v.FullName = e?.ToString();
+            v.Gender = e?.Gender;
             return v;
         }
     }

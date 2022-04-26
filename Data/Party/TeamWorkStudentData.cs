@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TeamUP.Data.Party
 {
-    public class TeamWorkStudentData : EntityData
+    public sealed class TeamWorkStudentData : EntityData
     {
         public string StudentId { get; set; } = string.Empty;
         public string TeamWorkId { get; set; } = string.Empty;

@@ -12,6 +12,13 @@ namespace TeamUP.Tests.Aids
         {
             var x = GetRandom.Value(min, max);
             var y = GetRandom.Value(min, max);
+            var i = 0;
+            while (x == y)
+            {
+                y = GetRandom.Value(min, max);
+                if (i == 2) areNotEqual(x, y);
+                i++;
+            }
             isTrue(x >= (min.CompareTo(max) < 0 ? min : max));
             isTrue(y >= (min.CompareTo(max) < 0 ? min : max));
             isTrue(x <= (min.CompareTo(max) < 0 ? max : min));

@@ -6,6 +6,7 @@ namespace TeamUP.Tests
     {
         protected override object createObj() => new TClass();
         [TestMethod] public void isSealedTest() => isTrue(obj?.GetType()?.IsSealed ?? false);
+
         
     }
 }

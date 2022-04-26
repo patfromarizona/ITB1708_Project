@@ -26,6 +26,7 @@ namespace TeamUP.Tests
             testingAssembly = getAssembly(this);
             testingTypes = getTypes(testingAssembly);
             namespaceOfTest = getNamespace(this);
+            removeNotInNamespace();
             namespaceOfType = removeTestsTagFrom(namespaceOfTest);
             assemblyToBeTested = getAssembly(namespaceOfType);
             typesToBeTested = getTypes(assemblyToBeTested);
@@ -35,6 +36,7 @@ namespace TeamUP.Tests
             reportNotAllIsTested();
         }
 
+        private void removeNotInNamespace() => testingTypes.Remove(x => !Types.NameStarts(x, namespaceOfTest));
         private static Assembly? getAssembly(object o) => GetAssembly.OfType(o);
         private static Assembly? getAssembly(string? name) => GetAssembly.ByName(name);
         private static string? removeTestsTagFrom(string? s) => s?.Remove("Tests.");
