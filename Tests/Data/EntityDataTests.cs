@@ -6,10 +6,10 @@ using TeamUP.Data;
 
 namespace TeamUP.Tests.Data
 {
-    [TestClass] public class EntityDataTests : AbstractClassTests
+    [TestClass] public class EntityDataTests : AbstractClassTests<EntityData, EntityData>
     {
         private class testClass : EntityData { }
-        protected override object createObj() => new testClass();
+        protected override EntityData createObj() => new testClass();
         [TestMethod] public void NewIdTest()
         {
             isNotNull(EntityData.NewId);

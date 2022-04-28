@@ -2,10 +2,11 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TeamUP.Data.Party;
+using TeamUP.Domain;
 
 namespace TeamUP.Tests.Data.Party
 {
-    [TestClass] public class StudentDataTests : SealedClassTests<StudentData>{ 
+    [TestClass] public class StudentDataTests : SealedClassTests<StudentData, Entity<StudentData>>{ 
         [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void FirstNameTest() => isProperty<string?>(); 
         [TestMethod] public void LastNameTest() => isProperty<string?>();
@@ -13,11 +14,4 @@ namespace TeamUP.Tests.Data.Party
         [TestMethod] public void AgeTest() => isProperty<int?>();
         [TestMethod] public void YearInUniversityTest() => isProperty<int?>();
     }
-
-
-
-
-
-
-
 }

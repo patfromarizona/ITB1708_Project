@@ -1,11 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using TeamUP.Facade;
 using TeamUP.Facade.Party;
 
 namespace TeamUP.Tests.Facade.Party
 {
     [TestClass]
-    public class TeamWorkViewTests: SealedClassTests<TeamWorkView>
+    public class TeamWorkViewTests: SealedClassTests<TeamWorkView, BaseView>
     {
          
         [TestMethod] public void IdTest() => isProperty<string>();

@@ -18,7 +18,7 @@ namespace TeamUP.Tests.Aids
         }
         [TestMethod] public void IsTypeFullNameTest()
         {
-            isFalse(Strings.IsTypeFullName(testStr));
+            isTrue(Strings.IsTypeFullName(testStr));
             isTrue(Strings.IsTypeFullName(Strings.Remove(testStr, "2")));
         }
         [TestMethod] public void RemoveTailTest() => areEqual("i2l2h2", Strings.RemoveTail(testStr));

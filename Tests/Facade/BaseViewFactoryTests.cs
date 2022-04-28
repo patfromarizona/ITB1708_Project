@@ -7,12 +7,12 @@ using TeamUP.Facade.Party;
 namespace TeamUP.Tests.Facade
 {
     [TestClass]
-    public class BaseViewFactoryTests : AbstractClassTests
+    public class BaseViewFactoryTests : AbstractClassTests<BaseViewFactory<StudentView, Student, StudentData>, object>
     {
         private class testClass : BaseViewFactory<StudentView, Student, StudentData>
         {
             protected override Student toEntity(StudentData d) => new(d);  
         }
-        protected override object createObj() => new testClass();
+        protected override BaseViewFactory<StudentView, Student, StudentData> createObj() => new testClass();
     }
 }

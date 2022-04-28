@@ -21,12 +21,4 @@ namespace TeamUP.Tests.Data.Party
             areEqual(description, isoGender.Description());
         }
     }
-
-
-
-
-
-
-
-
 }

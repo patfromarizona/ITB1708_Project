@@ -7,7 +7,7 @@ using TeamUP.Domain.Party;
 namespace TeamUP.Tests.Infra
 {
     [TestClass]
-    public class RepoTests : AbstractClassTests
+    public class RepoTests : AbstractClassTests<Repo<Student, StudentData>, PagedRepo<Student, StudentData>>
     {
 
         private class testClass : Repo<Student, StudentData>
@@ -16,7 +16,7 @@ namespace TeamUP.Tests.Infra
 
             protected override Student toDomain(StudentData d) => new(d);
         }
-        protected override object createObj() => new testClass(null, null);
+        protected override Repo<Student, StudentData> createObj() => new testClass(null, null);
 
     }
 }

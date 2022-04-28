@@ -2,12 +2,13 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TeamUP.Data.Party;
+using TeamUP.Facade;
 using TeamUP.Facade.Party;
 
 namespace TeamUP.Tests.Facade.Party
 {
     [TestClass]
-    public class StudentViewTests : SealedClassTests<StudentView>
+    public class StudentViewTests : SealedClassTests<StudentView, BaseView>
     {
         [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void FirstNameTest() => isProperty<string?>();

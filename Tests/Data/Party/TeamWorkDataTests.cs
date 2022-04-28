@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using TeamUP.Data;
 using TeamUP.Data.Party;
 
 namespace TeamUP.Tests.Data.Party
 {
-    [TestClass] public class TeamWorkDataTests: SealedClassTests<TeamWorkData> {
+    [TestClass] public class TeamWorkDataTests: SealedClassTests<TeamWorkData, EntityData> {
         [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void NameTest() => isProperty<string?>();
         [TestMethod] public void DescriptionTest() => isProperty<string?>();

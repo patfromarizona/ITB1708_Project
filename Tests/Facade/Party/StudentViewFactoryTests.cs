@@ -4,12 +4,13 @@ using System.Reflection;
 using TeamUP.Aids;
 using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
+using TeamUP.Facade;
 using TeamUP.Facade.Party;
 
 namespace TeamUP.Tests.Facade.Party
 {
     [TestClass]
-    public class StudentViewFactoryTests : SealedClassTests<StudentViewFactory>
+    public class StudentViewFactoryTests : SealedClassTests<StudentViewFactory, BaseViewFactory<StudentView, Student, StudentData>>
     {
         [TestMethod] public void CreateTest() { }
         [TestMethod] public void CreateViewTest() 

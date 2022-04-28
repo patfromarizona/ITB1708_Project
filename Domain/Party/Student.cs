@@ -4,7 +4,7 @@ using TeamUP.Data.Party;
 namespace TeamUP.Domain.Party
 {
     public interface IStudentsRepo : IRepo<Student> { }
-    public class Student : Entity<StudentData>
+    public sealed class Student : Entity<StudentData>
     {
         public Student() : this(new StudentData()) { }
         public Student(StudentData d) : base(d) { }

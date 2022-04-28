@@ -3,7 +3,7 @@
 namespace TeamUP.Domain.Party
 {
     public interface ITeamWorksRepo : IRepo<TeamWork>{ }
-    public class TeamWork : Entity<TeamWorkData>
+    public sealed class TeamWork : Entity<TeamWorkData>
     {
         public TeamWork() : this(new TeamWorkData()) { }
         public TeamWork(TeamWorkData d) : base(d) { }      
