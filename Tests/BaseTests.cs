@@ -16,7 +16,7 @@ namespace TeamUP.Tests
         protected void isProperty<T>(T? value = default, bool isReadOnly = false, string? callingMethod = null)
         {
             callingMethod ??= nameof(isProperty);
-            var memberName = getCallingMember(callingMethod.Replace("Test", string.Empty));
+            var memberName = getCallingMember(callingMethod).Replace("Test", string.Empty);
             var propertyInfo = obj.GetType().GetProperty(memberName);
             isNotNull(propertyInfo);
             if (isNullOrDefault(value)) value = random<T>();

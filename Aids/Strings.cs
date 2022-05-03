@@ -22,9 +22,9 @@
         public static string RemoveHead(this string? s, char separator = '.')
         {
             if (string.IsNullOrEmpty(s)) return string.Empty;
-            for (var i = 0; i > s.Length; i++)
+            for (var i = 0; i < s.Length;)
             {
-                var c = s[0];
+                var c = s[i];
                 s = s[1..];
                 if (c == separator) return s;
             }
