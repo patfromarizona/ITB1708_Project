@@ -52,20 +52,6 @@ namespace Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Locations",
-                schema: "TeamUP",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Locations", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Students",
                 schema: "TeamUP",
                 columns: table => new
@@ -73,7 +59,7 @@ namespace Soft.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Gender = table.Column<int>(type: "int", nullable: true),
+                    Gender = table.Column<bool>(type: "bit", nullable: true),
                     Age = table.Column<int>(type: "int", nullable: true),
                     YearInUniversity = table.Column<int>(type: "int", nullable: true)
                 },
@@ -100,27 +86,13 @@ namespace Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TeamWorkStudent",
-                schema: "TeamUP",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    StudentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TeamWorkId = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TeamWorkStudent", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Universities",
                 schema: "TeamUP",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UniversityName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UniversityLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StudentsAmount = table.Column<int>(type: "int", nullable: true),
                     CostOfStudying = table.Column<int>(type: "int", nullable: true),
                     Currency = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -128,20 +100,6 @@ namespace Soft.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Universities", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UniversityStudent",
-                schema: "TeamUP",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    StudentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UniversityId = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UniversityStudent", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -308,10 +266,6 @@ namespace Soft.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Locations",
-                schema: "TeamUP");
-
-            migrationBuilder.DropTable(
                 name: "Students",
                 schema: "TeamUP");
 
@@ -320,15 +274,7 @@ namespace Soft.Migrations
                 schema: "TeamUP");
 
             migrationBuilder.DropTable(
-                name: "TeamWorkStudent",
-                schema: "TeamUP");
-
-            migrationBuilder.DropTable(
                 name: "Universities",
-                schema: "TeamUP");
-
-            migrationBuilder.DropTable(
-                name: "UniversityStudent",
                 schema: "TeamUP");
 
             migrationBuilder.DropTable(
