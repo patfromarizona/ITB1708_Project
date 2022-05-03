@@ -4,6 +4,8 @@
     {
         public static bool IsNameChar(this char x) => char.IsLetter(x) || char.IsDigit(x) || x == '`';
         public static bool IsFullNameChar(this char x) => IsNameChar(x) || x == '.';
+
+        public static void WeHaveSMTHWrongHere() { } 
     }
 
 }
