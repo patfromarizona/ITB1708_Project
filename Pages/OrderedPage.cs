@@ -32,7 +32,7 @@ namespace TeamUP.Pages
             return dn?.DisplayName; 
         }
 
-        private string? toCurrentOrder(string? value)
+        private static string? toCurrentOrder(string? value)
         {
             var isDesc = value?.Contains("_desc")?? false;
             var displayName = value?.Replace("_desc", string.Empty);

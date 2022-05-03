@@ -7,7 +7,7 @@ using TeamUP.Data.Party;
 
 namespace TeamUP.Tests.Aids
 {
-    [TestClass] public class TypesTests : IsTypeTested 
+    [TestClass] public class TypesTests : TypeTests 
     {
         private Type type = typeof(object);
         private string? nameSpace;

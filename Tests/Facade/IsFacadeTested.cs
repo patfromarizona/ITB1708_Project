@@ -2,5 +2,5 @@
 
 namespace TeamUP.Tests.Facade
 {
-    [TestClass] public class IsFacadeTested : IsAssemblyTested { }
+    [TestClass] public class IsFacadeTested : AssemblyTests { }
 }

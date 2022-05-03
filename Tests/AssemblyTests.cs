@@ -10,7 +10,7 @@ using TeamUP.Aids;
 namespace TeamUP.Tests
 {
     [TestClass]
-    public abstract class IsAssemblyTested : TestAsserts
+    public abstract class AssemblyTests : AssertsTests
     {
         private static string testsStr => "Tests";
         private static string testsProjectStr => $"{testsStr}.";
@@ -47,7 +47,7 @@ namespace TeamUP.Tests
 
         private void removeInterfaces() => typesToBeTested?.Remove(t => t.IsInterface);
         private void removeNotClassTests() => testingTypes.Remove(x => !Types.NameEnds(x, testsStr));
-        private void removeNotInNamespace(List<Type> t, string nameSpace) => t?.Remove(x => !Types.NameStarts(x, nameSpace));
+        private static void removeNotInNamespace(List<Type>? t, string? nameSpace) => t?.Remove(x => !Types.NameStarts(x, nameSpace));
         private void removeNotCorrectTests() => testingTypes.Remove(x => !isCorrectTest(x));
         private static Assembly? getAssembly(object o) => GetAssembly.OfType(o);
         private static Assembly? getAssembly(string? name) => GetAssembly.ByName(name);
@@ -75,7 +75,7 @@ namespace TeamUP.Tests
         }
         private static bool isCorrectTest(Type x) => isCorrectlyInherited(x) && isTestClass(x);
         private static bool isTestClass(Type x) => x?.HasAttribute<TestClassAttribute>() ?? false;
-        private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(IsTypeTested));
+        private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(TypeTests));
         private static bool isTestFor(Type testingType, Type typeToBeTested)
         {
             var testName = typeToBeTested.FullName?? string.Empty;

@@ -3,7 +3,7 @@ using TeamUP.Aids;
 
 namespace TeamUP.Tests.Aids
 {
-    [TestClass] public class StringsTests : IsTypeTested
+    [TestClass] public class StringsTests : TypeTests
     {
         private string? testStr;
         [TestInitialize] public void Init() => testStr = "i2l2h2.m2m2ha2";
@@ -22,5 +22,6 @@ namespace TeamUP.Tests.Aids
             isTrue(Strings.IsTypeFullName(Strings.Remove(testStr, "2")));
         }
         [TestMethod] public void RemoveTailTest() => areEqual("i2l2h2", Strings.RemoveTail(testStr));
+        [TestMethod] public void RemoveHeadTest() => areEqual("m2m2ha2",Strings.RemoveHead(testStr));
     }
 }

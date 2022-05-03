@@ -2,6 +2,6 @@
 
 namespace TeamUP.Tests.Domain
 {
-    [TestClass] public class IsDomainTested : IsAssemblyTested { }
+    [TestClass] public class IsDomainTested : AssemblyTests { }
 
 }

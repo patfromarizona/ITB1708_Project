@@ -2,5 +2,5 @@
 
 namespace TeamUP.Tests.Aids
 {
-    [TestClass] public class EntityDataTests : IsTypeTested { }
+    [TestClass] public class EntityDataTests : TypeTests { }
 }

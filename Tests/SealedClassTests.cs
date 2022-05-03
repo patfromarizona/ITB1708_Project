@@ -6,7 +6,7 @@ namespace TeamUP.Tests
         : BaseTests<TClass, TBaseClass>
         where TClass : class, new()
         where TBaseClass : class {
-        protected override TClass createObj() => new TClass();
+        protected override TClass createObj() => new();
         [TestMethod] public void isSealedTest() => isTrue(obj?.GetType()?.IsSealed ?? false);
 
         

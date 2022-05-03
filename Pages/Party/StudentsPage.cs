@@ -24,10 +24,10 @@ namespace TeamUP.Pages.Party
            nameof(Student.YearInUniversity),
         };
 
-        public IEnumerable<SelectListItem> Genders
+        public static IEnumerable<SelectListItem> Genders
             => Enum.GetValues<IsoGender>()?.Select(x => new SelectListItem(x.Description(), x.ToString())) ?? new List<SelectListItem>();
 
-        public string GenderDescription(IsoGender? g)
+        public static string GenderDescription(IsoGender? g)
             => (g ?? IsoGender.NotApplicable).Description();
 
         public override object? GetValue(string name, StudentView v)

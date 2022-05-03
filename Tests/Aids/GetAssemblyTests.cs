@@ -7,7 +7,7 @@ using TeamUP.Data.Party;
 
 namespace TeamUP.Tests.Aids
 {
-    [TestClass] public class GetAssemblyTests : IsTypeTested
+    [TestClass] public class GetAssemblyTests : TypeTests
     {
         private string? assemblyName;
         private Assembly? assembly;

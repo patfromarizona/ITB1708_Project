@@ -4,7 +4,7 @@ using TeamUP.Aids;
 
 namespace TeamUP.Tests.Aids
 {
-    [TestClass] public class SafeTests : IsTypeTested 
+    [TestClass] public class SafeTests : TypeTests 
     {
         private int expected;
         private int def;

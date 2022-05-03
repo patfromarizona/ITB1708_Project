@@ -5,11 +5,11 @@ namespace TeamUP.Domain
 {
     public abstract class Entity
     {
-        protected const string defaultStr = "Underfined";
-        protected const bool defaultBool = false;
-        protected const int defaultInt = 1;
+        public const string DefaultStr = "Underfined";
+        private const bool defaultBool = false;
+        private const int defaultInt = 1;
         private static readonly DateTime defaultDate = DateTime.MinValue;
-        protected static string getValue(string? v) => v ?? defaultStr;
+        protected static string getValue(string? v) => v ?? DefaultStr;
         protected static bool getValue(bool? v) => v ?? defaultBool;
         protected static int getValue(int? v) => v ?? defaultInt;
         protected static IsoGender getValue(IsoGender? v) => v ?? IsoGender.NotApplicable;

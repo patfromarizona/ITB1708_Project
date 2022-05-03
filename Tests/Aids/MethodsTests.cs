@@ -3,7 +3,7 @@ using TeamUP.Aids;
 
 namespace TeamUP.Tests.Aids
 {
-    [TestClass] public class MethodsTests : IsTypeTested 
+    [TestClass] public class MethodsTests : TypeTests 
     {
         [TestMethod] public void HasAttributeTest()
         {

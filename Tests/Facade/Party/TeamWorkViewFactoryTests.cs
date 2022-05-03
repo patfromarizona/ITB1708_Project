@@ -41,7 +41,7 @@ namespace TeamUP.Tests.Facade.Party
             areEqual(e.Description, v.Description);
             areEqual(e.Deadline, v.Deadline);
             areEqual(e.TeamSize, v.TeamSize);
-            areEqual(e.Done, e.Done);
+            areEqual(e.Done, v.Done);
             areNotEqual(e.ToString(), v.Overview);
         }
     }

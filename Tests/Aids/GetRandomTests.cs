@@ -6,7 +6,7 @@ using TeamUP.Data.Party;
 
 namespace TeamUP.Tests.Aids
 {
-    [TestClass] public class GetRandomTests : IsTypeTested
+    [TestClass] public class GetRandomTests : TypeTests
     {
         private void test<T>(T min, T max) where T : IComparable<T>
         {
@@ -64,18 +64,8 @@ namespace TeamUP.Tests.Aids
         [TestMethod] public void CharTest(char min, char max) => test(min, max);
 
 
-        [TestMethod] public void BoolTest()
-        {
-            var x = GetRandom.Bool();
-            var y = GetRandom.Bool();
-            var i = 0;
-            while (x == y)
-            {
-                y = GetRandom.Bool();
-                if (i == 5) areNotEqual(x, y);
-                i++;
-            }
-        }
+        [TestMethod] public void BoolTest() => test(() => GetRandom.Bool()); 
+
 
         [DynamicData(nameof(DateTimeValues), DynamicDataSourceType.Property)]
         [TestMethod] public void DatetimeTest(DateTime min, DateTime max) => test(min, max);
@@ -106,6 +96,44 @@ namespace TeamUP.Tests.Aids
             areNotEqual(x.Age, y.Age, nameof(x.Age));
             areNotEqual(x.YearInUniversity, y.YearInUniversity, nameof(x.YearInUniversity));
         }
+
+        [TestMethod] public void EnumOfGenericTest() => test(() => GetRandom.EnumOf<IsoGender>());
+
+
+        [DataRow(typeof(IsoGender))]
+        [TestMethod] public void EnumOfTest(Type t) => test(() => GetRandom.EnumOf(t)); 
+
+        private static void test<T>(Func<T> f,int count = 5)
+        {
+            var x = f();
+            var y = f();
+            var i = 0;
+            while (x.Equals(y))
+            {
+                y = f();
+                if (i == count) areNotEqual(x, y);
+                i++;
+            }
+        }
+
+        [DataRow(typeof(bool?), false)]
+        [DataRow(typeof(int?), false)]
+        [DataRow(typeof(decimal?), false)]
+        [DataRow(typeof(string), false)]
+        [DataRow(typeof(IsoGender?), false)]
+        [DataRow(typeof(IsoGender), true)]
+        [DataRow(typeof(DateTime?), false)]
+        [TestMethod] public void IsEnumTest(Type t, bool expected) 
+            => areEqual(expected, GetRandom.isEnum(t));
+
+        [DataRow(typeof(bool?), typeof(bool))]
+        [DataRow(typeof(int?), typeof(int))]
+        [DataRow(typeof(decimal?), typeof(decimal))]
+        [DataRow(typeof(string), typeof(string))]
+        [DataRow(typeof(IsoGender?), typeof(IsoGender))]
+        [DataRow(typeof(DateTime?), typeof(DateTime))]
+        [TestMethod] public void GetUnderlyingTypeTest(Type nullable, Type expected)
+            => areEqual(expected, GetRandom.getUnderlyingType(nullable));
 
     }
 }

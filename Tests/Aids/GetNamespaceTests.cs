@@ -4,7 +4,7 @@ using TeamUP.Data.Party;
 
 namespace TeamUP.Tests.Aids
 {
-    [TestClass] public class GetNamespaceTests : IsTypeTested 
+    [TestClass] public class GetNamespaceTests : TypeTests 
     {
         [TestMethod]
         public void OfTypeTest()

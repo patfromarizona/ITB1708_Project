@@ -2,5 +2,5 @@
 
 namespace TeamUP.Tests.Infra
 {
-    [TestClass] public class IsInfraTested : IsAssemblyTested { }
+    [TestClass] public class IsInfraTested : AssemblyTests { }
 }

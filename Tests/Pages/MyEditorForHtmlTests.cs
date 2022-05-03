@@ -2,5 +2,5 @@
 
 namespace TeamUP.Tests.Pages
 {
-    [TestClass] public class MyEditorForHtmlTests : IsTypeTested { }
+    [TestClass] public class MyEditorForHtmlTests : TypeTests { }
 }
