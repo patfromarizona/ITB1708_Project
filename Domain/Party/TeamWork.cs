@@ -14,7 +14,7 @@ namespace TeamUP.Domain.Party
         public DateTime Deadline => getValue(Data?.Deadline);
         public override string ToString() => $"{Name} {Description} ({TeamSize} student(s), {Done}) {Deadline}";
 
-        public List<TeamWorkStudent> TeamWorkStudents => GetRepo.Instance<ITeamWorkStudentRepo>()
+        public List<TeamWorkStudent> TeamWorkStudents => GetRepo.Instance<ITeamWorkStudentRepo>()?
             .GetAll(x => x.TeamWorkId)?
             .Where(x => x.TeamWorkId == Id)?
             .ToList()?? new List<TeamWorkStudent>();

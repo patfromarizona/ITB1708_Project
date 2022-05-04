@@ -4,7 +4,7 @@ using TeamUP.Aids;
 
 namespace TeamUP.Tests.Aids
 {
-    [TestClass] public class CharsTests : IsTypeTested 
+    [TestClass] public class CharsTests : TypeTests 
     {
         private char letter;
         private char digit;

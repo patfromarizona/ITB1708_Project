@@ -6,7 +6,7 @@ using TeamUP.Aids;
 
 namespace TeamUP.Tests
 {
-    public abstract class BaseTests<TClass, TBaseClass> : IsTypeTested
+    public abstract class BaseTests<TClass, TBaseClass> : TypeTests
         where TClass : class
         where TBaseClass : class
     {

@@ -1,5 +1,6 @@
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
+
 
 // In SDK-style projects such as this one, several assembly attributes that were historically
 // defined in this file are now automatically added during build and populated with
@@ -15,5 +16,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM.
 
-[assembly: Guid("ebf0039b-38c6-42fd-8d4d-82ee8218bcca")]
-[assembly: InternalsVisibleTo("TeamUP.Tests")]
+
+[assembly: Guid("3c17a2d5-b8d3-4861-b7f5-e9697b577065")]
+[assembly: InternalsVisibleTo("TeamUP.Tests")] 
+

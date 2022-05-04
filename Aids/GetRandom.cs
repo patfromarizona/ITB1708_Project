@@ -69,8 +69,8 @@ namespace TeamUP.Aids
             var values = Enum.GetValues(t);
             var max = values.Length - 1;
             var i = Int32(0, max);
-            return values.GetValue(i);
-        }
+            return values.GetValue(i);        }
+      
         internal static bool isEnum(Type t) => t.IsEnum;
 
         public static dynamic? Value(Type t)
@@ -90,7 +90,9 @@ namespace TeamUP.Aids
         internal static Type getUnderlyingType(Type t)
         {
             var x = Nullable.GetUnderlyingType(t);
+
             return (x is not null) ? x : t;
+
         }
 
         private static T? tryGetObject<T>()

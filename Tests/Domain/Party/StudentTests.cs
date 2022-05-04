@@ -8,7 +8,7 @@ namespace TeamUP.Tests.Domain.Party
 {
     [TestClass] public class StudentTests : SealedClassTests<Student, Entity<StudentData>> {
 
-        protected override Student createObj() => new Student(GetRandom.Value<StudentData>());
+        protected override Student createObj() => new(GetRandom.Value<StudentData>());
         [TestMethod] public void FirstNameTest() => isReadOnly(obj.Data.FirstName);
         [TestMethod] public void LastNameTest() => isReadOnly(obj.Data.LastName);
         [TestMethod] public void AgeTest() => isReadOnly(obj.Data.Age);

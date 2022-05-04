@@ -3,5 +3,5 @@
 namespace TeamUP.Tests.Aids
 {
     [TestClass]
-    public class IsAidsTested : IsAssemblyTested { }
+    public class IsAidsTested : AssemblyTests { }
 }

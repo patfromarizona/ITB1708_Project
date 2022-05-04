@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace TeamUP.Tests.Soft
 {
     [TestClass]
-    public class IsSoftTested : IsAssemblyTested
+    public class IsSoftTested : AssemblyTests
     {
         protected override void isAllTested() => isInconclusive("Namespace has to be changed to \"TeamUP.Soft\" ");
     }

@@ -18,6 +18,11 @@ namespace TeamUP.Facade.Party
     public sealed class TeamWorkViewFactory : BaseViewFactory<TeamWorkView, TeamWork, TeamWorkData>
     {
         protected override TeamWork toEntity(TeamWorkData d) => new(d);
+        public override TeamWork Create(TeamWorkView? v)
+        {
+            v ??= new TeamWorkView();
+            return base.Create(v);
+        }
         public override TeamWorkView Create(TeamWork? e)
         {
             var v = base.Create(e);
