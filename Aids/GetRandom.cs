@@ -19,10 +19,10 @@ namespace TeamUP.Aids
         }
         public static long Int64(long? min = null, long? max = null)
         {
-           var minVal =  min?? - 1000L;
-           var maxVal = max ?? 1000L;
-           minFirst(ref minVal, ref maxVal);
-           return Random.Shared.NextInt64(minVal, maxVal);
+            var minVal = min ?? -1000L;
+            var maxVal = max ?? 1000L;
+            minFirst(ref minVal, ref maxVal);
+            return Random.Shared.NextInt64(minVal, maxVal);
         }
         public static double Double(double? min = null, double? max = null)
         {
@@ -30,7 +30,7 @@ namespace TeamUP.Aids
             var maxVal = max ?? 1000.0;
             minFirst(ref minVal, ref maxVal);
             return minVal + (Random.Shared.NextDouble() * (maxVal - minVal));
-        } 
+        }
         public static char Char(char min = char.MinValue, char max = char.MaxValue) => (char)Int64(min, max);
         public static bool Bool() => Int32() % 2 == 0;
         public static DateTime Datetime(DateTime? min = null, DateTime? max = null)
@@ -48,7 +48,7 @@ namespace TeamUP.Aids
             for (var i = 0; i < lenght; i++) s += Char('a', 'z');
             return s;
         }
-        public static dynamic? Value<T>(T? min=default, T? max=default)
+        public static dynamic? Value<T>(T? min = default, T? max = default)
         {
             var t = getUnderlyingType(typeof(T));
             if (typeof(T) == typeof(bool)) return Bool();
@@ -67,10 +67,10 @@ namespace TeamUP.Aids
         {
             if (!t.IsEnum) return null;
             var values = Enum.GetValues(t);
-            var max = values.Length-1;
+            var max = values.Length - 1;
             var i = Int32(0, max);
-            return values.GetValue(i); 
-        }
+            return values.GetValue(i);        }
+      
         internal static bool isEnum(Type t) => t.IsEnum;
 
         public static dynamic? Value(Type t)
@@ -90,15 +90,17 @@ namespace TeamUP.Aids
         internal static Type getUnderlyingType(Type t)
         {
             var x = Nullable.GetUnderlyingType(t);
-            return (x is not null)? x : t;
+
+            return (x is not null) ? x : t;
+
         }
 
         private static T? tryGetObject<T>()
         {
             var o = tryCreate<T>();
-            foreach(var pi in o?.GetType()?.GetProperties() ?? Array.Empty<PropertyInfo>())
+            foreach (var pi in o?.GetType()?.GetProperties() ?? Array.Empty<PropertyInfo>())
             {
-                if(!pi.CanWrite) continue;
+                if (!pi.CanWrite) continue;
                 var v = Value(pi.PropertyType);
                 pi.SetValue(o, v, null);
 
@@ -107,10 +109,10 @@ namespace TeamUP.Aids
         }
 
         private static T? tryCreate<T>() =>
-        Safe.Run(() => 
+        Safe.Run(() =>
         {
             var c = typeof(T).GetConstructor(Array.Empty<Type>());
-            return ( c?.Invoke(null) is T t) ? t: default;
+            return (c?.Invoke(null) is T t) ? t : default;
         });
     }
 }
