@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TeamUP.Tests.AssertsTests">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIACAAABAAAAMAAAAABAACAAAAQAAAACAAAAAA=</HashCode>
+      <FileName>AssertsTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.TestsHost">
+    <Position X="2" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABCAACAAAAAAAAAQAAgABAAAAAA=</HashCode>
+      <FileName>TestsHost.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.AssemblyTests">
+    <Position X="4.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABIAcgIAAECAFCgGAQBwCAAAIApAAAwEAAEIIAgCAA=</HashCode>
+      <FileName>AssemblyTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.TypeTests">
+    <Position X="2" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABIAkgAAAAIABCAiAAA0AAQAYApAwCABAEEAAAgAAA=</HashCode>
+      <FileName>TypeTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.Aids.IsAidsTested" Collapsed="true">
+    <Position X="7.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Aids\IsAidsTested.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.Core.IsCoreTested" Collapsed="true">
+    <Position X="9.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\IsCoreTested.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.Data.IsDataTested" Collapsed="true">
+    <Position X="11.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\IsDataTested.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.Domain.IsDomainTested" Collapsed="true">
+    <Position X="14" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\IsDomainTested.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.Facade.IsFacadeTested" Collapsed="true">
+    <Position X="16.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Facade\IsFacadeTested.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.Infra.IsInfraTested" Collapsed="true">
+    <Position X="18.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infra\IsInfraTested.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.Pages.IsPagesTested" Collapsed="true">
+    <Position X="20.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\IsPagesTested.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.Soft.IsSoftTested" Collapsed="true">
+    <Position X="23" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Soft\IsSoftTested.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.BaseTests&lt;TClass, TBaseClass&gt;">
+    <Position X="2" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAABIAABAACAABABAAAAAAESAAQIAAAAAAA=</HashCode>
+      <FileName>BaseTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.AbstractClassTests&lt;TClass, TBaseClass&gt;">
+    <Position X="1" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>AbstractClassTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUP.Tests.SealedClassTests&lt;TClass, TBaseClass&gt;">
+    <Position X="3.25" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>SealedClassTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

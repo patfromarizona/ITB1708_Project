@@ -15,6 +15,11 @@ namespace TeamUP.Infra
             set = s;
         }
 
+        internal void clear() 
+        {
+            set?.RemoveRange(set);
+            db?.SaveChanges();
+        }
         public abstract bool Add(TDomain obj);
         public abstract Task<bool> AddAsync(TDomain obj);
         public abstract bool Delete(string id);

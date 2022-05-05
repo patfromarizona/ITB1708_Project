@@ -1,74 +1,12 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Soft.Data;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Reflection;
 using TeamUP.Aids;
-using TeamUP.Infra;
 
 namespace TeamUP.Tests
 {
-    public class TestHost<TProgram> : WebApplicationFactory<TProgram> where TProgram : class 
-    {
-        protected override void ConfigureWebHost(IWebHostBuilder b)
-        {
-            base.ConfigureWebHost(b);
-            b.ConfigureTestServices(s =>
-               {
-                   removeDb<ApplicationDbContext>(s);
-                   removeDb<TeamUPDb>(s);
-                   s.AddEntityFrameworkInMemoryDatabase();
-                   addDb<ApplicationDbContext>(s);
-                   addDb<TeamUPDb>(s);
-                   ensureCreated(s, typeof(ApplicationDbContext), typeof(TeamUPDb));
-               }
-            );
-        }
-
-        private static void ensureCreated(IServiceCollection s, params Type[] types)
-        {
-            var sp = s.BuildServiceProvider();
-            using var scope = sp.CreateScope();
-            var scopedServices = scope.ServiceProvider;
-            foreach (var type in types) ensureCreated(scopedServices, type);
-        }
-
-        private static void ensureCreated(IServiceProvider s, Type t)
-        {
-            if (s?.GetRequiredService(t) is not DbContext c)
-                throw new ApplicationException($"DBContext {t} not found");
-            c?.Database?.EnsureCreated();
-            if (!c?.Database?.IsInMemory() ?? false)
-                throw new ApplicationException($"DBContext {t} is not in memory");
-        }
-
-        private static void addDb<T>(IServiceCollection s) where T : DbContext
-            => s.AddDbContext<T>(o => { o.UseInMemoryDatabase("Tests"); }); 
-
-        private static void removeDb<T>(IServiceCollection s) where T : DbContext
-        {
-            var descriptor = s?.SingleOrDefault( d => d.ServiceType == typeof(DbContextOptions<T>));
-            if(descriptor is not null) {s?.Remove(descriptor);}
-        }
-    }
-    public class TestsHost : AssertsTests
-    {
-        internal static readonly TestHost<Program> host;
-        internal static readonly HttpClient client;
-        static TestsHost()
-        {
-            host = new TestHost<Program>();
-            client = host.CreateClient();
-        }
-    }
-    public class TypeTests : TestsHost
+    public abstract class TypeTests : TestsHost
     {
         private string? nameOfTest;
         private string? nameOfType;

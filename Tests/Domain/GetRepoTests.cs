@@ -19,9 +19,11 @@ namespace TeamUP.Tests.Domain
             => Assert.IsInstanceOfType(GetRepo.Instance<IStudentsRepo>(), typeof(StudentsRepo));
         [TestMethod] public void SetServiceTest() 
         {
+            var s = GetRepo.service;
             var x = new testClass();
             GetRepo.SetService(x);
             areEqual(x, GetRepo.service);
+            GetRepo.service = s;
         }
     }
 }

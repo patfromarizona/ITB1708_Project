@@ -9,5 +9,7 @@ namespace TeamUP.Domain.Party
         public Location(LocationData d) : base(d) { }
         public string Country => getValue(Data?.Country);
         public string Currency => getValue(Data?.Currency);
+
+        public Location? Loca => GetRepo.Instance<ILocationsRepo>()?.Get(Id);
     }
 }

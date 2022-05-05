@@ -2,5 +2,5 @@
 
 namespace TeamUP.Tests.Domain
 {
-    [TestClass] public class StudentTests : IsTypeTested { }
+    [TestClass] public class StudentTests : TypeTests { }
 }

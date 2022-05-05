@@ -10,5 +10,8 @@ namespace TeamUP.Domain.Party
         public UniversityStudent(UniversityStudentData d) : base(d) { }
         public string UniversityId => getValue(Data?.UniversityId);
         public string StudentId => getValue(Data?.StudentId);
+
+        public University? University => GetRepo.Instance<IUniversitiesRepo>()?.Get(UniversityId);
+        public Student? Student => GetRepo.Instance<IStudentsRepo>()?.Get(StudentId);
     }
 }

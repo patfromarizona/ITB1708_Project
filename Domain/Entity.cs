@@ -14,13 +14,13 @@ namespace TeamUP.Domain
         protected static int getValue(int? v) => v ?? defaultInt;
         protected static IsoGender getValue(IsoGender? v) => v ?? IsoGender.NotApplicable;
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
+        public abstract string Id { get; }
     }
     public abstract class Entity<TData>: Entity where TData: EntityData, new()
     {
-        private readonly TData data;
-        public TData Data => data;
+        public TData Data { get; }
         public Entity() : this(new TData()) { }
-        public Entity(TData d) => data = d;
-        public string Id => getValue(Data?.Id);
+        public Entity(TData d) => Data = d;
+        public override string Id => getValue(Data?.Id);
     }
 }
