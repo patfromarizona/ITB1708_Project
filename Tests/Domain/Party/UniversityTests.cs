@@ -12,7 +12,11 @@ namespace TeamUP.Tests.Domain.Party
         [TestMethod] public void StudentsAmountTest() => isReadOnly(obj.Data.StudentsAmount);
         [TestMethod] public void CostOfStudyingTest() => isReadOnly(obj.Data.CostOfStudying);
         [TestMethod] public void CurrencyTest() => isReadOnly(obj.Data.Currency);
-        [TestMethod] public void ToStringTest() => isInconclusive();
+        [TestMethod] public void ToStringTest()
+        {
+            var expected = $"{obj.Name}, {obj.Location}, {obj.StudentsAmount} students (average price: {obj.CostOfStudying} {obj.Currency} / year)";
+            areEqual(expected, obj.ToString());
+        }
         [TestMethod] public void UniversityStudentsTest() => testItems<IUniversityStudentRepo, UniversityStudent, UniversityStudentData>(
            d => d.UniversityId = obj.Id, d => new UniversityStudent(d), () => obj.UniversityStudents);
         [TestMethod] public void StudentTest() => isInconclusive();

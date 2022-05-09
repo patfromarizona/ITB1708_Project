@@ -86,5 +86,35 @@ namespace TeamUP.Tests
                 equalProperties(d, y);
             }
         }
+        protected void relatedItemsTest<TRepo, TRelatedItem, TItem, TData>
+            (Action relatedTest,
+            Func<List<TRelatedItem>> relatedItems,
+            Func<List<TItem?>> items,
+            Func<TRelatedItem, string> detailId,
+            Func<TData, TItem> toObj,
+            Func<TItem?, TData?> toData,
+            Func<TRelatedItem?, TData> relatedToData)
+            where TRepo : class, IRepo<TItem>
+            where TItem : Entity
+            where TRelatedItem : Entity
+        {
+            relatedTest();
+            var l = relatedItems();
+            var r = GetRepo.Instance<TRepo>();
+
+            foreach (var e in l)
+            {
+                var x = GetRandom.Value<TData>();
+                if (x is not null) x.Id = detailId(e);
+                r?.Add(toObj(x));
+            }
+            var s = items();
+            areEqual(l.Count, s.Count);
+            foreach (var e in l)
+            {
+                var a = s.Find(x => x.Id == detailId(e));
+                arePropertiesEqual(toData(a), relatedToData(e));
+            }
+        }
     }
 }

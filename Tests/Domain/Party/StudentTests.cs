@@ -18,13 +18,26 @@ namespace TeamUP.Tests.Domain.Party
         [TestMethod] public void AgeTest() => isReadOnly(obj.Data.Age);
         [TestMethod] public void GenderTest() => isReadOnly(obj.Data.Gender);
         [TestMethod] public void YearInUniversityTest() => isReadOnly(obj.Data.YearInUniversity);
-        [TestMethod] public void ToStringTest() => isInconclusive();
+        [TestMethod] public void ToStringTest()
+        {
+            var expected = $"{obj.FirstName} {obj.LastName} ({obj.Gender.Description()}, {obj.Age} y.o.)";
+            areEqual(expected, obj.ToString());
+        }
         [TestMethod] public void TeamWorkStudentsTest() => testItems<ITeamWorkStudentRepo, TeamWorkStudent, TeamWorkStudentData>(
            d => d.StudentId = obj.Id, d => new TeamWorkStudent(d), () => obj.TeamWorkStudents);
-        [TestMethod] public void TeamWorkTest() => isInconclusive();
         [TestMethod] public void UniversityStudentsTest() => testItems<IUniversityStudentRepo, UniversityStudent, UniversityStudentData>(
            d => d.StudentId = obj.Id, d => new UniversityStudent(d), () => obj.UniversityStudents);
         [TestMethod] public void UniversityTest() => isInconclusive();
+
+        [TestMethod]
+        public void TeamWorkTest() => relatedItemsTest<ITeamWorksRepo, TeamWorkStudent, TeamWork, TeamWorkData>
+            (() => TeamWorkStudentsTest(),
+            () => obj.TeamWorkStudents,
+            () => obj.TeamWorks,
+            x => x.TeamWorkId,
+            d => new TeamWork(d),
+            t => t?.Data,
+            x => x?.TeamWork?.Data);
 
     }
 }

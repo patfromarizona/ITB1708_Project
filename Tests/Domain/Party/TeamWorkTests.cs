@@ -11,10 +11,22 @@ namespace TeamUP.Tests.Domain.Party
         [TestMethod] public void TeamSizeTest() => isReadOnly(obj.Data.TeamSize);
         [TestMethod] public void DoneTest() => isReadOnly(obj.Data.Done);
         [TestMethod] public void DeadlineTest() => isReadOnly(obj.Data.Deadline);
-        [TestMethod] public void ToStringTest() => isInconclusive();
+        [TestMethod] public void ToStringTest()
+        {
+            var expected = $"{obj.Name} {obj.Description} ({obj.TeamSize} student(s), {obj.Done}) {obj.Deadline}";
+            areEqual(expected, obj.ToString());
+        }
         [TestMethod] public void TeamWorkStudentsTest() => testItems<ITeamWorkStudentRepo, TeamWorkStudent, TeamWorkStudentData>(
            d => d.TeamWorkId = obj.Id, d => new TeamWorkStudent(d), () => obj.TeamWorkStudents);
-        [TestMethod] public void StudentTest() => isInconclusive();
+        [TestMethod] public void StudentTest() => relatedItemsTest<IStudentsRepo, TeamWorkStudent, Student, StudentData>
+            (() => TeamWorkStudentsTest(),
+            () => obj.TeamWorkStudents,
+            () => obj.Students,
+            x => x.TeamWorkId,
+            d => new Student(d),
+            s => s?.Data,
+            x => x?.Student?.Data);
+        
 
     }
 }
