@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Reflection;
 using TeamUP.Aids;
@@ -21,6 +23,21 @@ namespace TeamUP.Tests
             callingMethod ??= nameof(isProperty);
             var actual = getProperty(ref value, isReadOnly, callingMethod);
             areEqual(value, actual);
+        }
+        protected PropertyInfo? isDisplayNamed<T>(string? displayName = null, T? value = default, bool isReadOnly = false, string? callingMethod = null)
+        {
+            callingMethod ??= nameof(isDisplayNamed);
+            var pi = getPropertyInfo(callingMethod);
+            isProperty<T>(value, isReadOnly, callingMethod);
+            if (displayName is null) return pi;
+            var a = pi.GetAttribute<DisplayNameAttribute>();
+            areEqual(displayName, a?.DisplayName, nameof(DisplayNameAttribute));
+            return pi;
+        }
+        protected void isRequired<T>(string? displayName = null, T? value = default, bool isReadOnly = false, string? callingMethod = null)
+        {
+            var pi = isDisplayNamed(displayName, value, isReadOnly, nameof(isRequired));
+            isTrue(pi?.HasAttribute<RequiredAttribute>(), nameof(RequiredAttribute));
         }
         protected PropertyInfo? getPropertyInfo(string callingMethod)
         {

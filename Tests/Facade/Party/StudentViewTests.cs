@@ -10,12 +10,12 @@ namespace TeamUP.Tests.Facade.Party
     [TestClass]
     public class StudentViewTests : SealedClassTests<StudentView, BaseView>
     {
-        [TestMethod] public void IdTest() => isProperty<string>();
-        [TestMethod] public void FirstNameTest() => isProperty<string?>();
-        [TestMethod] public void LastNameTest() => isProperty<string?>();
+        [TestMethod] public void IdTest() => isRequired<string>();
+        [TestMethod] public void FirstNameTest() => isDisplayNamed<string?>("First Name");
+        [TestMethod] public void LastNameTest() => isDisplayNamed<string?>("Last Name");
         [TestMethod] public void GenderTest() => isProperty<IsoGender?>();
-        [TestMethod] public void AgeTest() => isProperty<int?>();
-        [TestMethod] public void YearInUniversityTest() => isProperty<int?>();
-        [TestMethod] public void FullNameTest() => isProperty<string>();
+        [TestMethod] public void AgeTest() => isDisplayNamed<int?>("Age");
+        [TestMethod] public void YearInUniversityTest() => isDisplayNamed<int?>("Year in University");
+        [TestMethod] public void FullNameTest() => isDisplayNamed<string?>("Full Name");
     }
 }

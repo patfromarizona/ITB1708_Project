@@ -23,14 +23,22 @@ namespace TeamUP.Tests.Domain.Party
             var expected = $"{obj.FirstName} {obj.LastName} ({obj.Gender.Description()}, {obj.Age} y.o.)";
             areEqual(expected, obj.ToString());
         }
-        [TestMethod] public void TeamWorkStudentsTest() => testItems<ITeamWorkStudentRepo, TeamWorkStudent, TeamWorkStudentData>(
+        [TestMethod] public void TeamWorkStudentsTest()
+            => testItems<ITeamWorkStudentRepo, TeamWorkStudent, TeamWorkStudentData>(
            d => d.StudentId = obj.Id, d => new TeamWorkStudent(d), () => obj.TeamWorkStudents);
-        [TestMethod] public void UniversityStudentsTest() => testItems<IUniversityStudentRepo, UniversityStudent, UniversityStudentData>(
+        [TestMethod] public void UniversityStudentsTest()
+            => testItems<IUniversityStudentRepo, UniversityStudent, UniversityStudentData>(
            d => d.StudentId = obj.Id, d => new UniversityStudent(d), () => obj.UniversityStudents);
-        [TestMethod] public void UniversityTest() => isInconclusive();
+        [TestMethod] public void UniversitiesTest() => relatedItemsTest<IUniversitiesRepo, UniversityStudent, University, UniversityData>
+            (() => UniversityStudentsTest(),
+            () => obj.UniversityStudents,
+            () => obj.Universities,
+            x => x.UniversityId,
+            d => new University(d),
+            t => t?.Data,
+            x => x?.University?.Data);
 
-        [TestMethod]
-        public void TeamWorkTest() => relatedItemsTest<ITeamWorksRepo, TeamWorkStudent, TeamWork, TeamWorkData>
+        [TestMethod] public void TeamWorksTest() => relatedItemsTest<ITeamWorksRepo, TeamWorkStudent, TeamWork, TeamWorkData>
             (() => TeamWorkStudentsTest(),
             () => obj.TeamWorkStudents,
             () => obj.TeamWorks,

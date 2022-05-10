@@ -11,5 +11,7 @@ namespace TeamUP.Tests.Facade
     {
         private class testClass : BaseView { }
         protected override BaseView createObj() => new testClass();
+
+        [TestMethod] public void IdTest() => isProperty<string>();
     }
 }
