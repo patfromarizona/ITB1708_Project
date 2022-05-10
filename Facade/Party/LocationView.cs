@@ -7,8 +7,8 @@ namespace TeamUP.Facade.Party
 {
     public sealed class LocationView : BaseView
     {
-        public string? Country { get; set; }
-        public string? Currency { get; set; }
+        [DisplayName("Country")] public string? Country { get; set; }
+        [DisplayName("Currency")] public string? Currency { get; set; }
     }
 
     public sealed class LocationViewFactory : BaseViewFactory<LocationView, Location, LocationData>

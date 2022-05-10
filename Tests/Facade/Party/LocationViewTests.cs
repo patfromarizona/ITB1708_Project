@@ -9,8 +9,9 @@ namespace TeamUP.Tests.Facade.Party
     [TestClass]
     public class LocationViewTests : SealedClassTests<LocationView, BaseView>
     {
-        [TestMethod] public void CountryTest() => isInconclusive();
-        [TestMethod] public void CurrencyTest() => isInconclusive();
+
+        [TestMethod] public void CountryTest() => isDisplayNamed<string?>("Country");
+        [TestMethod] public void CurrencyTest() => isDisplayNamed<string?>("Currency");
 
     }
 }

@@ -14,15 +14,13 @@ namespace TeamUP.Tests.Facade
             where TObj : Entity<TData>, new()
     {
         [TestMethod] public void CreateTest() { }
-        [TestMethod]
-        public void CreateViewTest()
+        [TestMethod] public void CreateViewTest()
         {
             var v = GetRandom.Value<TView>();
             var o = obj.Create(v);
             arePropertiesEqual(v, o.Data);
         }
-        [TestMethod]
-        public void CreateObjectTest()
+        [TestMethod] public void CreateObjectTest()
         {
             var d = GetRandom.Value<TData>();
             var v = obj.Create(toObject(d));

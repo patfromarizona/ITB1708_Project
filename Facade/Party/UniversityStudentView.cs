@@ -5,7 +5,7 @@ using TeamUP.Domain.Party;
 
 namespace TeamUP.Facade.Party
 {
-    public class UniversityStudentView : BaseView
+    public sealed class UniversityStudentView : BaseView
     {
         [Required] [DisplayName("Student")]  public string StudentId { get; set; } = string.Empty;
         [Required] [DisplayName("University")]  public string UniversityId { get; set; } = string.Empty;

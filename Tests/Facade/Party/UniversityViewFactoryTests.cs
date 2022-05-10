@@ -1,6 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Reflection;
 using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
 using TeamUP.Facade.Party;
@@ -8,10 +6,10 @@ using TeamUP.Facade.Party;
 namespace TeamUP.Tests.Facade.Party
 {
     [TestClass]
-    public class StudentViewFactoryTests
-        : ViewFactoryTests<StudentViewFactory, StudentView, Student, StudentData>
+    public class UniversityViewFactoryTests
+        : ViewFactoryTests<UniversityViewFactory, UniversityView, University, UniversityData>
     {
-        protected override Student toObject(StudentData d) => new(d);
+        protected override University toObject(UniversityData d) => new(d);
         [TestMethod] public void CreateTest() { }
     }
 }

@@ -10,6 +10,7 @@ namespace TeamUP.Tests.Facade.Party
     [TestClass]
     public class StudentViewTests : SealedClassTests<StudentView, BaseView>
     {
+
         [TestMethod] public void IdTest() => isRequired<string>();
         [TestMethod] public void FirstNameTest() => isDisplayNamed<string?>("First Name");
         [TestMethod] public void LastNameTest() => isDisplayNamed<string?>("Last Name");

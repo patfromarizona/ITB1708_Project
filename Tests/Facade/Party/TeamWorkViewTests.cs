@@ -9,12 +9,13 @@ namespace TeamUP.Tests.Facade.Party
     public class TeamWorkViewTests: SealedClassTests<TeamWorkView, BaseView>
     {
          
-        [TestMethod] public void IdTest() => isProperty<string>();
-        [TestMethod] public void NameTest() => isProperty<string?>();
-        [TestMethod] public void DescriptionTest() => isProperty<string?>();
-        [TestMethod] public void TeamSizeTest() => isProperty<int?>();
-        [TestMethod] public void DeadlineTest() => isProperty<DateTime?>();
-        [TestMethod] public void DoneTest() => isProperty < bool?>();
-        [TestMethod] public void OverviewTest() => isProperty<string? >();
+        [TestMethod] public void IdTest() => isRequired<string>();
+        [TestMethod] public void NameTest() => isDisplayNamed<string?>("Name");
+        [TestMethod] public void DescriptionTest() => isDisplayNamed<string?>("Description");
+        [TestMethod] public void TeamSizeTest() => isDisplayNamed<int?>("Team Size");
+        [TestMethod] public void DeadlineTest() => isDisplayNamed<DateTime?>("Deadline");
+        [TestMethod] public void DoneTest() => isDisplayNamed<bool?>("Done");
+        [TestMethod] public void OverviewTest() => isDisplayNamed<string?>("Overview");
     }
+
 }

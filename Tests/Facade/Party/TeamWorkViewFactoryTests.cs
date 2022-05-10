@@ -9,10 +9,10 @@ using TeamUP.Facade.Party;
 
 namespace TeamUP.Tests.Facade.Party
 {
-    [TestClass]
-    public class TeamWorkViewFactoryTests : ViewFactoryTests<TeamWorkViewFactory, TeamWorkView, TeamWork, TeamWorkData>
+    [TestClass] public class TeamWorkViewFactoryTests : ViewFactoryTests<TeamWorkViewFactory, TeamWorkView, TeamWork, TeamWorkData>
     {
         protected override TeamWork toObject(TeamWorkData d) => new(d);
+        [TestMethod] public void CreateTest() { }
     }
 
 }
