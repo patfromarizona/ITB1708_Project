@@ -8,7 +8,6 @@ namespace TeamUP.Tests.Facade.Party
     {
         [TestMethod] public void StudentIdTest() => isDisplayNamed<string>("Student");
         [TestMethod] public void TeamWorkIdTest() => isDisplayNamed<string?>("TeamWork");
-
     }
 
 }
