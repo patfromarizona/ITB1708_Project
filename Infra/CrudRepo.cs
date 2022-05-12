@@ -108,6 +108,6 @@ namespace TeamUP.Infra
             }
 
         }
-        protected abstract TDomain toDomain(TData d);
+        protected internal abstract TDomain toDomain(TData d);
     }
 }

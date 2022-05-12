@@ -3,19 +3,19 @@ using TeamUP.Domain.Party;
 
 namespace TeamUP.Infra.Party
 {
-    public class UniversityStudentRepo : Repo<UniversityStudent, UniversityStudentData>, IUniversityStudentRepo
+    public sealed class UniversityStudentRepo : Repo<UniversityStudent, UniversityStudentData>, IUniversityStudentRepo
     {
         public UniversityStudentRepo(TeamUPDb? db) : base(db, db?.UniversityStudent) { }
-        protected override UniversityStudent toDomain(UniversityStudentData d) => new(d);
+        protected internal override UniversityStudent toDomain(UniversityStudentData d) => new(d);
 
         internal override IQueryable<UniversityStudentData> addFilter(IQueryable<UniversityStudentData> q)
         {
             var y = CurrentFilter;
             if (string.IsNullOrWhiteSpace(y)) return q;
             return q.Where(
-            x => contains(x.Id, y)
-            || contains(x.UniversityId, y)
-            || contains(x.StudentId, y));
+            x => x.Id.Contains(y)
+            || x.UniversityId.Contains(y)
+            || x.StudentId.Contains(y));
         }
     }
 }

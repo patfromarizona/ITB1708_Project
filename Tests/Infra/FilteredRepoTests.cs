@@ -6,13 +6,13 @@ using TeamUP.Domain.Party;
 
 namespace TeamUP.Tests.Infra
 {
-    [TestClass] public class RepoTests : AbstractClassTests<Repo<Student, StudentData>, PagedRepo<Student, StudentData>>
+    [TestClass] public class FilteredRepoTests : AbstractClassTests<FilteredRepo<Student, StudentData>, CrudRepo<Student, StudentData>>
     {
-        private class testClass : Repo<Student, StudentData>
+        private class testClass : FilteredRepo<Student, StudentData>
         {
             public testClass(DbContext? c, DbSet<StudentData>? s) : base(c, s) { }
             protected internal override Student toDomain(StudentData d) => new(d);
         }
-        protected override Repo<Student, StudentData> createObj() => new testClass(null, null);
+        protected override FilteredRepo<Student, StudentData> createObj() => new testClass(null, null);
     }
 }

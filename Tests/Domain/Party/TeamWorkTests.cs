@@ -26,7 +26,7 @@ namespace TeamUP.Tests.Domain.Party
             (() => TeamWorkStudentsTest(),
             () => obj.TeamWorkStudents,
             () => obj.Students,
-            x => x.TeamWorkId,
+            x => x.StudentId,
             d => new Student(d),
             s => s?.Data,
             x => x?.Student?.Data);

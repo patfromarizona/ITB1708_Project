@@ -7,8 +7,8 @@ namespace TeamUP.Infra
     public abstract class BaseRepo<TDomain, TData> : IBaseRepo<TDomain> 
         where TDomain : Entity<TData>, new() where TData : EntityData, new()
     {
-        protected readonly DbContext? db;
-        protected readonly DbSet<TData>? set;
+        protected internal readonly DbContext? db;
+        protected internal readonly DbSet<TData>? set;
         protected BaseRepo(DbContext? c, DbSet<TData>? s)
         {
             db = c;
