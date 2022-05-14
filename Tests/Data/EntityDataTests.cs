@@ -6,7 +6,7 @@ using TeamUP.Data;
 
 namespace TeamUP.Tests.Data
 {
-    [TestClass] public class EntityDataTests : AbstractClassTests<EntityData, EntityData>
+    [TestClass] public class EntityDataTests : AbstractClassTests<EntityData, object>
     {
         private class testClass : EntityData { }
         protected override EntityData createObj() => new testClass();
