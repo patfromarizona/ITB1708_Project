@@ -95,7 +95,11 @@ namespace TeamUP.Tests
             }
             isTrue(hasProperties, $"No properties found for {x}");
         }
-       
+        protected void isAbstractMethod(string name, params Type[] args)
+        {
+            var mi = typeof(TClass).GetMethod(name, args); 
+            areEqual(true, mi?.IsAbstract, name);
+        }
         [TestMethod] public void BaseClassTest() => areEqual(typeof(TClass).BaseType, typeof(TBaseClass));
     }
 }
