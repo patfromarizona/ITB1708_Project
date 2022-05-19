@@ -15,6 +15,11 @@ namespace TeamUP.Tests
      where TClass : class
      where TBaseClass : class
     {
+        private readonly BindingFlags allFlags = BindingFlags.Public |
+            BindingFlags.NonPublic |
+            BindingFlags.Instance |
+            BindingFlags.Static;
+
         protected TClass obj;
         protected BaseTests() => obj = createObj();
         protected abstract TClass createObj();
@@ -42,7 +47,7 @@ namespace TeamUP.Tests
         protected PropertyInfo? getPropertyInfo(string callingMethod)
         {
             var memberName = getCallingMember(callingMethod).Replace("Test", string.Empty);
-            return obj.GetType().GetProperty(memberName);
+            return obj.GetType().GetProperty(memberName, allFlags);
         }
         protected object? getProperty<T>(ref T? value, bool isReadOnly, string callingMethod)
         {

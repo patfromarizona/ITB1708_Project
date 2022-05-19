@@ -3,7 +3,7 @@ using TeamUP.Data.Party;
 
 namespace TeamUP.Infra.Initializers
 {
-    internal class LocationsInitializer : BaseInitializer<LocationData>
+    public sealed class LocationsInitializer : BaseInitializer<LocationData>
     {
         public LocationsInitializer(TeamUPDb? db) : base(db, db?.Locations) { }
 

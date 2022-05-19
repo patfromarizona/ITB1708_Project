@@ -4,7 +4,7 @@ using TeamUP.Data.Party;
 namespace TeamUP.Domain.Party
 {
     public interface IStudentsRepo : IRepo<Student> { }
-    public sealed class Student : Entity<StudentData>
+    public sealed class Student : Entity<StudentData>, IComparable
     {
         public Student() : this(new ()) { }
         public Student(StudentData d) : base(d) { }
@@ -14,6 +14,10 @@ namespace TeamUP.Domain.Party
         public IsoGender Gender => getValue(Data?.Gender);
         public int YearInUniversity => getValue(Data?.YearInUniversity);
         public override string ToString() => $"{FirstName} {LastName} ({Gender.Description()}, {Age} y.o.)";
+
+        public int CompareTo(object? x) => compareTo(x as Student);
+
+        private int compareTo(Student? s) => FirstName.CompareTo(s.FirstName);
 
         public List<TeamWorkStudent> TeamWorkStudents
             => GetRepo.Instance<ITeamWorkStudentRepo>()?

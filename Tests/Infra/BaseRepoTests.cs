@@ -6,6 +6,8 @@ using TeamUP.Domain.Party;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
+using TeamUP.Domain;
+using TeamUP.Aids;
 
 namespace TeamUP.Tests.Infra
 {
@@ -28,10 +30,31 @@ namespace TeamUP.Tests.Infra
         }
         protected override BaseRepo<Student, StudentData> createObj() => new testClass(null, null);
 
-        [TestMethod] public void DbTest() => isInconclusive();
-        [TestMethod] public void SetTest() => isInconclusive();
-        [TestMethod] public void BaseRepoTest() => isInconclusive();
-        [TestMethod] public void ClearTest() => isInconclusive();
+        [TestMethod] public void dbTest() => isReadOnly<DbContext?>();
+        [TestMethod] public void setTest() => isReadOnly<DbSet<StudentData>?>();
+        [TestMethod] public void BaseRepoTest()
+        {
+            var db = GetRepo.Instance<TeamUPDb>();
+            var set = db?.Students;
+            isNotNull(set);
+            obj = new testClass(db, set);
+            areEqual(db, obj.db);
+            areEqual(set, obj.set);
+        }
+        [TestMethod] public async Task ClearTest() {
+            BaseRepoTest();
+            var cnt = GetRandom.Int32(5, 30);
+            var db = obj.db;
+            isNotNull(db);
+            var set = obj.set;
+            isNotNull(set);
+            for(var i = 0; i < cnt; i++) set.Add(GetRandom.Value<StudentData>());
+            areEqual(0, await set.CountAsync());
+            db.SaveChanges();
+            areEqual(cnt, await set.CountAsync());
+            obj.clear();
+            areEqual (0, await set.CountAsync());
+        }
         [TestMethod] public void AddTest() => isAbstractMethod(nameof(obj.Add), typeof(Student));
         [TestMethod] public void AddAssyncTest() => isAbstractMethod(nameof(obj.AddAsync), typeof(Student));
         [TestMethod] public void DeleteTest() =>  isAbstractMethod(nameof(obj.Delete), typeof(string));

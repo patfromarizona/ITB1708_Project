@@ -47,5 +47,15 @@ namespace TeamUP.Tests.Domain.Party
             t => t?.Data,
             x => x?.TeamWork?.Data);
 
+        [TestMethod] public void CompareToTest()
+        {
+            var dX = GetRandom.Value<StudentData>() as StudentData;
+            var dY = GetRandom.Value<StudentData>() as StudentData;
+            isNotNull(dX);
+            isNotNull(dY);
+            var expected = dX?.FirstName?.CompareTo(dY.FirstName);
+            areEqual(expected, new Student(dX).CompareTo(new Student(dY)));
+        }
+
     }
 }
