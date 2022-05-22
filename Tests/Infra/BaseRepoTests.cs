@@ -56,15 +56,15 @@ namespace TeamUP.Tests.Infra
             areEqual (0, await set.CountAsync());
         }
         [TestMethod] public void AddTest() => isAbstractMethod(nameof(obj.Add), typeof(Student));
-        [TestMethod] public void AddAssyncTest() => isAbstractMethod(nameof(obj.AddAsync), typeof(Student));
+        [TestMethod] public void AddAsyncTest() => isAbstractMethod(nameof(obj.AddAsync), typeof(Student));
         [TestMethod] public void DeleteTest() =>  isAbstractMethod(nameof(obj.Delete), typeof(string));
-        [TestMethod] public void DeleteAssyncTest() => isAbstractMethod(nameof(obj.DeleteAsync), typeof(string));
+        [TestMethod] public void DeleteAsyncTest() => isAbstractMethod(nameof(obj.DeleteAsync), typeof(string));
         [TestMethod] public void GetTest() => isAbstractMethod(nameof(obj.Get), typeof(string));
         [TestMethod] public void GetAllTest() => isAbstractMethod(nameof(obj.GetAll), typeof(Func<Student, dynamic>));
         [TestMethod] public void GetListTest() => isAbstractMethod(nameof(obj.Get));
-        [TestMethod] public void GetAssyncTest() => isAbstractMethod(nameof(obj.GetAsync), typeof(string));
-        [TestMethod] public void GetListAssyncTest() => isAbstractMethod(nameof(obj.GetAsync));
+        [TestMethod] public void GetAsyncTest() => isAbstractMethod(nameof(obj.GetAsync), typeof(string));
+        [TestMethod] public void GetListAsyncTest() => isAbstractMethod(nameof(obj.GetAsync));
         [TestMethod] public void UpdateTest() => isAbstractMethod(nameof(obj.Update), typeof(Student));
-        [TestMethod] public void UpdateAssyncTest() => isAbstractMethod(nameof(obj.UpdateAsync), typeof(Student));
+        [TestMethod] public void UpdateAsyncTest() => isAbstractMethod(nameof(obj.UpdateAsync), typeof(Student));
     }
 }

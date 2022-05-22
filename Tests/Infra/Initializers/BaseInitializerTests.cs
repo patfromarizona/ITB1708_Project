@@ -22,7 +22,8 @@ namespace TeamUP.Tests.Infra.Initializers
         protected override BaseInitializer<StudentData> createObj()
         {
             var db = GetRepo.Instance<TeamUPDb>();
-            return new StudentsInitializer(db);
+            var set = db?.Students;
+            return new testClass(db, set);
         }
     }
 }

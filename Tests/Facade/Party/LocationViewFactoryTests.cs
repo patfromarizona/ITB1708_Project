@@ -11,6 +11,5 @@ namespace TeamUP.Tests.Facade.Party
     public class LocationViewFactoryTests : ViewFactoryTests<LocationViewFactory, LocationView, Location, LocationData>
     {
         protected override Location toObject(LocationData d) => new(d);
-        [TestMethod] public void CreateTest() { }
     }
 }

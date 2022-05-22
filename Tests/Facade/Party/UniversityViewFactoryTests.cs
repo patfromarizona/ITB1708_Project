@@ -10,6 +10,5 @@ namespace TeamUP.Tests.Facade.Party
         : ViewFactoryTests<UniversityViewFactory, UniversityView, University, UniversityData>
     {
         protected override University toObject(UniversityData d) => new(d);
-        [TestMethod] public void CreateTest() { }
     }
 }

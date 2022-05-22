@@ -89,10 +89,7 @@ namespace TeamUP.Infra
 
         internal protected virtual IQueryable<TData> createSql() => from s in set select s;
 
-        public override bool Update(TDomain obj)
-        {
-            throw new NotImplementedException();
-        }
+        public override bool Update(TDomain obj) => UpdateAsync(obj).GetAwaiter().GetResult();
         public override async Task<bool> UpdateAsync(TDomain obj)
         {
             try

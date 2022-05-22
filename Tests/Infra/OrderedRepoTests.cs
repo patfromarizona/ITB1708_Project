@@ -48,9 +48,6 @@ namespace TeamUP.Tests.Infra
             else isTrue(actual.EndsWith(
                  $".Select(s => s).OrderBy(x => Convert(x.{s}, Object))"));
         }
-        [TestMethod] public void propertyNameTest() => isInconclusive();
-        [TestMethod] public void propertyInfoTest() => isInconclusive();
-        [TestMethod] public void lambdaExpressionTest() => isInconclusive();
         [DataRow(true, true)]
         [DataRow(false, false)]
         [DataRow(true, false)]

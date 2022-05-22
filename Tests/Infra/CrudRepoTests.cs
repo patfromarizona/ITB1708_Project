@@ -55,7 +55,7 @@ namespace TeamUP.Tests.Infra
             _ = obj.Add(s);
             areEqual(cnt + 1, await set.CountAsync());
         }
-        [TestMethod] public async Task AddAssyncTest() {
+        [TestMethod] public async Task AddAsyncTest() {
             isNotNull(s);
             isNotNull(set);
             await obj.AddAsync(s);
@@ -69,7 +69,7 @@ namespace TeamUP.Tests.Infra
             isNotNull(x);
             areNotEqual(d.Id, x.Id);
         }
-        [TestMethod] public async Task DeleteAssyncTest()
+        [TestMethod] public async Task DeleteAsyncTest()
         {
             await GetTest();
             await obj.DeleteAsync(d.Id);
@@ -124,13 +124,13 @@ namespace TeamUP.Tests.Infra
             isNotNull(l);
             areEqual(cnt, l.Count);
         }
-        [TestMethod] public async void GetAssyncTest() {
+        [TestMethod] public async Task GetAsyncTest() {
             await AddTest();
             isNotNull(d);
             var x = await obj.GetAsync(d.Id);
             arePropertiesEqual(d, x.Data);
         }
-        [TestMethod] public async Task GetListAssyncTest() {
+        [TestMethod] public async Task GetListAsyncTest() {
             var l = await obj.GetAsync();
             isNotNull(l);
             areEqual(cnt, l.Count);
@@ -147,7 +147,7 @@ namespace TeamUP.Tests.Infra
             var x = obj.Get(d.Id);
             arePropertiesEqual(dX, x.Data);
         }
-        [TestMethod] public async Task UpdateAssyncTest() {
+        [TestMethod] public async Task UpdateAsyncTest() {
             await GetTest();
             isNotNull(d);
             var dX = GetRandom.Value<StudentData>() as StudentData;
