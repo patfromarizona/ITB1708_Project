@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using TeamUP.Data;
 using TeamUP.Domain;
 

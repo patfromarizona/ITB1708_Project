@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
 

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-
-namespace TeamUP.Data.Party
+﻿namespace TeamUP.Data.Party
 {
     public sealed class TeamWorkData : EntityData
     {

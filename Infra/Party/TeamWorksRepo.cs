@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-using TeamUP.Data.Party;
-using TeamUP.Domain;
+﻿using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
 
 namespace TeamUP.Infra.Party
