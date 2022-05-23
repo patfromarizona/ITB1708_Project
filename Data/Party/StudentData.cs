@@ -1,7 +1,5 @@
-﻿namespace TeamUP.Data.Party
-{
-    public sealed class StudentData : EntityData
-    {
+﻿namespace TeamUP.Data.Party {
+    public sealed class StudentData : EntityData {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public IsoGender? Gender { get; set; }

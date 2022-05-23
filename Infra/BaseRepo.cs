@@ -2,21 +2,16 @@
 using TeamUP.Data;
 using TeamUP.Domain;
 
-namespace TeamUP.Infra
-{
-    public abstract class BaseRepo<TDomain, TData> : IBaseRepo<TDomain> 
-        where TDomain : Entity<TData>, new() where TData : EntityData, new()
-    {
+namespace TeamUP.Infra {
+    public abstract class BaseRepo<TDomain, TData> : IBaseRepo<TDomain>
+        where TDomain : Entity<TData>, new() where TData : EntityData, new() {
         protected internal DbContext? db { get; }
         protected internal DbSet<TData>? set { get; }
-        protected BaseRepo(DbContext? c, DbSet<TData>? s)
-        {
+        protected BaseRepo(DbContext? c, DbSet<TData>? s) {
             db = c;
             set = s;
         }
-
-        internal void clear() 
-        {
+        internal void clear() {
             set?.RemoveRange(set);
             db?.SaveChanges();
         }

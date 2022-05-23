@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Soft.Data;
 using TeamUP.Domain;
 using TeamUP.Domain.Party;
@@ -33,19 +31,16 @@ builder.Services.AddTransient<ITeamWorkStudentRepo, TeamWorkStudentRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+if (app.Environment.IsDevelopment()) {
     app.UseMigrationsEndPoint();
 }
-else
-{
+else {
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-using (var scope = app.Services.CreateScope())
-{
+using (var scope = app.Services.CreateScope()) {
     GetRepo.SetService(app.Services);
     var db = scope.ServiceProvider.GetService<TeamUPDb>();
     _ = db?.Database?.EnsureCreated();
@@ -54,12 +49,8 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapRazorPages();
-
 app.Run();

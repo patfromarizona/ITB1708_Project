@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
 
-namespace TeamUP.Facade.Party
-{
-    public sealed class UniversityView : BaseView
-    {
+namespace TeamUP.Facade.Party {
+    public sealed class UniversityView : BaseView {
         [DisplayName("University Name")] public string Name { get; set; } = string.Empty;
         [DisplayName("Location")] public string? Location { get; set; }
         [DisplayName("Amount of students")] public int? StudentsAmount { get; set; }
@@ -14,8 +11,7 @@ namespace TeamUP.Facade.Party
         [DisplayName("Currency")] public string? Currency { get; set; }
     }
 
-    public sealed class UniversityViewFactory : BaseViewFactory<UniversityView, University, UniversityData>
-    {
+    public sealed class UniversityViewFactory : BaseViewFactory<UniversityView, University, UniversityData> {
         protected override University toEntity(UniversityData d) => new(d);
     }
 }

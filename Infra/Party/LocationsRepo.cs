@@ -2,14 +2,11 @@
 using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
 
-namespace TeamUP.Infra.Party
-{
-    public sealed class LocationsRepo : Repo<Location, LocationData>, ILocationsRepo
-    {
+namespace TeamUP.Infra.Party {
+    public sealed class LocationsRepo : Repo<Location, LocationData>, ILocationsRepo {
         public LocationsRepo(TeamUPDb? db) : base(db, db?.Locations) { }
         protected internal override Location toDomain(LocationData d) => new(d);
-        internal override IQueryable<LocationData> addFilter(IQueryable<LocationData> q)
-        {
+        internal override IQueryable<LocationData> addFilter(IQueryable<LocationData> q) {
             var y = CurrentFilter;
             if (string.IsNullOrWhiteSpace(y)) return q;
             return q.Where(

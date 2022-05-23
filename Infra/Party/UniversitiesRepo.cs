@@ -2,15 +2,11 @@
 using TeamUP.Data.Party;
 using TeamUP.Domain.Party;
 
-namespace TeamUP.Infra.Party
-{
-    public sealed class UniversitiesRepo : Repo<University, UniversityData>, IUniversitiesRepo
-    {
+namespace TeamUP.Infra.Party {
+    public sealed class UniversitiesRepo : Repo<University, UniversityData>, IUniversitiesRepo {
         public UniversitiesRepo(TeamUPDb? db) : base(db, db?.Universities) { }
         protected internal override University toDomain(UniversityData d) => new(d);
-
-        internal override IQueryable<UniversityData> addFilter(IQueryable<UniversityData> q)
-        {
+        internal override IQueryable<UniversityData> addFilter(IQueryable<UniversityData> q) {
             var y = CurrentFilter;
             if (string.IsNullOrWhiteSpace(y)) return q;
             return q.Where(

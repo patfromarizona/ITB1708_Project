@@ -4,18 +4,13 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
 
-namespace TeamUP.Pages.Extensions
-{
-    public static class MyEditorForHtml
-    {
-        public static IHtmlContent MyEditorFor<TModel, TResult>(this IHtmlHelper<TModel> html, Expression<Func<TModel,TResult>> expression)
-        {
+namespace TeamUP.Pages.Extensions {
+    public static class MyEditorForHtml {
+        public static IHtmlContent MyEditorFor<TModel, TResult>(this IHtmlHelper<TModel> html, Expression<Func<TModel, TResult>> expression) {
             var s = htmlStrings(html, expression);
             return new HtmlContentBuilder(s);
         }
-
-        private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> html, Expression<Func<TModel, TResult>> expression)
-        {
+        private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> html, Expression<Func<TModel, TResult>> expression) {
             var l = new List<object>
             {
                 new HtmlString("<dl class=\"row\">"),

@@ -1,10 +1,8 @@
 ﻿using TeamUP.Data;
 using TeamUP.Data.Party;
 
-namespace TeamUP.Domain
-{
-    public abstract class Entity
-    {
+namespace TeamUP.Domain {
+    public abstract class Entity {
         public const string DefaultStr = "Underfined";
         private const bool defaultBool = false;
         private const int defaultInt = 1;
@@ -16,8 +14,7 @@ namespace TeamUP.Domain
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
         public abstract string Id { get; }
     }
-    public abstract class Entity<TData>: Entity where TData: EntityData, new()
-    {
+    public abstract class Entity<TData> : Entity where TData : EntityData, new() {
         public TData Data { get; }
         public Entity() : this(new TData()) { }
         public Entity(TData d) => Data = d;

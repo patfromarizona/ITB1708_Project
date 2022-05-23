@@ -2,11 +2,9 @@
 using TeamUP.Data;
 using TeamUP.Domain;
 
-namespace TeamUP.Infra
-{
+namespace TeamUP.Infra {
     public abstract class PagedRepo<TDomain, TData> : OrderedRepo<TDomain, TData>
-        where TDomain : Entity<TData>, new() where TData : EntityData, new()
-    {
+        where TDomain : Entity<TData>, new() where TData : EntityData, new() {
         internal int skippedItemsCount => PageSize * PageIndex;
         internal static int itemsCountInPage = 10;
 

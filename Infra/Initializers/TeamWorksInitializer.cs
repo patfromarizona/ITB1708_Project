@@ -1,15 +1,11 @@
 ﻿using TeamUP.Data.Party;
 
-namespace TeamUP.Infra.Initializers
-{
-    public sealed class TeamWorksInitializer : BaseInitializer<TeamWorkData>
-    {
+namespace TeamUP.Infra.Initializers {
+    public sealed class TeamWorksInitializer : BaseInitializer<TeamWorkData> {
         public TeamWorksInitializer(TeamUPDb? db) : base(db, db?.TeamWorks) { }
 
-        private TeamWorkData createTeamWork(string name, string description, bool done, int teamSize, DateTime deadline)
-        {
-            var teamWork = new TeamWorkData
-            {
+        private TeamWorkData createTeamWork(string name, string description, bool done, int teamSize, DateTime deadline) {
+            var teamWork = new TeamWorkData {
                 Id = name + "work",
                 Name = name,
                 Done = done,

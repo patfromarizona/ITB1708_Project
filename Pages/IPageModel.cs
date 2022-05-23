@@ -1,7 +1,5 @@
-﻿namespace TeamUP.Pages
-{
-    public interface IPageModel
-    {
+﻿namespace TeamUP.Pages {
+    public interface IPageModel {
         public int PageIndex { get; }
         public string? CurrentFilter { get; }
         public string? CurrentOrder { get; }

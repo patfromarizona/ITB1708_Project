@@ -2,23 +2,19 @@
 using TeamUP.Domain;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TeamUP.Pages
-{
+namespace TeamUP.Pages {
     public abstract class CrudPage<TView, TEntity, TRepo> : BasePage<TView, TEntity, TRepo>
         where TView : BaseView, new()
         where TEntity : Entity
-        where TRepo : ICrudRepo<TEntity>
-    {
-        protected virtual async Task<IActionResult> getItemPage(string id)
-        {
+        where TRepo : ICrudRepo<TEntity> {
+        protected virtual async Task<IActionResult> getItemPage(string id) {
             Item = await getItem(id);
             return Item == null ? NotFound() : Page();
         }
         protected CrudPage(TRepo r) : base(r) { }
 
         protected override IActionResult getCreate() => Page();
-        protected override async Task<IActionResult> postCreateAsync()
-        {
+        protected override async Task<IActionResult> postCreateAsync() {
             if (!ModelState.IsValid) return Page();
             await repo.AddAsync(toObject(Item));
             return redirectToIndex();
@@ -26,25 +22,21 @@ namespace TeamUP.Pages
         protected override async Task<IActionResult> getDetailsAsync(string id) => await getItemPage(id);
         protected override async Task<IActionResult> getDeleteAsync(string id) => await getItemPage(id);
         protected override async Task<IActionResult> getEditAsync(string id) => await getItemPage(id);
-        protected override async Task<IActionResult> postDeleteAsync(string id)
-        {
+        protected override async Task<IActionResult> postDeleteAsync(string id) {
             if (id == null) return NotFound();
             await repo.DeleteAsync(id);
             return redirectToIndex();
-        }        
-        protected override async Task<IActionResult> postEditAsync()
-        {
+        }
+        protected override async Task<IActionResult> postEditAsync() {
             if (!ModelState.IsValid) return Page();
             var obj = toObject(Item);
             var updated = await repo.UpdateAsync(obj);
             return !updated ? NotFound() : redirectToIndex();
         }
-        protected override async Task<IActionResult> getIndexAsync()
-        {
+        protected override async Task<IActionResult> getIndexAsync() {
             var list = await repo.GetAsync();
             Items = new List<TView>();
-            foreach (var obj in list)
-            {
+            foreach (var obj in list) {
                 var v = toView(obj);
                 Items.Add(v);
             }

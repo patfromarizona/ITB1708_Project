@@ -1,19 +1,14 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace TeamUP.Pages.Extensions
-{
-    public static class ItemButtonsHtml
-    {
+namespace TeamUP.Pages.Extensions {
+    public static class ItemButtonsHtml {
         public static IHtmlContent ItemButtons<TModel>(
-            this IHtmlHelper<TModel> h, string id)
-        {
+            this IHtmlHelper<TModel> h, string id) {
             var s = htmlStrings(h, id);
             return new HtmlContentBuilder(s);
         }
-
-        private static List<object> htmlStrings<TModel>(IHtmlHelper<TModel> h, string id)
-        {
+        private static List<object> htmlStrings<TModel>(IHtmlHelper<TModel> h, string id) {
             var l = new List<object>();
             l.Add(h.MyBtn("Edit", id));
             l.Add(new HtmlString("&nbsp;"));

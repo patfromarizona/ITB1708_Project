@@ -1,12 +1,10 @@
 ﻿using TeamUP.Aids;
 using TeamUP.Data.Party;
 
-namespace TeamUP.Domain.Party
-{
+namespace TeamUP.Domain.Party {
     public interface IStudentsRepo : IRepo<Student> { }
-    public sealed class Student : Entity<StudentData>, IComparable
-    {
-        public Student() : this(new ()) { }
+    public sealed class Student : Entity<StudentData>, IComparable {
+        public Student() : this(new()) { }
         public Student(StudentData d) : base(d) { }
         public string FirstName => getValue(Data?.FirstName);
         public string LastName => getValue(Data?.LastName);

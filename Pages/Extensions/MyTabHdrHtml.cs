@@ -1,19 +1,14 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace TeamUP.Pages.Extensions
-{
-    public static class MyTabHdrHtml
-    {
+namespace TeamUP.Pages.Extensions {
+    public static class MyTabHdrHtml {
         public static IHtmlContent MyTabHdr<TModel>(
-            this IHtmlHelper<TModel> h, string? name)
-        {
+            this IHtmlHelper<TModel> h, string? name) {
             var s = htmlStrings(name, h.ViewData.Model as IPageModel);
             return new HtmlContentBuilder(s);
         }
-
-        private static List<object> htmlStrings(string? name, IPageModel? m)
-        {
+        private static List<object> htmlStrings(string? name, IPageModel? m) {
             name ??= "Unspecified";
             var l = new List<object>
             {

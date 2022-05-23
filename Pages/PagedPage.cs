@@ -3,42 +3,34 @@ using TeamUP.Domain;
 using Microsoft.AspNetCore.Mvc;
 using TeamUP.Aids;
 
-namespace TeamUP.Pages
-{
+namespace TeamUP.Pages {
     public abstract class PagedPage<TView, TEntity, TRepo> : OrderedPage<TView, TEntity, TRepo>, IPageModel, IIndexModel<TView>
         where TView : BaseView, new()
         where TEntity : Entity
-        where TRepo : IPagedRepo<TEntity>
-    {
-        protected PagedPage(TRepo r) : base(r) { }             
-        public int PageIndex
-        {
+        where TRepo : IPagedRepo<TEntity> {
+        protected PagedPage(TRepo r) : base(r) { }
+        public int PageIndex {
             get => repo.PageIndex;
             set => repo.PageIndex = value;
         }
         public int TotalPages => repo.TotalPages;
         public bool HasNextPage => repo.HasNextPage;
         public bool HasPreviousPage => repo.HasPreviousPage;
-    
-        protected override void setAttributes(int idx, string? filter, string? order)
-        {
+        protected override void setAttributes(int idx, string? filter, string? order) {
             PageIndex = idx;
             CurrentFilter = filter;
             CurrentOrder = order;
         }
-
-        protected override IActionResult redirectToIndex()
-        {
-            return RedirectToPage("./Index", "Index", new
-            {
+        protected override IActionResult redirectToIndex() {
+            return RedirectToPage("./Index", "Index", new {
                 pageIndex = PageIndex,
                 currentFilter = CurrentFilter,
                 sortOrder = CurrentOrder
             });
         }
-
         public virtual object? GetValue(string name, TView v) =>
-            Safe.Run(() => {
+            Safe.Run(() =>
+            {
                 var pi = v?.GetType()?.GetProperty(name);
                 return pi?.GetValue(v);
             }, null);

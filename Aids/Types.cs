@@ -2,8 +2,7 @@
 
 namespace TeamUP.Aids
 {
-    public static class Types
-    {
+    public static class Types{
         private static readonly BindingFlags allDeclaredOnly =
             BindingFlags.DeclaredOnly
             | BindingFlags.Public 
